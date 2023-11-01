@@ -1,5 +1,7 @@
 <script lang="ts">
-
+    /**
+     * Spagheti code that creates a Button with @text that changes the screen to @destination.
+     */
     export let destination;
     export let text;
     function foo() {

@@ -1,20 +1,24 @@
 <script>
-    export let content = [
-        {name: "Jan Poledna", team:"2", points: 10 },
-        {name: "Tomas Parizek", team:"2", points: 5 },
-        {name: "Prokop Schield", team:"3", points: 5 },
-    ];
+    export let content = [];
+    content.sort((a,b)=>b.points - a.points);
+    export let me = {name:"",team:"",points:0};
+
     let choice = true;
+    let teamSum = [];
 
     function jedno(){
+        content.sort((a,b)=>b.points - a.points);
         choice = true;
     }
-    let teamSum = [];
     function team(){
-        choice = false;
         let proc = {};
         teamSum = [];
         for (let index = 0; index < content.length; index++) {
+            if(content[index].team==""){
+                teamSum = [];
+                return;
+            }
+
             proc[content[index].team] = 0;
         }
         for (let index = 0; index < content.length; index++) {
@@ -24,7 +28,8 @@
             var value = proc[key];
             teamSum.push({team: key,points: value})
         }
-        
+        teamSum.sort((a,b)=>b.points - a.points);
+        choice = false;
     }
 </script>
 
@@ -39,18 +44,26 @@
     </div>
 
     <div class="content-wraper">
-        {#if choice }
-        {#each content as {name, points}}
-            <div class="content">
-                {name} {points}
-            </div>
-        {/each}
+        {#if choice && !(content.length === 0)}
+            {#each content as {name, points}}
+                <div class="content" style={name===me.name?"background-color: #3f3f3f;":""}>
+                    <table>
+                        <td style="width:70%">{name}</td>
+                        <td style="width:30%;text-align:right">{points}</td>
+                    </table>
+                </div>
+            {/each}
+        {:else if !choice && !(teamSum.length === 0)}
+            {#each teamSum as {team, points} }
+                <div class="content"style={team===me.team?"background-color: #3f3f3f;":""}>
+                    <table>
+                        <td style="width:70%">{team}</td>
+                        <td style="width:30%;text-align:right">{points}</td>
+                    </table>
+                </div>
+            {/each}
         {:else}
-        {#each teamSum as {team, points} }
-            <div class="content">
-                {team}  {points}
-            </div>
-        {/each}
+            No Data
         {/if}
 
     </div>
@@ -108,5 +121,9 @@
     b{
         font-size: 2.2em;
         text-align: center;
+    }
+    table{
+        width: 100%;
+        text-align: left;
     }
 </style>
