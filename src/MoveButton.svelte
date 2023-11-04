@@ -2,8 +2,12 @@
     /**
      * Spagheti code that creates a Button with @text that changes the screen to @destination.
      */
+
+    /**
+	 * @type {Object}
+	 */
     export let destination;
-    export let text;
+    export let text ="";
     function foo() {
             document.getElementById("app").innerHTML = '';
              new destination({

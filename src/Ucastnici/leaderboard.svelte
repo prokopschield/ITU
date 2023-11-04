@@ -1,9 +1,15 @@
 <script>
+    /**
+	 * @type {{name: string,team:string,points: number}[]}
+	 */
     export let content = [];
     content.sort((a,b)=>b.points - a.points);
     export let me = {name:"",team:"",points:0};
 
     let choice = true;
+    /**
+	 * @type {{team:string,points: number}[]}
+	 */
     let teamSum = [];
 
     function jedno(){
@@ -11,6 +17,9 @@
         choice = true;
     }
     function team(){
+        /**
+	     * @type {number[string]}
+	     */
         let proc = {};
         teamSum = [];
         for (let index = 0; index < content.length; index++) {
@@ -75,7 +84,7 @@
         bottom: 5px;
         top: 5px;
         left: 5px;
-        width: 15%;
+        width: 275px;
         border-radius: 25px;
         background-color: #5c5c5c;
         
@@ -85,7 +94,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 7%;
+        height: 50px;
         border-top-right-radius:  25px;
         border-top-left-radius:  25px;
         border: 3px solid #3f3f3f;
@@ -93,15 +102,15 @@
     }
     .switch{
         position: absolute;
-        top: 8%;
+        top: 60px;
         left: 0;
         right: 0;
-        height: 5%;
+        height: 50px;
         border-bottom: 3px solid #3f3f3f;
     }
     .content-wraper{
         position: absolute;
-        top: 13%;
+        top: 110px;
         left: 0;
         right: 0;
         bottom: 5px;
@@ -125,5 +134,8 @@
     table{
         width: 100%;
         text-align: left;
+    }
+    button{
+        width: 45%;
     }
 </style>
