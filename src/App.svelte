@@ -24,7 +24,7 @@
 	};
 </script>
 
-{page}
+<button on:click={() => state.page.set("Main")}> Na hlavní stránku </button>
 
 {#if page === "Auth"}
 	<Auth />
@@ -35,7 +35,7 @@
 {:else if page === "Overview"}
 	<Overview />
 {:else if page === "Acountview"}
-	<Acountview/>
+	<Acountview />
 {:else if page === "ParticipantOverview"}
 	<ParticipantOverview />
 {:else}
