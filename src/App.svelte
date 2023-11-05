@@ -24,8 +24,6 @@
 	};
 </script>
 
-<button on:click={() => state.page.set("Main")}> Na hlavní stránku </button>
-
 {#if page === "Auth"}
 	<Auth />
 {:else if page === "EditAction"}
