@@ -4,7 +4,7 @@
 	import ParticipantOverview from "./Vedouci/ParticipantOverview.svelte";
 	import EditAction from "./Vedouci/EditAction.svelte";
 	import EditPerson from "./Vedouci/EditPerson.svelte";
-
+	import Acountview from "./Ucastnici/acountview.svelte";
 	import * as state from "./lib/state";
 	import Auth from "./pages/auth/Auth.svelte";
 
@@ -34,6 +34,8 @@
 	<EditPerson />
 {:else if page === "Overview"}
 	<Overview />
+{:else if page === "Acountview"}
+	<Acountview/>
 {:else if page === "ParticipantOverview"}
 	<ParticipantOverview />
 {:else}
