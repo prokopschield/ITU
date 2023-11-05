@@ -93,14 +93,7 @@
         left: 5px;
     }
 
-    #inner-header
-    {
-        position: relative;
-        top: 45px;
-        left: 0;
-        right: 0;
-        height: 30px;
-    }
+    
     #table
     {
         position: relative;
