@@ -16,7 +16,7 @@
         <table id="settings">
             <tr>
                 <td><input placeholder="Jméno"></td>
-                <td><input placeholder="Datum / Čas"></td>
+                <td><input placeholder="Datum / Čas" type="datetime"></td>
                 <td>
                     <table>
                         <tr>
