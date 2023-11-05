@@ -9,19 +9,8 @@
 		{ name: "Tomas Parizek", team: "rocnik.2", points: 5 },
 		{ name: "Prokop Schield", team: "rocnik.3", points: 6 },
 	];
+    // to here
 	let events: {name:string,date: Date,description:string,points:number,pointsMax:number}[] = [];
-
-	function Add() {
-		content.length = content.push({ name: "New", team: "New", points: 6 });
-		events.length = events.push({
-			name: "New",
-			date: new Date(Date.now() + 100000000),
-			description: "New",
-			points: NaN,
-			pointsMax: 3,
-		});
-	}
-	// to here
 	async function test() {
 		console.log(await backend.attendee_my_activities());
 		let {activities} = await backend.attendee_my_activities();
@@ -52,7 +41,7 @@
 			};
 		});
 	}
-    
+    test();
 </script>
 
 <main>
@@ -67,7 +56,7 @@
 	<div class="logout">
 		<MoveButton destination={"Acountview"} text="Detail Účtu" /><br />
 		<MoveButton destination={"Auth"} text="Odhlásit se" /><br />
-		<button on:click={test}>Test Add</button>
+		<button on:click={test}>Obnov Aktivity</button>
 	</div>
 </main>
 
