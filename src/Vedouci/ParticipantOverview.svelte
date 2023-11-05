@@ -93,7 +93,6 @@
         left: 5px;
     }
 
-    
     #table
     {
         position: relative;
