@@ -32,11 +32,13 @@ let redirect_to = "";
 page.subscribe((value) => {
 	page_value = value;
 
-	const url = new URL(location.href);
+	if (value !== "Auth") {
+		const url = new URL(location.href);
 
-	url.searchParams.set("page", value);
+		url.searchParams.set("page", value);
 
-	history.pushState(undefined, undefined, url.search);
+		history.pushState(undefined, url.search, url.search);
+	}
 });
 
 token.subscribe((value) => {
