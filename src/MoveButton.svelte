@@ -6,7 +6,7 @@
     /**
 	 * @type {Object}
 	 */
-    export let destination;
+    export let destination: object;
     export let text ="";
     function foo() {
             document.getElementById("app").innerHTML = '';

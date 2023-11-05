@@ -1,17 +1,18 @@
-<script>
+<script lang="ts">
     /**
 	 * @type {{name: string,date: Date,description:string,points:number,pointsMax:number}[]}
 	 */
-    export let events = [];
+    export let events: { name: string; date: Date; description: string; points: number; pointsMax: number; }[] = [];
     events.sort((a,b)=>a.date.getDate()-b.date.getDate());
+    let past:boolean = false;
     /**
 	 * @type {Date[]}
 	 */
     let usedDates = [];
     /**
-	 * @param {Date} date
+	 * @param {Date} _date
 	 */
-    function separator(date){
+    function separator(_date: Date){
         
         return false;
     }
@@ -21,10 +22,15 @@
     <div class="top">
         <input type="search" placeholder="Search..">
         <span><i class="fa fa-search"></i></span>
+        <div class="history" style="background-color: {!past?"#1a1a1a":"#5c5c5c"}">
+            <b>Historie</b>
+            <input type="checkbox" bind:checked={past} />
+        </div>
+        
     </div>
     <div class="events">
         {#each events as {name,date,description,points,pointsMax} }
-            {#if date>=new Date(new Date().setHours(0,0,0,0))}
+            {#if date>=new Date(new Date().setHours(0,0,0,0)) || past}
             {#if separator(date)}
                 True
             {/if}
@@ -70,6 +76,15 @@
         left:305px;
         top:15px;
         visibility: visible;
+    }
+    .history{
+        position:fixed;
+        margin: 10px;
+        right: 200px;
+        height: 35px;
+        padding: 2px;
+        align-content: center;
+        border-radius: 10px;
     }
     .events{
         position: absolute;

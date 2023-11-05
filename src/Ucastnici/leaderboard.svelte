@@ -1,16 +1,16 @@
-<script>
+<script lang="ts">
     /**
 	 * @type {{name: string,team:string,points: number}[]}
 	 */
-    export let content = [];
+    export let content: { name: string; team: string; points: number; }[] = [];
     content.sort((a,b)=>b.points - a.points);
     export let me = {name:"",team:"",points:0};
 
-    let choice = true;
+    let choice:boolean = true;
     /**
 	 * @type {{team:string,points: number}[]}
 	 */
-    let teamSum = [];
+    let teamSum: { team: string; points: number; }[] = [];
 
     function jedno(){
         content.sort((a,b)=>b.points - a.points);
@@ -20,7 +20,7 @@
         /**
 	     * @type {number[string]}
 	     */
-        let proc = {};
+        let proc : { [key: string]: number } = {};
         teamSum = [];
         for (let index = 0; index < content.length; index++) {
             if(content[index].team==""){
@@ -47,26 +47,26 @@
        <b>Žebříček</b> 
     </div>
     <div class="switch">
-        <button on:click={jedno}>Jednotlivci</button>
-        <button on:click={team}>Týmy</button>
+        <button on:click={jedno} style="background-color: {choice?"#1a1a1a":"#5c5c5c"}">Jednotlivci</button>
+        <button on:click={team} style="background-color: {!choice?"#1a1a1a":"#5c5c5c"}">Týmy</button>
 
     </div>
 
     <div class="content-wraper">
         {#if choice && !(content.length === 0)}
-            {#each content as {name, points}}
+            {#each content as {name, points}, i}
                 <div class="content" style={name===me.name?"background-color: #3f3f3f;":""}>
                     <table>
-                        <td style="width:70%">{name}</td>
+                        <td style="width:70%">{i+1}. {name}</td>
                         <td style="width:30%;text-align:right">{points}</td>
                     </table>
                 </div>
             {/each}
         {:else if !choice && !(teamSum.length === 0)}
-            {#each teamSum as {team, points} }
+            {#each teamSum as {team, points},i}
                 <div class="content"style={team===me.team?"background-color: #3f3f3f;":""}>
                     <table>
-                        <td style="width:70%">{team}</td>
+                        <td style="width:70%">{i+1}. {team}</td>
                         <td style="width:30%;text-align:right">{points}</td>
                     </table>
                 </div>
@@ -137,5 +137,6 @@
     }
     button{
         width: 45%;
+        border: 2px solid #3f3f3f;
     }
 </style>
