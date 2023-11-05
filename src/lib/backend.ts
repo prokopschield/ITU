@@ -44,6 +44,24 @@ export const session: (
 	email: string;
 }> = backend.login;
 
+export const register: (info: {
+	displayname: string;
+	legal_name: string;
+	legal_guardian: string;
+	legal_guardian_contact: string;
+	email: string;
+	redirect: string;
+}) => Promise<
+	| { status: "EMAIL_SENT" }
+	| {
+			error:
+				| "DISPLAYNAME_TOO_SHORT"
+				| "DISPLAYNAME_TOO_LONG"
+				| "INVALID_INFO"
+				| "<<string>>";
+	  }
+> = client.register;
+
 export const change_my_info: (info: {
 	displayname?: string;
 	legal_name?: string;
