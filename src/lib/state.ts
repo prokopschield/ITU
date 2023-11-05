@@ -35,9 +35,10 @@ page.subscribe((value) => {
 	if (value !== "Auth") {
 		const url = new URL(location.href);
 
-		url.searchParams.set("page", value);
-
-		history.pushState(undefined, url.search, url.search);
+		if (url.searchParams.get("page") !== value) {
+			url.searchParams.set("page", value);
+			history.pushState(undefined, url.search, url.search);
+		}
 	}
 });
 
@@ -65,3 +66,13 @@ token.subscribe((value) => {
 });
 
 token.set(localStorage.getItem("token") || "");
+
+window.addEventListener("popstate", () =>
+	setTimeout(() => {
+		const new_page = new URL(location.href).searchParams.get("page") || "";
+
+		if (new_page && new_page !== page_value && new_page !== "Auth") {
+			page.set(new_page);
+		}
+	})
+);
