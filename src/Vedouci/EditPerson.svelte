@@ -86,7 +86,7 @@
         width: 100%;
     }
 
-    input:not([type])
+    input:not([type]), input[type="date"]
     {
         width: calc(100% - 28px);
         height: 30px;

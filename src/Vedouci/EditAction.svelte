@@ -109,7 +109,7 @@
         width: 100%;
     }
 
-    #upper-div #settings input:not([type])
+    #upper-div #settings input:not([type]), #upper-div #settings input[type="date"]
     {
         width: calc(100% - 28px);
         height: 100%;
