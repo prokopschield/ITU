@@ -2,16 +2,31 @@
 	import Overview from "./Ucastnici/overview.svelte";
 	import MoveButton from "./MoveButton.svelte";
 	import Participant from "./Vedouci/ParticipantOverview.svelte";
+
+	import * as state from "./lib/state";
+	import Auth from "./pages/auth/Auth.svelte";
+
+	let username = "";
+	let displayname = "";
+
+	state.username.subscribe((value) => (username = value));
+	state.displayname.subscribe((value) => (displayname = value));
+
 	const pkg = {
 		destination: Overview,
-		text:'Log Účastník'
-	}
+		text: "Log Účastník",
+	};
 </script>
 
 <main>
 	<h1>IS CAMP</h1>
-	<MoveButton {...pkg}/>
-	<MoveButton destination = {Participant} text = {"Log Vedoucí"} />
+	{#if username}
+		Vítej, {displayname}
+		<MoveButton {...pkg} />
+		<MoveButton destination={Participant} text={"Log Vedoucí"} />
+	{:else}
+		<Auth />
+	{/if}
 </main>
 
 <style>
