@@ -10,7 +10,22 @@
 		{ name: "Prokop Schield", team: "rocnik.3", points: 6 },
 	];
 	let events: {name:string,date: Date,description:string,points:number,pointsMax:number}[] = [];
-    let activities:({
+
+	function Add() {
+		content.length = content.push({ name: "New", team: "New", points: 6 });
+		events.length = events.push({
+			name: "New",
+			date: new Date(Date.now() + 100000000),
+			description: "New",
+			points: NaN,
+			pointsMax: 3,
+		});
+	}
+	// to here
+	async function test() {
+		console.log(await backend.attendee_my_activities());
+		let {activities} = await backend.attendee_my_activities();
+		events = activities.map((element:({
             attended: {
                 id: string;
                 activity_id: bigint;
@@ -26,31 +41,16 @@
             description: string;
             points: number;
             timestamp: Date;
-        })[];
-
-	function Add() {
-		content.length = content.push({ name: "New", team: "New", points: 6 });
-		events.length = events.push({
-			name: "New",
-			date: new Date(Date.now() + 100000000),
-			description: "New",
-			points: NaN,
-			pointsMax: 3,
-		});
-	}
-	// to here
-	async function test() {
-		console.log(await backend.attendee_my_activities());
-		activities = await backend.attendee_my_activities();
-		/*events = activities.map((element) => {
-			events.length = events.push({
+        })
+        ) => {
+			return {
 				name: element.name,
 				date: new Date(element.timestamp),
 				description: element.description,
 				points: NaN,
 				pointsMax: element.points,
-			});
-		});*/
+			};
+		});
 	}
     
 </script>
