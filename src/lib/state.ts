@@ -16,7 +16,9 @@ export const user = writable<{
 	email: string;
 }>();
 
-export const page = writable("");
+export const page = writable(
+	new URL(location.href).searchParams.get("page") || ""
+);
 
 username.subscribe((value) => {
 	if (value) {
@@ -27,7 +29,15 @@ username.subscribe((value) => {
 let page_value = "";
 let redirect_to = "";
 
-page.subscribe((value) => (page_value = value));
+page.subscribe((value) => {
+	page_value = value;
+
+	const url = new URL(location.href);
+
+	url.searchParams.set("page", value);
+
+	history.pushState(undefined, undefined, url.search);
+});
 
 token.subscribe((value) => {
 	if (value) {
