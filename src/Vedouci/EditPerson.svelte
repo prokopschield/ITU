@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td><input></td>
-                <td><input type="datetime"></td>
+                <td><input type="date"></td>
             </tr>
             <tr>
                 <td>Tým</td>
