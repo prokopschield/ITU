@@ -42,7 +42,7 @@ export const session: (
 	legal_guardian: string;
 	legal_guardian_contact: string;
 	email: string;
-}> = backend.login;
+}> = backend.session;
 
 export const register: (info: {
 	displayname: string;
