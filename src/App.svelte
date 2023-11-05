@@ -2,6 +2,8 @@
 	import Overview from "./Ucastnici/overview.svelte";
 	import MoveButton from "./MoveButton.svelte";
 	import Participant from "./Vedouci/ParticipantOverview.svelte";
+	import EditAction from "./Vedouci/EditAction.svelte";
+	import EditPerson from "./Vedouci/EditPerson.svelte";
 
 	import * as state from "./lib/state";
 	import Auth from "./pages/auth/Auth.svelte";
@@ -24,6 +26,8 @@
 		Vítej, {displayname}
 		<MoveButton {...pkg} />
 		<MoveButton destination={Participant} text={"Log Vedoucí"} />
+		<MoveButton destination={EditAction} text={"Editace události"} />
+		<MoveButton destination={EditPerson} text={"Editace osoby"} />
 	{:else}
 		<Auth />
 	{/if}
