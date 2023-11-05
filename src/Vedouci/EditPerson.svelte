@@ -1,13 +1,13 @@
 <script lang="ts">
-    let buttons = ["Akce", "Účastníci", "Vedoucí"]
+	import MoveButton from "../MoveButton.svelte";
 </script>
 
 <main id="main">
     <header id="header">
         <div>
-            {#each buttons as button (button)}
-                <button>{button}</button>
-            {/each}
+            <MoveButton destination="" text={"Akce"}></MoveButton>
+            <MoveButton destination="ParticipantOverview" text={"Účastníci"}></MoveButton>
+            <MoveButton destination="" text={"Vedoucí"}></MoveButton>
         </div>
         <img alt="UserIcon" id="user">
     </header>
