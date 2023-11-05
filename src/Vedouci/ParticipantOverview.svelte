@@ -15,24 +15,24 @@
 
     <main id="inner-main">
         <button>Rozdělení bodů</button>
-        <header id="inner-header">
-            <span id="column0">
-                <span>Jméno</span>
-                <span><img alt="sorting option"></span>
-            </span>
-            <span id="column1">
-                <span>Tým</span>
-                <span><img alt="sorting option"></span>
-            </span>
-            <span id="column2">
-                <span>Body</span>
-                <span><img alt="sorting option"></span>
-            </span>
-            <span id="column3">
-                <img alt="sorting option">
-            </span>
-        </header>
         <table id="table">
+            <thead>
+                <th class="column0">
+                    <span>Jméno</span>
+                    <span><img alt="sorting option"></span>
+                </th>
+                <th class="column1">
+                    <span>Tým</span>
+                    <span><img alt="sorting option"></span>
+                </th>
+                <th class="column2">
+                    <span>Body</span>
+                    <span><img alt="sorting option"></span>
+                </th>
+                <th class="column3">
+                    <img alt="sorting option">
+                </th>
+            </thead>
             {#each tableItems as {name, team, points}}
                 <tr class="item">
                     <td class="column0">{name}</td>
@@ -106,34 +106,6 @@
         position: relative;
         top: 65px;
         width: 100%;
-    }
-    .item
-    {
-        position: relative;
-    }
-    #column0
-    {
-        position: absolute;
-        left: 0;
-        right: 50%;
-    }
-    #column1
-    {
-        position: absolute;
-        left: 50%;
-        right: calc(50% - (50% / 3));
-    }
-    #column2
-    {
-        position: absolute;
-        left: calc(50% + (50% / 3));
-        right: calc(50% - (50% / 3) * 2);
-    }
-    #column3
-    {
-        position: absolute;
-        left: calc(50% + (50% / 3) * 2);
-        right: 0;
     }
 
     .column0
