@@ -1,14 +1,14 @@
 <script lang="ts">
-    let buttons = ["Akce", "Účastníci", "Vedoucí"]
+    import MoveButton from "../MoveButton.svelte";
     let tableItems: { name: string; team: string; points: number; }[] = [{name:"a", team:"b", points:5}, {name:"a", team:"b", points:5}];
 </script>
 
 <main id="main">
     <header id="header">
         <div>
-            {#each buttons as button (button)}
-                <button>{button}</button>
-            {/each}
+            <MoveButton destination="" text={"Akce"}></MoveButton>
+            <MoveButton destination="ParticipantOverview" text={"Účastníci"}></MoveButton>
+            <MoveButton destination="" text={"Vedoucí"}></MoveButton>
         </div>
         <img alt="UserIcon" id="user">
     </header>
