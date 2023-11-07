@@ -1,5 +1,5 @@
 <script lang="ts">
-    import MoveButton from "../MoveButton.svelte";
+    import MoveButton from "../lib/MoveButton.svelte";
     let participants: {name: String; points: Number; comment: String;}[] = [{name: "a", points: 5, comment: "ahoj"}, {name: "a", points: 5, comment: "ahoj"}];
 </script>
 

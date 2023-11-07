@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as state from "./lib/state";
+	import * as state from "./state";
 	/**
 	 * Spagheti code that creates a Button with @text that changes the screen to @destination.
 	 */

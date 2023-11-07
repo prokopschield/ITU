@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MoveButton from "../MoveButton.svelte";
+	import MoveButton from "../lib/MoveButton.svelte";
 	let me = { name: "Jan", team: "rocnik 2", points: 10 };
 	let newme = { name: "" };
 

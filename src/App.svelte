@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Overview from "./Ucastnici/overview.svelte";
-	import MoveButton from "./MoveButton.svelte";
+	import MoveButton from "./lib/MoveButton.svelte";
 	import ParticipantOverview from "./Vedouci/ParticipantOverview.svelte";
 	import EditAction from "./Vedouci/EditAction.svelte";
 	import EditPerson from "./Vedouci/EditPerson.svelte";
