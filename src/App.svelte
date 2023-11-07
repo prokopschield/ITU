@@ -38,19 +38,11 @@
 	<ParticipantOverview />
 {:else}
 	<main>
-		<h1>IS CAMP</h1>
-		{#if username}
-			Vítej, {displayname}
-			<MoveButton {...pkg} />
-			<MoveButton
-				destination={ParticipantOverview}
-				text={"Log Vedoucí"}
-			/>
-			<MoveButton destination={EditAction} text={"Editace události"} />
-			<MoveButton destination={EditPerson} text={"Editace osoby"} />
-		{:else}
-			<Auth />
-		{/if}
+		Vítej, {displayname}
+		<MoveButton {...pkg} />
+		<MoveButton destination={ParticipantOverview} text={"Log Vedoucí"} />
+		<MoveButton destination={EditAction} text={"Editace události"} />
+		<MoveButton destination={EditPerson} text={"Editace osoby"} />
 	</main>
 {/if}
 
