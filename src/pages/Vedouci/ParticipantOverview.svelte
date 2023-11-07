@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MoveButton from "../lib/MoveButton.svelte";
+	import MoveButton from "../../lib/MoveButton.svelte";
 	let tableItems: { name: string; team: string; points: number }[] = [
 		{ name: "a", team: "b", points: 5 },
 		{ name: "a", team: "b", points: 5 },

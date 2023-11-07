@@ -1,8 +1,8 @@
 <script lang="ts">
-	import MoveButton from "../lib/MoveButton.svelte";
+	import MoveButton from "../../lib/MoveButton.svelte";
 	import Leaderboard from "./leaderboard.svelte";
 	import Events from "./events.svelte";
-	import { backend } from "../lib/backend";
+	import { backend } from "../../lib/backend";
 	//replace for backend connection from here
 	let content = [
 		{ name: "Jan Poledna", team: "rocnik.2", points: 10 },

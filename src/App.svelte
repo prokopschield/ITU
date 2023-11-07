@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Overview from "./Ucastnici/overview.svelte";
 	import MoveButton from "./lib/MoveButton.svelte";
-	import ParticipantOverview from "./Vedouci/ParticipantOverview.svelte";
-	import EditAction from "./Vedouci/EditAction.svelte";
-	import EditPerson from "./Vedouci/EditPerson.svelte";
-	import Acountview from "./Ucastnici/acountview.svelte";
-	import * as state from "./lib/state";
 	import Auth from "./pages/auth/Auth.svelte";
+	import Acountview from "./pages/Ucastnici/acountview.svelte";
+	import Overview from "./pages/Ucastnici/overview.svelte";
+	import EditAction from "./pages/Vedouci/EditAction.svelte";
+	import EditPerson from "./pages/Vedouci/EditPerson.svelte";
+	import ParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
+	import * as state from "./lib/state";
 
 	let username = "";
 	let displayname = "";

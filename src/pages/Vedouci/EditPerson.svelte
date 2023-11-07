@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MoveButton from "../lib/MoveButton.svelte";
+	import MoveButton from "../../lib/MoveButton.svelte";
 </script>
 
 <main id="main">
