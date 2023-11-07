@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from "svelte";
 	import { login } from "../../lib/backend";
 	import * as state from "../../lib/state";
 
@@ -19,6 +20,19 @@
 
 	let login_field;
 	let password_field;
+
+	onMount(() => {
+		login_field.focus();
+
+		for (const input of document.querySelectorAll("input")) {
+			input.addEventListener("keydown", (e) => {
+				if (e.key === "Enter") {
+					e.preventDefault();
+					click();
+				}
+			});
+		}
+	});
 </script>
 
 <div>
