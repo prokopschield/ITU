@@ -19,23 +19,50 @@
 </script>
 
 <div>
-	<label for="username">Username</label><input
-		type="text"
-		bind:value={username}
-		name="username"
-	/>
-	<br />
-	<label for="password">Password</label><input
-		type="password"
-		bind:value={password}
-		name="password"
-	/>
-	<br />
-	<button on:click={click}>Přihlásit se</button>
+	<table>
+		<tr>
+			<td />
+			<td>
+				<h2>IS CAMP</h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="username">Username</label>
+			</td>
+			<td>
+				<input type="text" bind:value={username} name="username" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="password">Password</label>
+			</td>
+			<td>
+				<input type="password" bind:value={password} name="password" />
+			</td>
+		</tr>
+		<tr>
+			<td />
+			<td class="lgnbtn">
+				<button on:click={click}>Přihlásit se</button>
+			</td>
+		</tr>
+	</table>
 </div>
 
 <style>
 	* {
-		margin: 0.3em;
+		margin: 0.5em;
+		font-size: 1.2em;
+	}
+
+	h2 {
+		font-size: 3.5em;
+	}
+
+	.lgnbtn {
+		text-align: center;
+		padding: 1.2em;
 	}
 </style>
