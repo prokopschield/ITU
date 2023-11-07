@@ -16,6 +16,9 @@
 			alert("Nesprávné údaje!");
 		}
 	}
+
+	let login_field;
+	let password_field;
 </script>
 
 <div>
@@ -31,7 +34,12 @@
 				<label for="username">Username</label>
 			</td>
 			<td>
-				<input type="text" bind:value={username} name="username" />
+				<input
+					bind:this={login_field}
+					type="text"
+					bind:value={username}
+					name="username"
+				/>
 			</td>
 		</tr>
 		<tr>
@@ -39,7 +47,12 @@
 				<label for="password">Password</label>
 			</td>
 			<td>
-				<input type="password" bind:value={password} name="password" />
+				<input
+					bind:this={password_field}
+					type="password"
+					bind:value={password}
+					name="password"
+				/>
 			</td>
 		</tr>
 		<tr>
