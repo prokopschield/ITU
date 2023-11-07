@@ -76,19 +76,25 @@
 
 		<tr>
 			<td />
-
-			<td class="red">
-				&nbsp
-				{#if failure}
-					Špatně zadané údaje!
-				{/if}
+			<td class="lgnbtn">
+				<button on:click={click}>Přihlásit se</button>
 			</td>
 		</tr>
 
 		<tr>
 			<td />
-			<td class="lgnbtn">
-				<button on:click={click}>Přihlásit se</button>
+
+			<td class="red">
+				<div class="button-empty-placeholder">
+					{#if failure}
+						<button
+							class="forgot_password_button"
+							on:click={() => state.page.set("ForgotPassword")}
+						>
+							Zapomněl jsem heslo.
+						</button>
+					{/if}
+				</div>
 			</td>
 		</tr>
 	</table>
@@ -106,10 +112,18 @@
 
 	.lgnbtn {
 		text-align: center;
-		padding: 0.3em;
+		padding-top: 0.3em;
 	}
 
 	.red {
 		color: red;
+	}
+
+	.forgot_password_button {
+		font-size: 0.7em;
+	}
+
+	.button-empty-placeholder {
+		min-height: 2.7em;
 	}
 </style>
