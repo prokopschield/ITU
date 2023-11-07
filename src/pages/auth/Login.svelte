@@ -6,15 +6,19 @@
 	let username = "";
 	let password = "";
 
+	let failure = false;
+
 	async function click() {
 		try {
+			failure = false;
+
 			const response = await login(username, password);
 
 			state.username.set(response.username);
 			state.displayname.set(response.displayname);
 			state.token.set(response.token);
 		} catch {
-			alert("Nesprávné údaje!");
+			failure = true;
 		}
 	}
 
@@ -69,6 +73,18 @@
 				/>
 			</td>
 		</tr>
+
+		<tr>
+			<td />
+
+			<td class="red">
+				&nbsp
+				{#if failure}
+					Špatně zadané údaje!
+				{/if}
+			</td>
+		</tr>
+
 		<tr>
 			<td />
 			<td class="lgnbtn">
@@ -90,6 +106,10 @@
 
 	.lgnbtn {
 		text-align: center;
-		padding: 1.2em;
+		padding: 0.3em;
+	}
+
+	.red {
+		color: red;
 	}
 </style>
