@@ -13,6 +13,10 @@ export const backend = new Proxy(client, {
 				throw error;
 			}
 
+			if (!success) {
+				throw "FAILURE";
+			}
+
 			return rest;
 		};
 	},
