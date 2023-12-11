@@ -33,7 +33,10 @@ page.subscribe((value) => {
 	if (value !== "Auth") {
 		const url = new URL(location.href);
 
-		if (url.searchParams.get("page") !== value) {
+		if (!token.value && !value.includes("Auth")) {
+			redir.set(value);
+			page.set("Auth");
+		} else if (url.searchParams.get("page") !== value) {
 			url.searchParams.set("page", value);
 			history.pushState(undefined, "", url.search);
 		}
