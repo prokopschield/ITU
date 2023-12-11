@@ -6,17 +6,8 @@
 	import EditAction from "./pages/Vedouci/EditAction.svelte";
 	import EditPerson from "./pages/Vedouci/EditPerson.svelte";
 	import ParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
-	import * as state from "./lib/state";
 
-	let username = "";
-	let displayname = "";
-
-	state.username.subscribe((value) => (username = value));
-	state.displayname.subscribe((value) => (displayname = value));
-
-	let page = "";
-
-	state.page.subscribe((value) => (page = value));
+	import { displayname, page } from "./lib/state";
 
 	const pkg = {
 		destination: Overview,
@@ -24,21 +15,21 @@
 	};
 </script>
 
-{#if page === "Auth"}
+{#if $page === "Auth"}
 	<Auth />
-{:else if page === "EditAction"}
+{:else if $page === "EditAction"}
 	<EditAction />
-{:else if page === "EditPerson"}
+{:else if $page === "EditPerson"}
 	<EditPerson />
-{:else if page === "Overview"}
+{:else if $page === "Overview"}
 	<Overview />
-{:else if page === "Acountview"}
+{:else if $page === "Acountview"}
 	<Acountview />
-{:else if page === "ParticipantOverview"}
+{:else if $page === "ParticipantOverview"}
 	<ParticipantOverview />
 {:else}
 	<main>
-		Vítej, {displayname}
+		Vítej, {$displayname}
 		<MoveButton {...pkg} />
 		<MoveButton destination={ParticipantOverview} text={"Log Vedoucí"} />
 		<MoveButton destination={EditAction} text={"Editace události"} />

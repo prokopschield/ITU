@@ -173,6 +173,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@prokopschield/localstorage-state@^0.1.0-6":
+  version "0.1.0-6"
+  resolved "https://registry.yarnpkg.com/@prokopschield/localstorage-state/-/localstorage-state-0.1.0-6.tgz#3fc9b5160bb2e6f74cbfcf7412b0f56a58e45964"
+  integrity sha512-smslzRa4y4cGXDeRCzky2RZbkJ+Ix3Pph0a1s0rCoih7BLUEqLROntHg+hzjcm2PdZFv7TEjO12jYVs/JJBBOQ==
+  dependencies:
+    doge-don "^0.1.0-4"
+    ps-std "^0.1.26"
+
 "@prokopschield/simple-socket-client@^0.1.0-2":
   version "0.1.0-2"
   resolved "https://registry.yarnpkg.com/@prokopschield/simple-socket-client/-/simple-socket-client-0.1.0-2.tgz#993887b813c884f02832658f6601b5bb49d1ffd9"
@@ -342,6 +350,11 @@ detect-indent@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.1.0.tgz#592485ebbbf6b3b1ab2be175c8393d04ca0d57e6"
   integrity sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==
+
+doge-don@^0.1.0-4:
+  version "0.1.0-4"
+  resolved "https://registry.yarnpkg.com/doge-don/-/doge-don-0.1.0-4.tgz#0c2a42ed4f98b7e39d829b6cd00043384b660d3e"
+  integrity sha512-wHpsqUwl9MmWS+30IODnwmHEqGIAPcInWenXbSIW1Keee8UN+Z+jfCrdstfHcltPzw/ACIFAwWalCYhl8K1mnw==
 
 engine.io-client@~6.5.2:
   version "6.5.2"
@@ -647,6 +660,11 @@ ps-std@^0.1.23:
   version "0.1.23"
   resolved "https://registry.yarnpkg.com/ps-std/-/ps-std-0.1.23.tgz#70ab3481af29158faeca4f02d1f4e4a422a6fbf2"
   integrity sha512-NQ5iPHYU7GCOli5Uoy2pIv0KRaB30IoKra94yvsQRtvBsfECnSbHiby2qi0BTBJFbEK01qcxWq9fl/6k4J7fXg==
+
+ps-std@^0.1.26:
+  version "0.1.26"
+  resolved "https://registry.yarnpkg.com/ps-std/-/ps-std-0.1.26.tgz#e2899e4e39b5fd81ebee55bf8ed6d516b1181a99"
+  integrity sha512-ZThyYQwuI4X92U2Iv9BduuUVxFYR5Rg2eQCIvnBcdlwhjC5ppIaXADWU1BbQ4fj+wsNrDm+bUo+H6d6PNKEePQ==
 
 queue-microtask@^1.2.2:
   version "1.2.3"

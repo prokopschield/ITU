@@ -1,12 +1,12 @@
-import { writable } from "svelte/store";
+import { store } from "@prokopschield/localstorage-state";
 
 import { session } from "./backend.js";
 
-export const username = writable("");
-export const displayname = writable("");
-export const token = writable(localStorage.getItem("token") || "");
+export const username = store<string>("username");
+export const displayname = store<string>("displayname");
+export const token = store<string>("token");
 
-export const user = writable<{
+export const user = store<{
 	token: string;
 	username: string;
 	displayname: string;
@@ -14,41 +14,40 @@ export const user = writable<{
 	legal_guardian: string;
 	legal_guardian_contact: string;
 	email: string;
-}>();
+}>("user");
 
-export const page = writable(
-	new URL(location.href).searchParams.get("page") || ""
-);
+export const redir = store<string>("redir");
+export const page = store<string>("page");
 
-username.subscribe((value) => {
-	if (value) {
-		localStorage.setItem("username", value);
+for (const [key, value] of new URL(location.href).searchParams) {
+	store(key).set(value);
+}
+
+setTimeout(() => {
+	if (!page.value) {
+		page.set(location.pathname);
 	}
 });
 
-let page_value = "";
-let redirect_to = "";
-
 page.subscribe((value) => {
-	page_value = value;
-
 	if (value !== "Auth") {
 		const url = new URL(location.href);
 
 		if (url.searchParams.get("page") !== value) {
 			url.searchParams.set("page", value);
-			history.pushState(undefined, url.search, url.search);
+			history.pushState(undefined, "", url.search);
 		}
 	}
 });
 
-token.subscribe((value) => {
-	if (value) {
-		if (page_value === "Auth") {
-			page.set(redirect_to);
+export function restore_session(new_token?: string) {
+	if (new_token) {
+		if (page.value === "Auth") {
+			page.set(redir.value);
+			redir.value = "";
 		}
 
-		session(localStorage.getItem("username") || "", value)
+		session(username.value, new_token)
 			.then((data) => {
 				displayname.set(data.displayname);
 				username.set(data.username);
@@ -56,22 +55,20 @@ token.subscribe((value) => {
 			})
 			.catch(() => token.set(""));
 	} else {
-		if (page_value !== "Auth") {
-			redirect_to = page_value;
+		if (page.value !== "Auth") {
+			redir.value = page.value;
 			page.set("Auth");
 		}
 	}
+}
 
-	localStorage.setItem("token", value);
-});
-
-token.set(localStorage.getItem("token") || "");
+token.subscribe(restore_session);
 
 window.addEventListener("popstate", () =>
 	setTimeout(() => {
 		const new_page = new URL(location.href).searchParams.get("page") || "";
 
-		if (new_page && new_page !== page_value && new_page !== "Auth") {
+		if (new_page && new_page !== page.value && new_page !== "Auth") {
 			page.set(new_page);
 		}
 	})
