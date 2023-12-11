@@ -52,7 +52,7 @@ page.subscribe((value) => {
 
 export function restore_session(new_token?: string) {
 	if (new_token) {
-		if (page.value === "Auth") {
+		if (page.value.startsWith("Auth")) {
 			page.set(redir.value);
 			redir.value = "";
 		}
@@ -65,7 +65,7 @@ export function restore_session(new_token?: string) {
 			})
 			.catch(() => token.set(""));
 	} else {
-		if (page.value !== "Auth") {
+		if (!page.value.startsWith("Auth")) {
 			redir.value = page.value;
 			page.set("Auth");
 		}
