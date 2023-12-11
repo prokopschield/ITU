@@ -15,7 +15,7 @@
 	};
 </script>
 
-{#if $page === "Auth"}
+{#if $page.startsWith("Auth")}
 	<Auth />
 {:else if $page === "EditAction"}
 	<EditAction />

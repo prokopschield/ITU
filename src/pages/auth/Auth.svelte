@@ -2,11 +2,17 @@
 	import Login from "./Login.svelte";
 	import Register from "./Register.svelte";
 
-	let page: "register" | "login" = "login";
+	import { store } from "@prokopschield/localstorage-state";
+
+	const page = store<string>("page");
 </script>
 
-{#if page === "login"}
+{#if $page === "AuthLogin"}
 	<Login />
-{:else}
+{:else if $page === "AuthRegister"}
 	<Register />
+{:else if $page === "AuthForgotPassword"}
+	<h1>TODO</h1>
+{:else}
+	{page.set("AuthLogin")}
 {/if}
