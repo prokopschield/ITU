@@ -1,4 +1,5 @@
 import { store } from "@prokopschield/localstorage-state";
+import { startCase } from "lodash";
 
 import { session } from "./backend.js";
 
@@ -30,6 +31,12 @@ setTimeout(() => {
 });
 
 page.subscribe((value) => {
+	const canonical = startCase(value).replace(/[^a-z]/gi, "");
+
+	if (value !== canonical) {
+		return page.set(canonical);
+	}
+
 	if (value !== "Auth") {
 		const url = new URL(location.href);
 
