@@ -1,5 +1,6 @@
 <script lang="ts">
 	import MoveButton from "../../lib/MoveButton.svelte";
+	import PointTable from "./PointTable.svelte";
 	let participants: { name: String; points: Number; comment: String }[] = [
 		{ name: "a", points: 5, comment: "ahoj" },
 		{ name: "a", points: 5, comment: "ahoj" },
@@ -49,20 +50,7 @@
 		</table>
 	</div>
 	<div id="lower-div">
-		<table id="list">
-			<thead>
-				<th class="column0">Jméno</th>
-				<th class="column1">Body</th>
-				<th class="column2">Komentář</th>
-			</thead>
-			{#each participants as { name, points, comment }}
-				<tr>
-					<td class="column0">{name}</td>
-					<td class="column1">{points}</td>
-					<td class="column2">{comment}</td>
-				</tr>
-			{/each}
-		</table>
+		<PointTable />
 	</div>
 </main>
 
