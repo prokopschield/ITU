@@ -31,9 +31,7 @@
 					<span>Body</span>
 					<span><img alt="sorting option" /></span>
 				</th>
-				<th class="column3">
-					<!--<img alt="sorting option" />-->
-				</th>
+				<th class="column3"></th>
 			</thead>
 			<tbody>
 				{#each tableItems as { name, team, points }}
