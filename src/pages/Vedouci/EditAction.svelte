@@ -11,24 +11,8 @@
 	<div id="upper-div">
 		<table id="settings">
 			<tr>
-				<td><input placeholder="Jméno" /></td>
+				<td colspan="2"><input placeholder="Jméno"/></td>
 				<td><input placeholder="Datum / Čas" type="date" /></td>
-				<td>
-					<table>
-						<tr>
-							<td>Týmová</td>
-							<td><input type="checkbox" /></td>
-						</tr>
-						<tr>
-							<td>Opakující se</td>
-							<td><input type="checkbox" /></td>
-						</tr>
-						<tr>
-							<td>Volitelná</td>
-							<td><input type="checkbox" /></td>
-						</tr>
-					</table>
-				</td>
 				<td><input placeholder="Maximum bodů" /></td>
 			</tr>
 			<tr>
