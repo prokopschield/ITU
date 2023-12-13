@@ -7,6 +7,7 @@
 	import EditPerson from "./pages/Vedouci/EditPerson.svelte";
 	import ParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
 	import Actions from "./pages/Vedouci/Actions.svelte";
+	import HeadOverview from "./pages/Vedouci/HeadOverview.svelte";
 
 	import { displayname, page } from "./lib/state";
 	import PointDistribution from "./pages/Vedouci/PointDistribution.svelte";
@@ -29,6 +30,8 @@
 	<Acountview />
 {:else if $page === "ParticipantOverview"}
 	<ParticipantOverview />
+{:else if $page === "HeadOverview"}
+	<HeadOverview />
 {:else if $page === "Actions"}
 	<Actions />
 	{:else if $page === "PointDistribution"}

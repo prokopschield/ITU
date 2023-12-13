@@ -17,7 +17,6 @@
 	</header>
 
 	<main id="inner-main">
-		<button>Rozdělení bodů</button>
 		<table id="table">
 			<thead>
 				<th class="column0">
@@ -87,15 +86,10 @@
 		top: 40px;
 		bottom: 0;
 	}
-	#inner-main button {
-		position: absolute;
-		top: 5px;
-		left: 5px;
-	}
 
 	#table {
 		position: relative;
-		top: 65px;
+		top: 45px;
 		width: 100%;
 	}
 
