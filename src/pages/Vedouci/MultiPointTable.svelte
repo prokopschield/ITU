@@ -17,10 +17,6 @@ function updatePoints(childIndex: number, actionIndex: number, value: number) {
 function calculateRowTotal(points: number[]): number {
     return points.reduce((acc, val) => acc + val, 0);
 }
-
-function calculateColumnTotal(actionIndex: number): number {
-    return tableData.reduce((acc, child) => acc + child.points[actionIndex], 0);
-}
 </script>
 
 <style>
