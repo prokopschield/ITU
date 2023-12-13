@@ -60,7 +60,7 @@
 		position: absolute;
 		width: 100%;
 		padding: 8px;
-		border: 1px solid #ddd;
+		/*border: 1px solid #ddd;*/
 	}
 
 	#upper-div #settings {
@@ -86,6 +86,8 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		top: 200px;
+		top: 160px;
+		max-height: calc(100% - 160px);
+		overflow-y: auto;
 	}
 </style>
