@@ -1,5 +1,4 @@
 <script lang="ts">
-    import MoveButton from "../../lib/MoveButton.svelte";
 	import Header from "../Header.svelte";
 	import MultiPointTable from "./MultiPointTable.svelte";
 </script>

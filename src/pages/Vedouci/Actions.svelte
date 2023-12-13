@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ActionBox from './ActionBox.svelte'; // Importuj komponentu ActionBox
-    import MoveButton from '../../lib/MoveButton.svelte';
 	import Header from '../Header.svelte';
 
     let actions: { name: string; dateTime: string }[] = [
