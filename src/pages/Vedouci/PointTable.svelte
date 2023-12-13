@@ -16,29 +16,39 @@ function handleCommentChange(index: number, event: Event) {
 </script>
 
 <style>
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
+    th {
+        padding: 8px;
+    }
 
-th, td {
-    border: 1px solid #aaa;
-    text-align: left;
-}
+    td {
+        padding: 6px;
+    }
 
-th {
-    padding: 8px;
-}
+    td input {
+        width: 100%;
+        margin: 0; /* Ostranění mezery kolem inputu */
+        box-sizing: border-box; /* Zahrnutí okraje do celkové šířky */
+    }
 
-td {
-    padding: 6px;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+    }
 
-td input {
-    width: 100%;
-    margin: 0; /* Ostranění mezery kolem inputu */
-    box-sizing: border-box; /* Zahrnutí okraje do celkové šířky */
-}
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: light dark;
+    }
+
+    tr:hover {
+        background-color: rgb(46, 46, 46);
+    }
 </style>
 
 <table>
