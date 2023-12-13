@@ -42,4 +42,13 @@
 		position: absolute;
 		right: 5px;
 	}
+
+    #main main {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 40px;
+		bottom: calc(100% - 200px);
+		margin: 0;
+    }
 </style>

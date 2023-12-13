@@ -38,11 +38,11 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: light dark;
 }
 
 tr:hover {
-    background-color: #f5f5f5;
+    background-color: rgb(46, 46, 46);
 }
 </style>
 
