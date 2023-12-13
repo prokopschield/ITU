@@ -5,6 +5,7 @@
 
 <style>
 .action-box {
+    position: relative;
     border: 1px solid #ccc;
     padding: 10px;
     width: 100%; /* změna šířky na 100% */
@@ -21,9 +22,19 @@
 .date-time {
     font-size: 14px;
 }
+
+#icons {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 </style>
 
 <div class="action-box">
+    <div id="icons">
+        <img alt="change" />
+        <img alt="delete" />
+    </div>
     <div class="action-name">{actionName}</div>
     <div class="date-time">{dateTime}</div>
 </div>
