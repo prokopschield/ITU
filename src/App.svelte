@@ -9,6 +9,7 @@
 	import Actions from "./pages/Vedouci/Actions.svelte";
 
 	import { displayname, page } from "./lib/state";
+	import PointDistribution from "./pages/Vedouci/PointDistribution.svelte";
 
 	const pkg = {
 		destination: Overview,
@@ -30,6 +31,8 @@
 	<ParticipantOverview />
 {:else if $page === "Actions"}
 	<Actions />
+	{:else if $page === "PointDistribution"}
+	<PointDistribution />
 {:else}
 	<main>
 		Vítej, {$displayname}
