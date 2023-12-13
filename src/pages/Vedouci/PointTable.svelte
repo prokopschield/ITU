@@ -16,8 +16,15 @@ function handleCommentChange(index: number, event: Event) {
 </script>
 
 <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+    }
+
     th {
         padding: 8px;
+        background-color: light dark;
     }
 
     td {
@@ -30,24 +37,18 @@ function handleCommentChange(index: number, event: Event) {
         box-sizing: border-box; /* Zahrnutí okraje do celkové šířky */
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 10px 0;
-    }
-
     th, td {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: left;
     }
 
-    th {
-        background-color: light dark;
-    }
-
     tr:hover {
         background-color: rgb(46, 46, 46);
+    }
+
+    input {
+        font-size: larger;
     }
 </style>
 
