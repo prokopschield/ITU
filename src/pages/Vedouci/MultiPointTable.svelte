@@ -1,6 +1,8 @@
 <script lang="ts">
-let children: string[] = ["Child 1", "Child 2", "Child 3", "Child 4", "Child 5"];
-let actions: string[] = ["Action 1", "Action 2", "Action 3"];
+let children: string[] = ["Child 1", "Child 2", "Child 3", "Child 4", "Child 5",
+"Child 1", "Child 2", "Child 3", "Child 4", "Child 5", "Child 1", "Child 2", "Child 3", "Child 4", "Child 5",
+"Child 1", "Child 2", "Child 3", "Child 4", "Child 5", "Child 1", "Child 2", "Child 3", "Child 4", "Child 5"];
+let actions: string[] = ["Action 1", "Action 2", "Action 3", "Action 1", "Action 2", "Action 3", "Action 1", "Action 2", "Action 3"];
 let tableData: { name: string; points: number[] }[] = initializeTableData();
 
 function initializeTableData(): { name: string; points: number[] }[] {

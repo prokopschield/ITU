@@ -36,5 +36,6 @@
 		right: 0;
 		top: 40px;
 		bottom: 0;
+		overflow-y: auto;
 	}
 </style>

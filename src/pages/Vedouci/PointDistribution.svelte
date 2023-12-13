@@ -34,7 +34,8 @@
 		left: 0;
 		right: 0;
 		top: 40px;
-		bottom: calc(100% - 200px);
+		bottom: 0;
+		overflow: auto;
 		margin: 0;
     }
 </style>
