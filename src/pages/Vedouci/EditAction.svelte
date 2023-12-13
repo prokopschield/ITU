@@ -1,16 +1,12 @@
 <script lang="ts">
 	import MoveButton from "../../lib/MoveButton.svelte";
+	import Header from "../Header.svelte";
 	import PointTable from "./PointTable.svelte";
 </script>
 
 <main id="main">
 	<header id="header">
-		<div>
-			<MoveButton destination="" text={"Akce"} />
-			<MoveButton destination="ParticipantOverview" text={"Účastníci"} />
-			<MoveButton destination="" text={"Vedoucí"} />
-		</div>
-		<img alt="UserIcon" id="user" />
+		<Header />
 	</header>
 	<div id="upper-div">
 		<table id="settings">
@@ -66,16 +62,6 @@
 		right: 0;
 	}
 
-	#main #header div {
-		position: absolute;
-		left: 5px;
-	}
-
-	#main #header img {
-		position: absolute;
-		right: 5px;
-	}
-
 	#upper-div {
 		position: absolute;
 		left: 0;
@@ -83,6 +69,7 @@
 		top: 40px;
 		bottom: calc(100% - 200px);
 		margin: 0;
+		margin-top: 10px;
 	}
 
 	#settings {
