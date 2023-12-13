@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ActionBox from './ActionBox.svelte'; // Importuj komponentu ActionBox
     import MoveButton from '../../lib/MoveButton.svelte';
+	import Header from '../Header.svelte';
 
     let actions: { name: string; dateTime: string }[] = [
         { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
@@ -32,12 +33,7 @@
 
 <main id="main">
 	<header id="header">
-		<div>
-			<MoveButton destination="" text={"Akce"} />
-			<MoveButton destination="ParticipantOverview" text={"Účastníci"} />
-			<MoveButton destination="" text={"Vedoucí"} />
-		</div>
-		<img alt="UserIcon" id="user" />
+		<Header />
 	</header>
 
     <main>
@@ -67,16 +63,6 @@
 		right: 0;
 	}
 
-	#main #header div {
-		position: absolute;
-		left: 5px;
-	}
-
-	#main #header img {
-		position: absolute;
-		right: 5px;
-	}
-
     #main main {
         position: absolute;
 		left: 0;
@@ -96,5 +82,6 @@
     #action-list {
         overflow-y: auto;
         max-height: calc(100% - 40px);
+        margin: 0 auto;
     }
 </style>
