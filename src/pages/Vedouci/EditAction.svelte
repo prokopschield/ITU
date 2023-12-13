@@ -1,10 +1,6 @@
 <script lang="ts">
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import PointTable from "./PointTable.svelte";
-	let participants: { name: String; points: Number; comment: String }[] = [
-		{ name: "a", points: 5, comment: "ahoj" },
-		{ name: "a", points: 5, comment: "ahoj" },
-	];
 </script>
 
 <main id="main">
@@ -93,7 +89,7 @@
 		position: absolute;
 		width: 100%;
 		padding: 8px;
-		border: 1px solid #aaa;
+		border: 1px solid #ddd;
 	}
 
 	#upper-div #settings {
@@ -120,6 +116,5 @@
 		right: 0;
 		bottom: 0;
 		top: 200px;
-		border: 1px solid black;
 	}
 </style>
