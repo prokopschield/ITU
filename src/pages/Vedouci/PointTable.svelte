@@ -22,13 +22,22 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #aaa;
     text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+    padding: 8px;
+}
+
+td {
+    padding: 6px;
+}
+
+td input {
+    width: 100%;
+    margin: 0; /* Ostranění mezery kolem inputu */
+    box-sizing: border-box; /* Zahrnutí okraje do celkové šířky */
 }
 </style>
 

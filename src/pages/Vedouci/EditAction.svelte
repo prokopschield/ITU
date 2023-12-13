@@ -85,8 +85,15 @@
 		left: 0;
 		right: 0;
 		top: 40px;
-		border: 1px solid black;
 		bottom: calc(100% - 200px);
+		margin: 0;
+	}
+
+	#settings {
+		position: absolute;
+		width: 100%;
+		padding: 8px;
+		border: 1px solid #aaa;
 	}
 
 	#upper-div #settings {
@@ -96,13 +103,13 @@
 
 	#upper-div #settings input:not([type]),
 	#upper-div #settings input[type="date"] {
-		width: calc(100% - 28px);
+		width: calc(100% - 16px);
 		height: 100%;
 		font-size: 25px;
 	}
 
 	#upper-div #settings input[type="submit"] {
-		width: calc(100% - 20px);
+		width: calc(100% - 8px);
 		height: 100%;
 		font-size: 25px;
 	}
