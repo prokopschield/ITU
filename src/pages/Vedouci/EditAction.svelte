@@ -115,18 +115,4 @@
 		top: 200px;
 		border: 1px solid black;
 	}
-
-	#lower-div #list {
-		width: 100%;
-	}
-
-	.column0 {
-		width: 10%;
-	}
-	.column1 {
-		width: 10%;
-	}
-	.column2 {
-		width: 80%;
-	}
 </style>
