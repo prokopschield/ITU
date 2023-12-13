@@ -1,35 +1,35 @@
 <script lang="ts">
-    let tableItems: { name: string; team: string; points: number }[] = [
-		{ name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
-        { name: "a", team: "b", points: 5 },
-		{ name: "a", team: "b", points: 5 },
+    let tableItems: { name: string; points: number }[] = [
+		{ name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
+        { name: "a", points: 5 },
 	];
 </script>
 
@@ -39,10 +39,6 @@
             <span>Jméno</span>
             <span><img alt="sorting option" /></span>
         </th>
-        <th class="column1">
-            <span>Tým</span>
-            <span><img alt="sorting option" /></span>
-        </th>
         <th class="column2">
             <span>Body</span>
             <span><img alt="sorting option" /></span>
@@ -50,10 +46,9 @@
         <th class="column3"></th>
     </thead>
     <tbody>
-        {#each tableItems as { name, team, points }}
+        {#each tableItems as { name, points }}
             <tr class="item">
                 <td class="column0">{name}</td>
-                <td class="column1">{team}</td>
                 <td class="column2">{points}</td>
                 <td class="column3">
                     <img alt="chat" />
@@ -75,10 +70,9 @@
 	.column0 {
 		width: 50%;
 	}
-	.column1,
 	.column2,
 	.column3 {
-		width: calc(50% / 3);
+		width: 25%;
 	}
 
 	table {

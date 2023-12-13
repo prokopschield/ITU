@@ -18,16 +18,18 @@
 				<td><input type="date" /></td>
 			</tr>
 			<tr>
-				<td>Tým</td>
+			
+			<tr>
+				<td>Heslo</td>
 				<td>Pohlaví</td>
 			</tr>
 			<tr>
 				<td><input /></td>
-				<td><input /></td>
+				<td>
+					<input type="radio" name="sex" id="sexM" value="M"> <label for="sexM">Muž</label>
+					<input type="radio" name="sex" id="sexF" value="F"> <label for="sexF">Žena</label>
+				</td>
 			</tr>
-
-			<tr><td>Heslo</td></tr>
-			<tr><td><input /></td></tr>
 
 			<tr><td>Email</td></tr>
 			<tr><td><input /></td></tr>
