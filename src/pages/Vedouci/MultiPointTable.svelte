@@ -49,33 +49,24 @@ tr:hover {
 <table>
     <thead>
         <tr>
-        <th>Name</th>
-        {#each actions as action}
-            <th>{action}</th>
-        {/each}
-        <th>Total</th>
+            <th>Name</th>
+            {#each actions as action}
+                <th>{action}</th>
+            {/each}
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
         {#each tableData as { name, points }, childIndex}
-        <tr>
-            <td>{name}</td>
-            {#each points as point, actionIndex}
-            <td>
-                <input type="number" bind:value={point} on:input={() => updatePoints(childIndex, actionIndex, +point)} />
-            </td>
-            {/each}
-            <td>{calculateRowTotal(points)}</td>
-        </tr>
+            <tr>
+                <td>{name}</td>
+                {#each points as point, actionIndex}
+                    <td>
+                        <input type="number" bind:value={point} on:input={() => updatePoints(childIndex, actionIndex, +point)} />
+                    </td>
+                {/each}
+                <td>{calculateRowTotal(points)}</td>
+            </tr>
         {/each}
     </tbody>
-    <tfoot>
-        <tr>
-        <td>Total</td>
-        {#each actions as action, actionIndex}
-            <td>{calculateColumnTotal(actionIndex)}</td>
-        {/each}
-        <td>{calculateColumnTotal(actions.length)}</td>
-        </tr>
-    </tfoot>
 </table>

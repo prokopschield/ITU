@@ -1,5 +1,6 @@
 <script lang="ts">
     import MoveButton from "../../lib/MoveButton.svelte";
+	import MultiPointTable from "./MultiPointTable.svelte";
 </script>
 
 <main id="main">
@@ -11,6 +12,9 @@
 		</div>
 		<img alt="UserIcon" id="user" />
 	</header>
+    <main>
+        <MultiPointTable />
+    </main>
 </main>
 
 <style>
