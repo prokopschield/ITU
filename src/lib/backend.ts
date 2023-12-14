@@ -92,7 +92,7 @@ export const get_leaderboard: (
 	camp_id: number
 ) => 
 Promise<{
-	people: { name: string; points: number }[];
+	attendees: { name: string; points: number }[];
 }> = backend.get_leaderboard;
 
 /*
