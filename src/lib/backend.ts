@@ -44,6 +44,7 @@ export const session: (
 	username: string,
 	token: string
 ) => Promise<{
+	id: string | number;
 	token: string;
 	username: string;
 	displayname: string;

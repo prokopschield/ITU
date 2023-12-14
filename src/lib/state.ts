@@ -8,6 +8,7 @@ export const displayname = store<string>("displayname");
 export const token = store<string>("token");
 
 export const user = store<{
+	id: number | string;
 	token: string;
 	username: string;
 	displayname: string;
