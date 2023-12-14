@@ -67,7 +67,10 @@ function* appgen() {
 		yield `{:else if $page === "${component_name}"}\n\t<${component_name} />`;
 	}
 
-	yield `{:else}\n\t{page.set("")}\n{/if}`;
+	yield `{:else}`;
+	yield `\t<h1>Page not found: {$page}</h1>`;
+	yield `\t<button on:click={() => page.set("Main")}>Na hlavní stránku</button>`;
+	yield `{/if}`;
 
 	yield ""; // EOF
 }

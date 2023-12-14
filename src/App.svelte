@@ -71,5 +71,6 @@
 {:else if $page === "Tabory"}
 	<Tabory />
 {:else}
-	{page.set("")}
+	<h1>Page not found: {$page}</h1>
+	<button on:click={() => page.set("Main")}>Na hlavní stránku</button>
 {/if}
