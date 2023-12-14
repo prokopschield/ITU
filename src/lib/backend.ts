@@ -87,6 +87,13 @@ export const change_my_info: (info: {
 	legal_guardian_contact: string;
 }> = backend.change_my_info;
 
+//vraci jmena uzivatelu a soucet jejich bodu
+export const get_leaderboard: () => 
+Promise<{
+	people: { name: string; points: number }[]
+}> = backend.get_leaderboard;
+
+
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
