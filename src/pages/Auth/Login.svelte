@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { onMount } from "svelte";
 	import { login } from "../../lib/backend";
 	import * as state from "../../lib/state";
@@ -22,8 +22,8 @@
 		}
 	}
 
-	let login_field;
-	let password_field;
+	let login_field: HTMLInputElement;
+	let password_field: HTMLInputElement;
 
 	onMount(() => {
 		login_field.focus();
