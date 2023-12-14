@@ -1,10 +1,11 @@
 <script lang="ts">
 	import MoveButton from "../../lib/MoveButton.svelte";
-	let me = { name: "Jan", team: "rocnik 2", points: 10 };
+	import * as state from "../../lib/state";
+	//let me = { name: "Jan", team: "rocnik 2", points: 10 };
 	let newme = { name: "" };
-
+	state.username.subscribe;
 	function send() {
-		console.log(newme.name);
+		//console.log(newme.name);
 	}
 </script>
 
@@ -16,18 +17,14 @@
 </div>
 <div class="wrap">
 	<div class="top">
-		<span class="name"> <b>{me.name}<b /></b></span>
+		<span class="name"> <b>{state.username}<b /></b></span>
 		<span class="points">
-			<b>Body: {me.points}</b>
+			<b>Body: 0</b>
 		</span>
 	</div>
 	<div class="left">
-		Team: {me.team}<br />
-		Info:gasd<br />
-		Info:gasd<br />
-		Info:gasd<br />
-		Info:gasd<br />
-		Info:gasd<br />
+		<br />
+		<br />
 	</div>
 	<div class="window">
 		<div class="send">

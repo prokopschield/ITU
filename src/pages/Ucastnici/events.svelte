@@ -1,15 +1,15 @@
 <script lang="ts">
+	import { backend } from "../../lib/backend";
 	/**
 	 * @type {{name: string,date: Date,description:string,points:number,pointsMax:number}[]}
 	 */
-	export let events: {
+	let events: {
 		name: string;
 		date: Date;
 		description: string;
 		points: number;
 		pointsMax: number;
 	}[] = [];
-	events.sort((a, b) => a.date.getDate() - b.date.getDate());
 	let past: boolean = false;
 	/**
 	 * @type {Date[]}
@@ -21,21 +21,58 @@
 	function separator(_date: Date) {
 		return false;
 	}
+	function toggle() {
+		past = !past;
+	}
+	async function loadActivities() {
+		//console.log(await backend.attendee_my_activities());
+		let { activities } = await backend.attendee_my_activities();
+		events = activities.map(
+			(
+				element: {
+					attended: {
+						id: string;
+						activity_id: bigint;
+						attendee_id: number;
+						score: number;
+						timestamp: Date;
+					}[];
+				} & {
+					id: string;
+					name: string;
+					camp_id: bigint;
+					leader_id: bigint;
+					description: string;
+					points: number;
+					timestamp: Date;
+				}
+			) => {
+				return {
+					name: element.name,
+					date: new Date(element.timestamp),
+					description: element.description,
+					points: element.attended[0].score,
+					pointsMax: element.points,
+				};
+			}
+		);
+		events.sort((a, b) => a.date.getDate() - b.date.getDate());
+	}
+	loadActivities();
 </script>
 
 <div class="border">
 	<div class="top">
-		<input type="search" placeholder="Search.." />
+		<input type="search" placeholder="Hledat.." />
 		<span><i class="fa fa-search" /></span>
-		<div
-			class="history"
-			style="background-color: {!past ? '#1a1a1a' : '#5c5c5c'}"
-		>
-			<b>Historie</b>
-			<input type="checkbox" bind:checked={past} />
-		</div>
+		<button  class = "history" on:click={toggle} style="background-color: {!past ? '#1a1a1a' : '#5c5c5c'}">
+			Zobrazit proběhlé aktivity? 
+			<input type="checkbox" bind:checked={past}>
+		</button>
+		<button class = "refresh" on:click={loadActivities}><i class="fa fa-refresh" aria-hidden="true"></i></button>
 	</div>
 	<div class="events">
+		{#key events}
 		{#each events as { name, date, description, points, pointsMax }}
 			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past}
 				{#if separator(date)}
@@ -57,6 +94,7 @@
 				</div>
 			{/if}
 		{/each}
+		{/key}
 	</div>
 </div>
 <link
@@ -91,10 +129,11 @@
 	}
 	.history {
 		position: fixed;
-		margin: 10px;
-		right: 200px;
+		top: 10px;
+		right: 250px;
 		height: 35px;
 		padding: 2px;
+		width: 250px;
 		align-content: center;
 		border-radius: 10px;
 	}
@@ -124,5 +163,14 @@
 		right: 5px;
 		top: 5px;
 		text-align: right;
+	}
+	.refresh {
+		position: fixed;
+		top: 10px;
+		right: 200px;
+		height: 35px;
+		width: 40px;
+		padding: 2px;
+		align-content: center;
 	}
 </style>
