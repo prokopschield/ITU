@@ -173,13 +173,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@prokopschield/localstorage-state@^0.1.0-6":
-  version "0.1.0-6"
-  resolved "https://registry.yarnpkg.com/@prokopschield/localstorage-state/-/localstorage-state-0.1.0-6.tgz#3fc9b5160bb2e6f74cbfcf7412b0f56a58e45964"
-  integrity sha512-smslzRa4y4cGXDeRCzky2RZbkJ+Ix3Pph0a1s0rCoih7BLUEqLROntHg+hzjcm2PdZFv7TEjO12jYVs/JJBBOQ==
+"@prokopschield/localstorage-state@^0.1.0-7":
+  version "0.1.0-7"
+  resolved "https://registry.yarnpkg.com/@prokopschield/localstorage-state/-/localstorage-state-0.1.0-7.tgz#040be61b4f1cbfec1b6f422f5018799289bf1e17"
+  integrity sha512-xzWiB7b9XFuFF15kusKAgdp7C3kKr4EcHFWo8uCTedm3CE2Xg1LlbO4Ol45MsCoeAuownZ46/XW+oO/PEgFwKw==
   dependencies:
     doge-don "^0.1.0-4"
-    ps-std "^0.1.26"
+    ps-std "^0.1.27"
 
 "@prokopschield/simple-socket-client@^0.1.0-2":
   version "0.1.0-2"
@@ -671,10 +671,10 @@ ps-std@^0.1.23:
   resolved "https://registry.yarnpkg.com/ps-std/-/ps-std-0.1.23.tgz#70ab3481af29158faeca4f02d1f4e4a422a6fbf2"
   integrity sha512-NQ5iPHYU7GCOli5Uoy2pIv0KRaB30IoKra94yvsQRtvBsfECnSbHiby2qi0BTBJFbEK01qcxWq9fl/6k4J7fXg==
 
-ps-std@^0.1.26:
-  version "0.1.26"
-  resolved "https://registry.yarnpkg.com/ps-std/-/ps-std-0.1.26.tgz#e2899e4e39b5fd81ebee55bf8ed6d516b1181a99"
-  integrity sha512-ZThyYQwuI4X92U2Iv9BduuUVxFYR5Rg2eQCIvnBcdlwhjC5ppIaXADWU1BbQ4fj+wsNrDm+bUo+H6d6PNKEePQ==
+ps-std@^0.1.27:
+  version "0.1.27"
+  resolved "https://registry.yarnpkg.com/ps-std/-/ps-std-0.1.27.tgz#7dc4937be397f306836c0d829f9d8d9cea97ac85"
+  integrity sha512-mwQjv4V2HuKk2YeGsVhpkKfcoDhVpQf49pwv14VNGGXSBZzsDP2FSPKaO9T/MZKZIuLp9KmWPuvYQ7bMqfvOGQ==
 
 queue-microtask@^1.2.2:
   version "1.2.3"

@@ -10,7 +10,7 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json"
 	},
 	"dependencies": {
-		"@prokopschield/localstorage-state": "^0.1.0-6",
+		"@prokopschield/localstorage-state": "^0.1.0-7",
 		"@prokopschield/simple-socket-client": "^0.1.0-2",
 		"lodash": "^4.17.21",
 		"ps-std": "^0.1.23"

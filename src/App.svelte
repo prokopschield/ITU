@@ -5,6 +5,9 @@
 	import ChatMessage from "./pages/Chat/Message.svelte";
 	import Header from "./pages/Header.svelte";
 	import Main from "./pages/Main.svelte";
+	import OrganizerCamp from "./pages/Organizer/Camp.svelte";
+	import OrganizerMyCamps from "./pages/Organizer/MyCamps.svelte";
+	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
 	import UcastniciChat from "./pages/Ucastnici/chat.svelte";
 	import UcastniciEvents from "./pages/Ucastnici/events.svelte";
@@ -38,6 +41,12 @@
 	<Header />
 {:else if $page === "Main"}
 	<Main />
+{:else if $page === "OrganizerCamp"}
+	<OrganizerCamp />
+{:else if $page === "OrganizerMyCamps"}
+	<OrganizerMyCamps />
+{:else if $page === "OrganizerNewCamp"}
+	<OrganizerNewCamp />
 {:else if $page === "UcastniciAcountview"}
 	<UcastniciAcountview />
 {:else if $page === "UcastniciChat"}
