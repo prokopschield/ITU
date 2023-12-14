@@ -1,4 +1,5 @@
 import { createClient } from "@prokopschield/simple-socket-client";
+import { defineGlobal } from "ps-std";
 
 export const [client, socket] = createClient("wss://camp.fitvut.cz");
 
@@ -21,6 +22,10 @@ export const backend = new Proxy(client, {
 		};
 	},
 });
+
+defineGlobal("client", client);
+defineGlobal("socket", socket);
+defineGlobal("backend", backend);
 
 export const login: (
 	username: string,
