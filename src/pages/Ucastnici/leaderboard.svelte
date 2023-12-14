@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { backend } from "../../lib/backend";
+
 	/**
 	 * @type {{name: string,points: number}[]}
 	 */
@@ -10,11 +12,19 @@
 		{ name: "Asmoranomardicadaistinaculdacar", points: 25},
 		{ name: "Asmoranomardicadaistinacul", points: 25},
 	];
-	//content = backend.get_leaderboard(camp_id);
 	let me: { name: string; points: number } = content[0];
 	content.sort((a, b) => b.points - a.points);
 
-	
+
+	/*
+	//content = backend.get_leaderboard(camp_id);
+	async function loadLeaderBoard() {
+		content = await backend.get_leaderboard(camp_id);
+		content.sort((a, b) => b.points - a.points);
+		me = await backend.get_my_score(my_id,camp_id);
+	}
+	loadLeaderBoard();
+	*/
 </script>
 
 <div class="outside">

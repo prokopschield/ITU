@@ -2,6 +2,7 @@
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import Leaderboard from "./leaderboard.svelte";
 	import Events from "./events.svelte";
+	import Chat from "./chat.svelte";
 </script>
 
 <main>
@@ -11,10 +12,10 @@
 	<h1>Ucastnici</h1>
 
 	<Events />
+	<Chat />
 	<div class="logout">
 		<!--<MoveButton destination={"Acountview"} text="Detail Účtu" /><br />-->
 		<MoveButton destination={"Auth"} text="Odhlásit se" /><br />
-		
 	</div>
 </main>
 
