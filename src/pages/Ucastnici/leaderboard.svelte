@@ -2,13 +2,18 @@
 	/**
 	 * @type {{name: string,points: number}[]}
 	 */
-	export let content: { name: string; points: number }[] = [];
+	let content: { name: string; points: number }[] = [];
+	content = [
+		{ name: "Jan Poledna", points: 10 },
+		{ name: "Tomas Parizek", points: 5 },
+		{ name: "Prokop Schield", points: 6 },
+		{ name: "Asmoranomardicadaistinaculdacar", points: 25},
+		{ name: "Asmoranomardicadaistinacul", points: 25},
+	];
+	//content = backend.get_leaderboard(camp_id);
+	let me: { name: string; points: number } = content[0];
 	content.sort((a, b) => b.points - a.points);
-	export let me = { name: "", points: 0 };
 
-	function jedno() {
-		content.sort((a, b) => b.points - a.points);
-	}
 	
 </script>
 
