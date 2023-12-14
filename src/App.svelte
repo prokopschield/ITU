@@ -11,11 +11,6 @@
 
 	import { displayname, page } from "./lib/state";
 	import PointDistribution from "./pages/Vedouci/PointDistribution.svelte";
-
-	const pkg = {
-		destination: Overview,
-		text: "Log Účastník",
-	};
 </script>
 
 {#if $page.startsWith("Auth")}
@@ -34,15 +29,15 @@
 	<HeadOverview />
 {:else if $page === "Actions"}
 	<Actions />
-	{:else if $page === "PointDistribution"}
+{:else if $page === "PointDistribution"}
 	<PointDistribution />
 {:else}
 	<main>
 		Vítej, {$displayname}
-		<MoveButton {...pkg} />
-		<MoveButton destination={ParticipantOverview} text={"Log Vedoucí"} />
-		<MoveButton destination={EditAction} text={"Editace události"} />
-		<MoveButton destination={EditPerson} text={"Editace osoby"} />
+		<MoveButton destination="Overview" text="Log Účastník" />
+		<MoveButton destination="ParticipantOverview" text="Log Vedoucí" />
+		<MoveButton destination="EditAction" text="Editace události" />
+		<MoveButton destination="EditPerson" text="Editace osoby" />
 	</main>
 {/if}
 
