@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { backend } from "../../lib/backend";
-
+	import { user } from "../../lib/state";
 	/**
 	 * @type {{name: string,points: number}[]}
 	 */
@@ -11,8 +11,9 @@
 		{ name: "Prokop Schield", points: 6 },
 		{ name: "Asmoranomardicadaistinaculdacar", points: 25},
 		{ name: "Asmoranomardicadaistinacul", points: 25},
+		{ name: "pepe", points: 4},
 	];
-	let me: { name: string; points: number } = content[0];
+	let me: { name: string; points: number } = { name: user.value.username, points: NaN};
 	content.sort((a, b) => b.points - a.points);
 
 
