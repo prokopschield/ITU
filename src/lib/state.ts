@@ -6,7 +6,7 @@ import { session } from "./backend.js";
 export const username = store<string>("username");
 export const displayname = store<string>("displayname");
 export const token = store<string>("token");
-export const state = (key: string) => store<number|string>(key);
+export const state = <T>(key: string) => store<T>(key);
 
 export const user = store<{
 	id: number | string;
