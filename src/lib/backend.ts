@@ -95,7 +95,6 @@ Promise<{
 	people: { name: string; points: number }[];
 }> = backend.get_leaderboard;
 
-
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
