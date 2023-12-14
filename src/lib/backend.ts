@@ -88,9 +88,11 @@ export const change_my_info: (info: {
 }> = backend.change_my_info;
 
 //vraci jmena uzivatelu a soucet jejich bodu
-export const get_leaderboard: () => 
+export const get_leaderboard: (
+	camp_id: number
+) => 
 Promise<{
-	people: { name: string; points: number }[]
+	people: { name: string; points: number }[];
 }> = backend.get_leaderboard;
 
 
