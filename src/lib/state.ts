@@ -24,12 +24,6 @@ for (const [key, value] of new URL(location.href).searchParams) {
 	store(key).set(value);
 }
 
-setTimeout(() => {
-	if (!page.value) {
-		page.set(location.pathname);
-	}
-});
-
 page.subscribe((value) => {
 	const canonical = startCase(value).replace(/[^a-z]/gi, "");
 
@@ -83,3 +77,7 @@ window.addEventListener("popstate", () =>
 		}
 	})
 );
+
+if (!page.value) {
+	page.set(location.pathname);
+}
