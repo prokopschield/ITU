@@ -25,6 +25,8 @@
         // Přidej další akce dle potřeby
     ];
 
+    let searchQuery = '';
+
     // Funkce pro přidání nové akce
     function addNewAction() {
         // Implementuj přidání nové akce podle potřeby
@@ -38,11 +40,11 @@
 
     <main>
         <button id="plusButton" on:click={() => page.set("VedouciEditAction")}><img alt="+"/></button>
-        <input type="text" id="search" placeholder="Vyhledávání" />
+        <input bind:value={searchQuery} type="text" id="search" placeholder="Vyhledávání" />
 
         <div id="action-list">
-            {#each actions as action}
-                <ActionBox dateTime={action.dateTime} actionName={action.name}/>
+            {#each actions.filter(action => action.name.toLowerCase().includes(searchQuery.toLowerCase())) as filteredAction}
+                <ActionBox dateTime={filteredAction.dateTime} actionName={filteredAction.name}/>
             {/each}
         </div>
     </main>
