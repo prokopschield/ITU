@@ -35,7 +35,7 @@
 	];
 
     let sortColumn: String | undefined = undefined;
-    let sortDirection = true; // ascending
+    let sortDirection = false; // descending
 
     function sortBy(column: String) {
         if (sortColumn === column) { // Otočení směru řazení
@@ -43,6 +43,15 @@
         } else {
             sortColumn = column;
             sortDirection = true;
+        }
+        
+        let icon = sortDirection ? "fa-solid fa-sort-down" : "fa-solid fa-sort-up";
+        if (sortColumn === "name") {
+            document.getElementById("nameIcon")!.className = icon;
+            document.getElementById("pointsIcon")!.className = "fa-solid fa-sort";
+        } else {
+            document.getElementById("nameIcon")!.className = "fa-solid fa-sort";
+            document.getElementById("pointsIcon")!.className = icon;
         }
 
         tableItems = tableItems.sort((a, b) => {
@@ -66,11 +75,11 @@
     <thead>
         <th class="column0 sortable-header" on:click={() => sortBy("name")}>
             <span>Jméno</span>
-            <span><i class="fa-solid fa-sort"></i></span>
+            <span><i class="fa-solid fa-sort" id="nameIcon"></i></span>
         </th>
         <th class="column2 sortable-header" on:click={() => sortBy("points")}>
             <span>Body</span>
-            <span><i class="fa-solid fa-sort"></i></span>
+            <span><i class="fa-solid fa-sort" id="pointsIcon"></i></span>
         </th>
         <th class="column3"></th>
     </thead>
