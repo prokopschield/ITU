@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ActionBox from './ActionBox.svelte'; // Importuj komponentu ActionBox
 	import Header from '../Header.svelte';
+	import { page } from '../../lib/state';
 
     let actions: { name: string; dateTime: string }[] = [
         { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
@@ -36,6 +37,7 @@
 	</header>
 
     <main>
+        <button id="plusButton" on:click={() => page.set("VedouciEditAction")}><img alt="+"/></button>
         <input type="text" id="search" placeholder="Vyhledávání" />
 
         <div id="action-list">
@@ -76,6 +78,12 @@
         position: relative;
         left: 25px;
         font-size: 25px;
+    }
+
+    #plusButton {
+        position: absolute;
+        left: 5px;
+        top: 4px;
     }
 
     #action-list {

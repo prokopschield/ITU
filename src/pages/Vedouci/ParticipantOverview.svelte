@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from "../../lib/state";
 	import Header from "../Header.svelte";
 	import OverviewTable from "./OverviewTable.svelte";
 </script>
@@ -9,7 +10,7 @@
 	</header>
 
 	<main id="inner-main">
-		<button>Rozdělení bodů</button>
+		<button on:click={() => page.set("VedouciPointDistribution")}>Rozdělení bodů</button>
 		<OverviewTable />
 	</main>
 </main>
