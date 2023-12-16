@@ -24,6 +24,7 @@
 	function toggle() {
 		past = !past;
 	}
+	let searchQuery:string = "";
 	async function loadActivities() {
 		//console.log(await backend.attendee_my_activities());
 		let { activities } = await backend.attendee_my_activities();
@@ -59,11 +60,12 @@
 		events.sort((a, b) => a.date.getDate() - b.date.getDate());
 	}
 	loadActivities();
+	setInterval(loadActivities,300000);
 </script>
 
 <div class="border">
 	<div class="top">
-		<input type="search" placeholder="Hledat.." />
+		<input type="search" placeholder="Hledat.." bind:value={searchQuery}/>
 		<span><i class="fa fa-search" /></span>
 		<button  class = "history" on:click={toggle} style="background-color: {!past ? '#1a1a1a' : '#5c5c5c'}">
 			Zobrazit proběhlé aktivity? 
@@ -72,8 +74,7 @@
 		<button class = "refresh" on:click={loadActivities}><i class="fa fa-refresh" aria-hidden="true"></i></button>
 	</div>
 	<div class="events">
-		{#key events}
-		{#each events as { name, date, description, points, pointsMax }}
+		{#each events.filter(event => event.name.toLowerCase().includes(searchQuery.toLowerCase()) || event.description.toLowerCase().includes(searchQuery.toLowerCase())) as { name, date, description, points, pointsMax }}
 			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past}
 				{#if separator(date)}
 					True
@@ -94,7 +95,6 @@
 				</div>
 			{/if}
 		{/each}
-		{/key}
 	</div>
 </div>
 <link

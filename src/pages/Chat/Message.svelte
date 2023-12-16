@@ -1,6 +1,7 @@
 <script lang="ts">
-    export let sender = "Odesílatel";
-    export let senderVisivle:Boolean = true;
+	import { isEmpty } from "lodash";
+
+    export let sender:String = "Odesílatel";
     export let message = "Vítejte v chatu!";
     export let datetime:Date = new Date(2023,12,5,15,15,15,15);
     export let incoming:Boolean = false;
@@ -26,6 +27,7 @@
     flex-direction: column;
     max-width: 100%;
     width: 100%;
+    padding-top: 1px;
 }
 .message-frame{
     display:flex;
@@ -71,13 +73,11 @@ button{
     margin: 5px;
 }
 </style>
-
+{#if !isEmpty(message)}
 {#if incoming}
 <div class="chat-frame" on:mouseover={hover} on:mouseout={notHover}
     on:focus={hover} on:blur={notHover} role="contentinfo">
-    {#if senderVisivle}
     <div class="sender">{sender}</div>
-    {/if}
     <div class="message-frame">
         <div title="{datetime.toDateString()} {datetime.toLocaleTimeString()}" class="message-sender">{message}</div>
         {#if isHovered}        
@@ -98,4 +98,5 @@ button{
         {/if}
     </div>
 </div>
+{/if}
 {/if}
