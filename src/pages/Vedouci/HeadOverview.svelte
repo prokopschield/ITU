@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Header from "../Header.svelte";
 	import OverviewTable from "./OverviewTable.svelte";
+
+	let tableItems: { name: string; points: number }[] = [{name: "Karel", points: 15}];
 </script>
 
 <main id="main">
@@ -9,7 +11,7 @@
 	</header>
 
 	<main id="inner-main">
-		<OverviewTable />
+		<OverviewTable tableItems={tableItems}/>
 	</main>
 </main>
 

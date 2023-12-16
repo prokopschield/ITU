@@ -1,38 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 
-    let tableItems: { name: string; points: number }[] = [
-		{ name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 13 },
-        { name: "a", points: 12 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "b", points: 5 },
-        { name: "a", points: 15 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "c", points: 5 },
-        { name: "a", points: 5 },
-        { name: "d", points: 5 },
-        { name: "a", points: 10 },
-        { name: "a", points: 5 },
-        { name: "e", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 10 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-        { name: "a", points: 5 },
-	];
+    export let tableItems: { name: string; points: number }[] = [];
 
     let sortColumn: String | undefined = undefined;
     let sortDirection = false; // descending
@@ -42,7 +11,7 @@
             sortDirection = !sortDirection;
         } else {
             sortColumn = column;
-            sortDirection = true;
+            sortDirection = false;
         }
         
         let icon = sortDirection ? "fa-solid fa-sort-down" : "fa-solid fa-sort-up";
