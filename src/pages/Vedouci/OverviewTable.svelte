@@ -64,13 +64,13 @@
 
 <table id="table">
     <thead>
-        <th class="column0" on:click={() => sortBy("name")}>
+        <th class="column0 sortable-header" on:click={() => sortBy("name")}>
             <span>Jméno</span>
-            <span><img alt="sorting option" /></span>
+            <span><i class="fa-solid fa-sort"></i></span>
         </th>
-        <th class="column2" on:click={() => sortBy("points")}>
+        <th class="column2 sortable-header" on:click={() => sortBy("points")}>
             <span>Body</span>
-            <span><img alt="sorting option" /></span>
+            <span><i class="fa-solid fa-sort"></i></span>
         </th>
         <th class="column3"></th>
     </thead>
@@ -80,9 +80,9 @@
                 <td class="column0">{name}</td>
                 <td class="column2">{points}</td>
                 <td class="column3">
-                    <img alt="chat" />
-                    <img alt="upravit" />
-                    <img alt="vymazat" />
+                    <i class="fa-regular fa-comment"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash-can"></i>
                 </td>
             </tr>
         {/each}
@@ -96,14 +96,14 @@
 		width: 100%;
 	}
 
-	.column0 {
-		width: 50%;
-	}
+	/*.column0 {
+	    width: calc(100% - 90px);
+	}*/
 	.column2 {
-        min-width: 60px;
+        width: 100px;
     }
 	.column3 {
-		width: 30%;
+		width: 60px;
 	}
 
 	table {
@@ -125,4 +125,12 @@
 	tr:hover {
 		background-color: rgb(46, 46, 46);
 	}
+
+    .sortable-header {
+        cursor: default;
+    }
+
+    .sortable-header:hover {
+        cursor: pointer;
+    }
 </style>
