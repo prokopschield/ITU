@@ -3,6 +3,16 @@ import { assert } from "ps-std";
 import { backend, socket } from "./backend";
 import { user } from "./state";
 
+export interface User {
+	id: bigint | number | string;
+	username: string;
+	displayname: string;
+	legal_name: string;
+	legal_guardian: string;
+	legal_guardian_contact: string;
+	email: string;
+}
+
 export interface DM<T extends Record<string, any>> {
 	id: number;
 	sender_id: number;
@@ -13,26 +23,28 @@ export interface DM<T extends Record<string, any>> {
 export const DM_set = new Set<DM<any>>();
 export const DM_map = new Map<number, DM<any>>();
 
-export const interlocutor_set = new Set<number>();
+export const interlocutor_set = new Set<User>();
 export const interlocutor_callbacks = new Map<number, Function>();
 
 user.subscribe(async () => {
 	try {
 		const { interlocutors } = await backend.get_dm_interlocutors();
 
-		for (const { interlocutor_id } of interlocutors) {
-			const id = Number(interlocutor_id);
+		for (const interlocutor of interlocutors) {
+			for (const loop_item of interlocutor_set) {
+				if (interlocutor.id === loop_item.id) {
+					interlocutor_set.delete(loop_item);
+				}
+			}
 
-			assert(id);
-
-			interlocutor_set.add(id);
+			interlocutor_set.add(interlocutor);
 		}
 	} catch (error) {
 		console.error("DM interlocutor update failed:", error);
 	}
 });
 
-export async function getInterlocutors() {
+export function getInterlocutors() {
 	return [...interlocutor_set];
 }
 
