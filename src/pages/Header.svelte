@@ -4,9 +4,9 @@
 
 <main>
     <div>
-        <MoveButton destination="Actions" text={"Akce"} />
-        <MoveButton destination="ParticipantOverview" text={"Účastníci"} />
-        <MoveButton destination="HeadOverview" text={"Vedoucí"} />
+        <MoveButton destination="VedouciActions" text={"Akce"} />
+        <MoveButton destination="VedouciParticipantOverview" text={"Účastníci"} />
+        <MoveButton destination="VedouciHeadOverview" text={"Vedoucí"} />
     </div>
     <img alt="UserIcon" id="user" />
 </main>
