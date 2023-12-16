@@ -2,7 +2,7 @@
 let children: string[] = ["Child 1", "Child 2", "Child 3", "Child 4", "Child 5",
 "Child 1", "Child 2", "Child 3", "Child 4", "Child 5", "Child 1", "Child 2", "Child 3", "Child 4", "Child 5",
 "Child 1", "Child 2", "Child 3", "Child 4", "Child 5", "Child 1", "Child 2", "Child 3", "Child 4", "Child 5"];
-let actions: string[] = ["Action 1", "Action 2", "Action 3", "Action 1", "Action 2", "Action 3", "Action 1", "Action 2", "Action 3"];
+let actions: string[] = ["1. Akce", "2. Akce", "3. Akce", ];
 let tableData: { name: string; points: number[] }[] = initializeTableData();
 
 function initializeTableData(): { name: string; points: number[] }[] {
@@ -42,6 +42,12 @@ th {
 tr:hover {
     background-color: rgb(46, 46, 46);
 }
+
+.input-large {
+    font-size: 18px;
+    width: 100%;
+    min-width: 55px;
+}
 </style>
 
 <table>
@@ -60,7 +66,7 @@ tr:hover {
                 <td>{name}</td>
                 {#each points as point, actionIndex}
                     <td>
-                        <input type="number" bind:value={point} on:input={() => updatePoints(childIndex, actionIndex, +point)} />
+                        <input type="number" bind:value={point} on:input={() => updatePoints(childIndex, actionIndex, +point)} class="input-large"/>
                     </td>
                 {/each}
                 <td>{calculateRowTotal(points)}</td>

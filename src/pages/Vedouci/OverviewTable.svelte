@@ -99,9 +99,11 @@
 	.column0 {
 		width: 50%;
 	}
-	.column2,
+	.column2 {
+        min-width: 60px;
+    }
 	.column3 {
-		width: 25%;
+		width: 30%;
 	}
 
 	table {
