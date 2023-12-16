@@ -34,8 +34,8 @@
 
 <button class="action-box" on:click={() => page.set("VedouciEditAction")}>
     <div id="icons">
-        <button on:click={(event) => {event.stopPropagation(); page.set("VedouciEditAction")}}><img alt="change" src="../../../icons/delete.png"/></button>
-        <button on:click={(event) => {event.stopPropagation()}}><img alt="delete" /></button>
+        <button on:click={(event) => {event.stopPropagation(); page.set("VedouciEditAction")}}><img alt="change" src="images/edit.png" width="16px"></button>
+        <button on:click={(event) => {event.stopPropagation()}}><img alt="delete" src="images/delete.png" width="16px"/></button>
     </div>
     <div class="action-name">{actionName}</div>
     <div class="date-time">{dateTime}</div>
