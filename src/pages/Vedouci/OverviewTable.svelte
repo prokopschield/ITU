@@ -49,7 +49,7 @@
             const aValue = column === "name" ? a.name : a.points;
             const bValue = column === "name" ? b.name : b.points;
 
-            if (sortDirection === true) {
+            if (sortDirection) {
                 return aValue > bValue ? 1 : -1;
             } else {
                 return aValue < bValue ? 1 : -1;
