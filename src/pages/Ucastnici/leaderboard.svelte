@@ -41,7 +41,7 @@
 					style={name === me.name ? "background-color: #474747;" : ""}
 				>
 					<table>
-						<td class="tableName">{i + 1}. {name}</td>
+						<td title="{name}" class="tableName">{i + 1}. {name}</td>
 						<td class="tablePoints">{points}</td>
 					</table>
 				</div>
@@ -105,11 +105,11 @@
   		text-overflow: clip;
 	}
 	.tableName{
-		width:255px;
+		max-width: 240px;
 		height: 30px;
 		white-space: nowrap;
   		overflow: hidden;
-		text-overflow: clip;
+		text-overflow: ellipsis;
 	}
 	.tablePoints{
 		width:20px;

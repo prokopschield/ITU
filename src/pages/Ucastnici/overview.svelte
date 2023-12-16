@@ -2,7 +2,7 @@
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import Leaderboard from "./leaderboard.svelte";
 	import Events from "./events.svelte";
-	import Chat from "./chat.svelte";
+	import Chat from "../Chat/chat.svelte";
 </script>
 
 <main>
