@@ -92,6 +92,11 @@ export const get_leaderboard: (camp_id: number) => Promise<{
 	attendees: { name: string; points: number }[];
 }> = backend.get_leaderboard;
 
+// Podle mé představy by ta funkce měla aktualizovat data pro zobrazovací tabulku
+export const get_overview_table: (camp_id: number) => Promise<{
+	tableItems: { name: string; points: number }[];
+}> = backend.get_overview_table;
+
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
