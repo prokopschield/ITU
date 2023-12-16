@@ -8,7 +8,7 @@
         <MoveButton destination="VedouciParticipantOverview" text={"Účastníci"} />
         <MoveButton destination="VedouciHeadOverview" text={"Vedoucí"} />
     </div>
-    <img alt="UserIcon" id="user" />
+    <span><MoveButton destination={"Auth"} text="Odhlásit se" /></span>
 </main>
 
 <style>
@@ -17,7 +17,7 @@
 		left: 5px;
 	}
 
-	main img {
+	main span {
 		position: absolute;
 		right: 5px;
 	}
