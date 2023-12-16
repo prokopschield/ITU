@@ -6,7 +6,6 @@
     <div>
         <MoveButton destination="VedouciActions" text={"Akce"} />
         <MoveButton destination="VedouciParticipantOverview" text={"Účastníci"} />
-        <MoveButton destination="VedouciHeadOverview" text={"Vedoucí"} />
     </div>
     <span><MoveButton destination={"Auth"} text="Odhlásit se" /></span>
 </main>

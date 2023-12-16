@@ -97,11 +97,6 @@ export const get_participants_table: (camp_id: number) => Promise<{
 	tableItems: { name: string; points: number }[];
 }> = backend.get_participants_table;
 
-// Podle mé představy by ta funkce měla aktualizovat data pro zobrazovací tabulku účastníků
-export const get_heads_table: (camp_id: number) => Promise<{
-	tableItems: { name: string; points: number }[];
-}> = backend.get_heads_table;
-
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 

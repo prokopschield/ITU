@@ -17,7 +17,6 @@
 	import VedouciActions from "./pages/Vedouci/Actions.svelte";
 	import VedouciEditAction from "./pages/Vedouci/EditAction.svelte";
 	import VedouciEditPerson from "./pages/Vedouci/EditPerson.svelte";
-	import VedouciHeadOverview from "./pages/Vedouci/HeadOverview.svelte";
 	import VedouciMultiPointTable from "./pages/Vedouci/MultiPointTable.svelte";
 	import VedouciOverviewTable from "./pages/Vedouci/OverviewTable.svelte";
 	import VedouciParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
@@ -65,8 +64,6 @@
 	<VedouciEditAction />
 {:else if $page === "VedouciEditPerson"}
 	<VedouciEditPerson />
-{:else if $page === "VedouciHeadOverview"}
-	<VedouciHeadOverview />
 {:else if $page === "VedouciMultiPointTable"}
 	<VedouciMultiPointTable />
 {:else if $page === "VedouciOverviewTable"}
