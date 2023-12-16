@@ -1,43 +1,101 @@
-<script>
-    export let receiver = "Příjemce";
+<script lang="ts">
     export let sender = "Odesílatel";
+    export let senderVisivle:Boolean = true;
     export let message = "Vítejte v chatu!";
-    export let datetime = "11. prosince 2023, 14:30"; // Přizpůsobte si podle potřeby
+    export let datetime:Date = new Date(2023,12,5,15,15,15,15);
+    export let incoming:Boolean = false;
+
+    let isHovered = false;
+    function hover(){
+        isHovered = true;
+    }
+    function notHover(){
+        isHovered = false;
+    }
+    function reply(){
+        console.log("reply");
+    }
+    function edit(){
+        console.log("edit");
+    }
 </script>
 
 <style>
 .chat-frame {
-    border: 1px solid black;
-    padding: 10px;
-    display: flex;
+    display:flex;
     flex-direction: column;
-    max-width: 400px; /* Přizpůsobte si podle potřeby */
+    max-width: 100%;
+    width: 100%;
+}
+.message-frame{
+    display:flex;
+    flex-direction: row;
+    max-width: 100%;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.message {
-    flex: 1;
+.message-sender {
+    max-width: 70%;
+    width: fit-content;
     padding: 10px;
-    border: 1px solid black;
-    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color: #333333;
+	border-radius: 40px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
-.datetime {
-    align-self: flex-end;
+.message-reciever {
+    align-self:flex-end;
+    max-width: 70%;
+    width: fit-content;
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #333333;
+	border-radius: 40px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.sender{
+    align-self: flex-start;
     color: black;
+    margin-left: 15px;
+    font-size: xx-small;
+}
+button{
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    border-radius: 100%;
+    align-self: center;
+    margin: 5px;
 }
 </style>
 
-<div class="chat-frame">
-    <div class="header">
-        <div class="receiver">{receiver}</div>
-        <div class="sender">{sender}</div>
+{#if incoming}
+<div class="chat-frame" on:mouseover={hover} on:mouseout={notHover}
+    on:focus={hover} on:blur={notHover} role="contentinfo">
+    {#if senderVisivle}
+    <div class="sender">{sender}</div>
+    {/if}
+    <div class="message-frame">
+        <div title="{datetime.toDateString()} {datetime.toLocaleTimeString()}" class="message-sender">{message}</div>
+        {#if isHovered}        
+        <button on:mouseover={hover} on:mouseout={notHover}
+        on:focus={hover} on:blur={notHover} on:click={reply}>R</button>
+        {/if}
     </div>
-    <div class="message">{message}</div>
-    <div class="datetime">{datetime}</div>
 </div>
+{:else}
+<div class="chat-frame" on:mouseover={hover} on:mouseout={notHover}
+    on:focus={hover} on:blur={notHover} role="contentinfo">
+    <div class="message-frame" style="flex-direction: row-reverse;">
+        <div title="{datetime.toDateString()} {datetime.toLocaleTimeString()}" class="message-reciever">{message}</div>
+        {#if isHovered}
+        <button on:mouseover={hover} on:mouseout={notHover}
+        on:focus={hover} on:blur={notHover} on:click={edit}>E</button>
+        <button on:click={reply}>R</button>
+        {/if}
+    </div>
+</div>
+{/if}
