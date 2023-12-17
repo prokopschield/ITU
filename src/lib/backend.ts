@@ -1,3 +1,4 @@
+import { Real } from "@prokopschield/complex";
 import { createClient } from "@prokopschield/simple-socket-client";
 import { defineGlobal } from "ps-std";
 
@@ -87,9 +88,35 @@ export const change_my_info: (info: {
 	legal_guardian_contact: string;
 }> = backend.change_my_info;
 
+/** vrací role přihlášeného uživatele */
+export const load_roles: () => Promise<{
+	data: {
+		attendee: {
+			id: Real;
+			attendee_id: Real;
+			camp_id: Real;
+		}[];
+		camp: {
+			id: Real;
+			organizer_id: Real;
+			name: string;
+			web: string;
+		}[];
+		leader: {
+			id: Real;
+			camp_id: Real;
+			user_id: Real;
+		}[];
+	};
+}> = backend.load_roles;
+
 //vraci jmena uzivatelu a soucet jejich bodu
 export const get_leaderboard: (camp_id: number) => Promise<{
-	attendees: { id: bigint | number | string; displayname: string; points: number }[];
+	attendees: {
+		id: Real;
+		displayname: string;
+		points: number;
+	}[];
 }> = backend.get_leaderboard;
 
 export const get_actions: (camp_id: number) => Promise<{

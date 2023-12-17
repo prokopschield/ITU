@@ -173,6 +173,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@prokopschield/complex@^0.1.0-6":
+  version "0.1.0-6"
+  resolved "https://registry.yarnpkg.com/@prokopschield/complex/-/complex-0.1.0-6.tgz#71438f484772c64ee94ff01522b351fdb3a56c7e"
+  integrity sha512-upnvkz3V/73yHepmKUJaRTc85FdJWyB5VAjtszxsL9CKLubJXYOV9d6916MUyaY7FRalmATglclVBzZHBL0/gQ==
+
 "@prokopschield/localstorage-state@^0.1.0-7":
   version "0.1.0-7"
   resolved "https://registry.yarnpkg.com/@prokopschield/localstorage-state/-/localstorage-state-0.1.0-7.tgz#040be61b4f1cbfec1b6f422f5018799289bf1e17"

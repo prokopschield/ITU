@@ -3,9 +3,13 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
+<<<<<<< HEAD
     export let tableItems: {id: bigint | number | string;name: string; points: number }[] = [
         {id: 0, name: "Jméno", points: 15},
     ];
+=======
+    export let tableItems: {id: bigint | number | string;displayname: string; points: number }[] = [];
+>>>>>>> refs/remotes/origin/main
 
     let sortColumn: String | undefined = undefined;
     let sortDirection = false; // descending
@@ -28,8 +32,8 @@
         }
 
         tableItems = tableItems.sort((a, b) => {
-            const aValue = column === "name" ? a.name : a.points;
-            const bValue = column === "name" ? b.name : b.points;
+            const aValue = column === "name" ? a.displayname : a.points;
+            const bValue = column === "name" ? b.displayname : b.points;
 
             if (sortDirection) {
                 return aValue > bValue ? 1 : -1;
@@ -57,12 +61,12 @@
         <th class="column3"></th>
     </thead>
     <tbody>
-        {#each tableItems as { id, name, points }}
+        {#each tableItems as { id, displayname, points }}
             <tr class="item">
-                <td class="column0">{name}</td>
+                <td class="column0">{displayname}</td>
                 <td class="column2">{points}</td>
                 <td class="column3">
-                    <button on:click={() => dispatch('chat',{id,name})}>
+                    <button on:click={() => dispatch('chat',{id,displayname})}>
                         <i class="fa-regular fa-comment"></i>
                     </button>
                     <button on:click={() => dispatch('edit',id)}>

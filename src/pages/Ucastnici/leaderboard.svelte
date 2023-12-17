@@ -1,17 +1,19 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import { isEmpty } from "lodash";
-import { backend } from "../../lib/backend";
+	import { isEmpty, values } from "lodash";
+	import { backend } from "../../lib/backend";
 	import { user } from "../../lib/state";
-	import { createEventDispatcher } from 'svelte';
-    const dispatch = createEventDispatcher();
-	/*let content: Promise<{ id: number | string; name: string; points: number }[]> = [];
+	import { createEventDispatcher } from "svelte";
+	const dispatch = createEventDispatcher();
+	let content: Promise<
+		{ id: number | string; displayname: string; points: number }[]
+	>;
 	async function loadLeaderBoard() {
 		content = backend.get_leaderboard(1);
 	}
 	loadLeaderBoard();
-	setInterval(loadLeaderBoard,300000);
-	*/
+	setInterval(loadLeaderBoard, 300000);
+	/*
 	let content:{id: bigint | number | string; name: string; points: number }[] = [];
 	content = [
 		{ id:0, name: "Jan Poledna", points: 10 },
@@ -22,8 +24,7 @@ import { backend } from "../../lib/backend";
 		{ id:5, name: "pepe", points: 4},
 	];
 	let me: { name: string; points: number } = { name: user.value.username, points: NaN};
-
-
+*/
 </script>
 
 <div class="outside">
@@ -32,32 +33,41 @@ import { backend } from "../../lib/backend";
 	</div>
 
 	<div class="content-wraper">
-		<!--{#await content}
-		<i class="fa-solid fa-arrows-rotate fa-spin"></i>   
-		{:then content} -->
-		{#if !isEmpty(content)}
-			{#each content.sort((a, b) => b.points - a.points) as { id, name, points }, i}
-				<div
-					class="content"
-					style={name === me.name ? "background-color: #474747;" : ""}
-				>
-					<table>
-						<td title="{name}" class="tableName">
-							<button class="tableName-chat" on:click={() => dispatch('selected',{id,name})}>
-								{i + 1}. {name}
-								<i class="fa-regular fa-comments fa-xs"></i>
-							</button>
-						</td>
-						<td class="tablePoints">{points}</td>
-					</table>
-				</div>
-			{/each}
-		{:else}
-			No Data
-		{/if}
-		<!--{:catch error}
-		<p style="color: red">{error.message}</p>
-		{/await}-->
+		{#await content}
+			<i class="fa-solid fa-arrows-rotate fa-spin"></i>
+		{:then content}
+			{#if !isEmpty(content)}
+				{#each content.sort((a, b) => b.points - a.points) as { id, displayname, points }, i}
+					<div
+						class="content"
+						style={id == user.value.id
+							? "background-color: #474747;"
+							: ""}
+					>
+						<table>
+							<td title={displayname} class="tableName">
+								<button
+									class="tableName-chat"
+									on:click={() =>
+										dispatch("selected", {
+											id,
+											displayname,
+										})}
+								>
+									{i + 1}. {displayname}
+									<i class="fa-regular fa-comments fa-xs"></i>
+								</button>
+							</td>
+							<td class="tablePoints">{points}</td>
+						</table>
+					</div>
+				{/each}
+			{:else}
+				No Data
+			{/if}
+		{:catch error}
+			Nepodařilo se načíst žebříček.
+		{/await}
 	</div>
 </div>
 
@@ -89,7 +99,7 @@ import { backend } from "../../lib/backend";
 		right: 0;
 		bottom: 5px;
 		overflow-y: auto;
-		overflow-x:hidden;
+		overflow-x: hidden;
 		border-bottom-right-radius: 25px;
 		border-bottom-left-radius: 25px;
 	}
@@ -110,32 +120,32 @@ import { backend } from "../../lib/backend";
 		width: 275px;
 		text-align: left;
 		white-space: nowrap;
-  		overflow: hidden;
-  		text-overflow: clip;
+		overflow: hidden;
+		text-overflow: clip;
 	}
-	.tableName{
+	.tableName {
 		max-width: 240px;
 		height: 30px;
 		white-space: nowrap;
-  		overflow: hidden;
+		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	.tableName-chat{
+	.tableName-chat {
 		max-width: 100%;
 		height: 100%;
 		white-space: nowrap;
-  		overflow: hidden;
+		overflow: hidden;
 		text-overflow: ellipsis;
 		background: local;
 		margin: 0;
 		padding: 0;
 	}
-	.tablePoints{
-		width:20px;
+	.tablePoints {
+		width: 20px;
 		height: 30px;
-		text-align:right;
+		text-align: right;
 		white-space: nowrap;
-  		overflow: hidden;
+		overflow: hidden;
 		text-overflow: clip;
 	}
 </style>
