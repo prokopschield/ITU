@@ -155,7 +155,7 @@
 				<label for="is_minor">{$IS_MINOR}</label>
 			</td>
 			<td>
-				<input bind:value={is_minor} type="checkbox" id="is_minor" />
+				<input bind:checked={is_minor} type="checkbox" id="is_minor" />
 			</td>
 		</tr>
 
