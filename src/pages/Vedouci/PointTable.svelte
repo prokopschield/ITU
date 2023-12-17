@@ -1,9 +1,11 @@
+<!--
+	Tomáš Pařízek
+-->
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";
 	import { get_leader_points_table } from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
-	import { readable } from "svelte/store";
 
 	export let activityId: real;
 

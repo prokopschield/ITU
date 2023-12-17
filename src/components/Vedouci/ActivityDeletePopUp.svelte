@@ -1,3 +1,6 @@
+<!--
+	Tomáš Pařízek
+-->
 <script lang="ts">
 	export let isOpen: boolean;
 	export let onConfirm: () => void;

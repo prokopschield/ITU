@@ -1,10 +1,12 @@
+<!--
+	Tomáš Pařízek
+-->
+
 <script lang="ts">
-	import { onMount } from "svelte";
 	import Header from "../Header.svelte";
 	import PointTable from "./PointTable.svelte";
 	import { state, store } from "@prokopschield/localstorage-state";
 	import { backend } from "../../lib/backend";
-	import { selected_camp } from "../../lib/state";
 
 	type Activity = {
 		id: number;

@@ -1,6 +1,9 @@
+<!--
+	Tomáš Pařízek
+-->
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
-	import { page, selected_camp } from "../../lib/state";
+	import { page } from "../../lib/state";
 
 	export let activityName = "Název akce";
 	export let id: real;

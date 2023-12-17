@@ -1,3 +1,7 @@
+<!--
+	Tomáš Pařízek
+-->
+
 <script lang="ts">
 	import Header from "../Header.svelte";
 	import MultiPointTable from "./MultiPointTable.svelte";

@@ -1,3 +1,7 @@
+<!--
+	Tomáš Pařízek
+-->
+
 <script lang="ts">
 	import ActivityBox from "../../components/Vedouci/ActivityBox.svelte"; // Importuj komponentu ActivityBox
 	import ActivityDeletePopUp from "../../components/Vedouci/ActivityDeletePopUp.svelte";

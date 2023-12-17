@@ -1,3 +1,6 @@
+<!--
+	Tomáš Pařízek
+-->
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";

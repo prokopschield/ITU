@@ -1,6 +1,9 @@
+<!--
+	Tomáš Pařízek
+-->
+
 <script lang="ts">
 	import { onMount } from "svelte";
-	import MoveButton from "../../lib/MoveButton.svelte";
 	import Header from "../Header.svelte";
 
 	onMount(() => {});
