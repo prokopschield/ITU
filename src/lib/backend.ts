@@ -1,4 +1,4 @@
-import { Real } from "@prokopschield/complex";
+import type { Real } from "@prokopschield/complex";
 import { createClient } from "@prokopschield/simple-socket-client";
 import { defineGlobal } from "ps-std";
 

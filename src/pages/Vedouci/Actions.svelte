@@ -14,10 +14,6 @@
 	];
 
 	let searchQuery = "";
-
-	function setActionToDelete(event: Event) {
-		actionToDelete = event.detail;
-	}
 </script>
 
 <main id="main">
@@ -39,7 +35,9 @@
 					dateTime={filteredAction.dateTime}
 					actionName={filteredAction.name}
 					id={filteredAction.id}
-					on:remove={setActionToDelete}
+					on:remove={(event) => {
+						actionToDelete = event.detail;
+					}}
 				/>
 			{/each}
 		</div>
