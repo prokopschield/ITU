@@ -1,4 +1,5 @@
 import { assert } from "ps-std";
+import { writable } from "svelte/store";
 
 import { backend, socket } from "./backend";
 import { user } from "./state";
@@ -38,6 +39,8 @@ async function reload_interlocutors() {
 			}
 
 			interlocutor_set.add(interlocutor);
+
+			interlocutors.set([...interlocutor_set]);
 		}
 	} catch (error) {
 		console.error("DM interlocutor update failed:", error);
@@ -45,6 +48,8 @@ async function reload_interlocutors() {
 }
 
 user.subscribe(reload_interlocutors);
+
+export const interlocutors = writable<User[]>();
 
 export function getInterlocutors() {
 	return [...interlocutor_set];
