@@ -5,7 +5,14 @@
 	import { onMount } from "svelte";
 
 	import { backend } from "../lib/backend";
-	import { page, displayname } from "../lib/state";
+	import { locale } from "../lib/locale";
+	import { displayname } from "../lib/state";
+
+	import UcastniciCamps from "./Ucastnici/MyCamps.svelte";
+	import VedouciCamps from "./Vedouci/MyCamps.svelte";
+	import OrganizatorCamps from "./Organizer/MyCamps.svelte";
+
+	const { WELCOME_COMMA, YOU_ARE_LEADER_OF, YOU_ARE_ORGANIZER_OF } = locale;
 
 	let attendee = false;
 	let leader = false;
@@ -32,22 +39,18 @@
 	});
 </script>
 
-<h3>Vítej, {$displayname}</h3>
+<h3>{$WELCOME_COMMA} {$displayname}</h3>
 
 {#if attendee}
-	<button on:click={() => page.set("/ucastnici/my_camps")}>
-		Moje tábory
-	</button>
+	<UcastniciCamps />
 {/if}
 
 {#if leader}
-	<button on:click={() => page.set("/vedouci/my_camps")}>
-		Moje tábory (vedoucí)
-	</button>
+	<h3>{$YOU_ARE_LEADER_OF}</h3>
+	<VedouciCamps />
 {/if}
 
 {#if organizer}
-	<button on:click={() => page.set("/organizer/my_camps")}>
-		Moje tábory (organizátor)
-	</button>
+	<h3>{$YOU_ARE_ORGANIZER_OF}</h3>
+	<OrganizatorCamps />
 {/if}
