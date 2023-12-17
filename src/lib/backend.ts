@@ -66,13 +66,13 @@ export const register: (info: {
 }) => Promise<
 	| { status: "EMAIL_SENT" }
 	| {
-		error:
-		| "DISPLAYNAME_TOO_SHORT"
-		| "DISPLAYNAME_TOO_LONG"
-		| "INVALID_INFO"
-		| "USERNAME_TAKEN"
-		| "<<string>>";
-	}
+			error:
+				| "DISPLAYNAME_TOO_SHORT"
+				| "DISPLAYNAME_TOO_LONG"
+				| "INVALID_INFO"
+				| "USERNAME_TAKEN"
+				| "<<string>>";
+	  }
 > = client.register;
 
 export const change_my_info: (info: {
@@ -151,7 +151,7 @@ export const update_activity: (
 export const { leader_camp_info } = backend;
 
 /** permanently deletes an activity */
-export const leader_delete_activity: (id: real) => Promise<
+export const leader_delete_activity: (activity_id: real) => Promise<
 	{
 		leader: {
 			id: bigint;
@@ -187,6 +187,7 @@ export async function get_leader_points_table(camp_id: real) {
 			activity: Array<{
 				id: real;
 				name: string;
+				description: string;
 				attended: {
 					score: number;
 					attendee: { id: real; user: { displayname: string } };
