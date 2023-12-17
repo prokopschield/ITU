@@ -90,4 +90,14 @@ export function logout() {
 	username.set("");
 	displayname.set("");
 	token.set("");
+	user.set({
+		displayname: "",
+		email: "",
+		id: 0,
+		legal_guardian: "",
+		legal_guardian_contact: "",
+		legal_name: "",
+		token: "",
+		username: "",
+	});
 }
