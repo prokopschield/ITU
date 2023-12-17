@@ -2,29 +2,17 @@
 	// by Jan Poledna xpoled09
 	import { isEmpty, values } from "lodash";
 	import { backend } from "../../lib/backend";
-	import { user } from "../../lib/state";
+	import { user, selected_camp } from "../../lib/state";
 	import { createEventDispatcher } from "svelte";
 	const dispatch = createEventDispatcher();
 	let content: Promise<
 		{ id: number | string; displayname: string; points: number }[]
 	>;
 	async function loadLeaderBoard() {
-		content = backend.get_leaderboard(1);
+		content = backend.get_leaderboard(selected_camp.value);
 	}
 	loadLeaderBoard();
 	setInterval(loadLeaderBoard, 300000);
-	/*
-	let content:{id: bigint | number | string; name: string; points: number }[] = [];
-	content = [
-		{ id:0, name: "Jan Poledna", points: 10 },
-		{ id:1, name: "Tomas Parizek", points: 5 },
-		{ id:2, name: "Prokop Schield", points: 6 },
-		{ id:3, name: "Asmoranomardicadaistinaculdacar", points: 25},
-		{ id:4, name: "Asmoranomardicadaistinacul", points: 25},
-		{ id:5, name: "pepe", points: 4},
-	];
-	let me: { name: string; points: number } = { name: user.value.username, points: NaN};
-*/
 </script>
 
 <div class="outside">

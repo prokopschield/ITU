@@ -1,36 +1,27 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
 	import { isEmpty } from "lodash";
-	import { getInterlocutors } from "../../lib/DMs";
+	import { interlocutors } from "../../lib/DMs";
 	import type { User } from "../../lib/DMs";
 	import { createEventDispatcher } from "svelte";
 	const dispatch = createEventDispatcher();
 
 	let searchQuery: string = "";
 	let contacts: User[] = [];
-	async function loadContacts() {
-		contacts = getInterlocutors();
-		//console.log("loadContacts: ");
-		console.log(contacts);
-		if (contacts.length == 1 && isEmpty(contacts[0].displayname)) {
-			contacts = [];
-		}
-		//console.log(contacts);
-	}
-	loadContacts();
-	setInterval(loadContacts, 300000);
-	/*
-    contacts = [
-	    {id: 1,username: "",displayname: "Parez",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
-		{id: 2,username: "",displayname: "Prokop",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
-		{id: 3,username: "",displayname: "Azmond",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
-		{id: 4,username: "",displayname: "pepe",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
-	];*/
+	interlocutors.subscribe((newContacts) => {
+		contacts = newContacts;
+	});
 </script>
 
 <div class="wrap">
 	Kontakty
-	<button on:click={loadContacts}></button>
+	<button
+		on:click={() => {
+			console.log(contacts);
+			console.log(contacts);
+			interlocutors;
+		}}
+	></button>
 	<div class="fake-input">
 		<div class="img">
 			<i class="fa fa-search" />
@@ -38,7 +29,7 @@
 		<input type="search" placeholder="Hledat.." bind:value={searchQuery} />
 	</div>
 
-	{#if !isEmpty(contacts)}
+	{#if !isEmpty(contacts) && contacts.length != 1 && !isEmpty(contacts[0].displayname)}
 		{#each contacts.filter((contact) => contact.displayname
 				.toLowerCase()
 				.includes(searchQuery.toLowerCase())) as contact}

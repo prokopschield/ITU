@@ -13,16 +13,6 @@
 		pointsMax: number;
 	}[] = [];
 	let past: boolean = false;
-	/**
-	 * @type {Date[]}
-	 */
-	let usedDates = [];
-	/**
-	 * @param {Date} _date
-	 */
-	function separator(_date: Date) {
-		return false;
-	}
 	function toggle() {
 		past = !past;
 	}
@@ -88,9 +78,6 @@
 					.toLowerCase()
 					.includes(searchQuery.toLowerCase())) as { name, date, description, points, pointsMax }}
 			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past || !isEmpty(searchQuery)}
-				{#if separator(date)}
-					True
-				{/if}
 				<div class="event">
 					<b>{name}</b>
 					<span class="points">
