@@ -114,7 +114,7 @@
 		position: fixed;
 		right: 0px;
 		top: 49px;
-		height: 800px;
+		height: 900px;
 		width: 200px;
 	}
 	#search {
