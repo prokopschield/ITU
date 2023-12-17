@@ -38,6 +38,9 @@
 	function handleReply(event: Event) {
 		console.log("reply to: " + event.detail);
 	}
+	function handleDelete(event: Event) {
+		console.log("delete: " + event.detail);
+	}
 	$: if (collapsed == true) {
 		//console.log(currentChat.id);
 		//console.log("rec: " + currentChat.id + " send: " + user.value.id);

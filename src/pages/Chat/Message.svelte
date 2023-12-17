@@ -74,6 +74,12 @@
 					<i class="fa-solid fa-reply fa-flip-horizontal fa-xs"
 					></i></button
 				>
+				<button
+					style="visibility: {isHovered ? 'visible' : 'hidden'};"
+					on:click={() => dispatch("delete", message_id)}
+				>
+					<i class="fa-regular fa-trash-can fa-xs"></i>
+				</button>
 			</div>
 		</div>
 	{/if}
