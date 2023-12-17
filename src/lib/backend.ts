@@ -151,7 +151,7 @@ export const update_activity: (
 export const { leader_camp_info } = backend;
 
 /** permanently deletes an activity */
-export const leader_delete_activity: (id: real) => Promise<
+export const leader_delete_activity: (activity_id: real) => Promise<
 	{
 		leader: {
 			id: bigint;
