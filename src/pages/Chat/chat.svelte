@@ -126,7 +126,7 @@
         background-color: #3f3f3f;
     }
     .collapsed{
-		position: absolute;
+		position: fixed;
 		right: 205px;
 		top: 810px;
 		height: 50px;
@@ -138,7 +138,7 @@
         padding: 0px;
     }
 	.extended{
-		position: absolute;
+		position: fixed;
 		right: 205px;
 		top: 60px;
 		height: 800px;

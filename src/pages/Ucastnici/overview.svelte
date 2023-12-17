@@ -22,9 +22,15 @@
 		collapsedChat = true;
 		enabled = true;
 		//console.log(event);
-		let tmp:User = {id: event.detail.id,username: "",displayname: event.detail.name,legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",};
-		//console.log(tmp);
-		currentChat = tmp;
+		currentChat = {
+			id: event.detail.id,
+			username: "",
+			displayname: event.detail.name,
+			legal_name: "",
+			legal_guardian: "",
+			legal_guardian_contact: "",
+			email: "",
+		};
 	}
 </script>
 

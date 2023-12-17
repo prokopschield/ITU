@@ -60,7 +60,7 @@
                 <td class="column0">{name}</td>
                 <td class="column2">{points}</td>
                 <td class="column3">
-                    <button on:click={() => dispatch('chat',id)}>
+                    <button on:click={() => dispatch('chat',{id,name})}>
                         <i class="fa-regular fa-comment"></i>
                     </button>
                     <button on:click={() => dispatch('edit',id)}>
@@ -89,7 +89,7 @@
         width: 100px;
     }
 	.column3 {
-		width: 60px;
+		width: 200px;
 	}
 
 	table {

@@ -2,15 +2,38 @@
 	import { page } from "../../lib/state";
 	import Header from "../Header.svelte";
 	import OverviewTable from "./OverviewTable.svelte";
+	
+	// by Jan Poledna xpoled09
+	//from here
+	import type { User } from "../../lib/DMs";
+	import Chat from "../Chat/chat.svelte";
+	let currentChat:User;
+	let collapsedChat:boolean = false;
+	let enabled = false;
+	function openChat(event:Event){
+		collapsedChat = false;
+		collapsedChat = true;
+		enabled = true;
+		currentChat = {
+			id: event.detail.id,
+			username: "",
+			displayname: event.detail.name,
+			legal_name: "",
+			legal_guardian: "",
+			legal_guardian_contact: "",
+			email: "",
+		};
+	}
+	//to here
 </script>
 
 <main id="main">
 	<header id="header">
 		<Header />
 	</header>
-
 	<main id="inner-main">
-		<OverviewTable />
+		<OverviewTable on:chat= {openChat}/>
+		<Chat currentChat = {currentChat} collapsed = {collapsedChat} enabled = {enabled}/>
 	</main>
 </main>
 
