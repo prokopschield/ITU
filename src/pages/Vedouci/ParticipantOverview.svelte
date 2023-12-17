@@ -7,6 +7,7 @@
 	//from here
 	import type { User } from "../../lib/DMs";
 	import Chat from "../Chat/chat.svelte";
+	import { delete_participant } from "../../lib/backend";
 	let currentChat:User;
 	let collapsedChat:boolean = false;
 	let enabled = false;
@@ -25,6 +26,9 @@
 		};
 	}
 	//to here
+	function setParticipantToDelete(event : Event) {
+		delete_participant(0, event.detail);
+	}
 </script>
 
 <main id="main">
@@ -32,7 +36,7 @@
 		<Header />
 	</header>
 	<main id="inner-main">
-		<OverviewTable on:chat= {openChat}/>
+		<OverviewTable on:chat= {openChat} on:delete = {setParticipantToDelete} on:edit = {() => page.set("VedouciEditPerson")}/>
 		<Chat currentChat = {currentChat} collapsed = {collapsedChat} enabled = {enabled}/>
 	</main>
 </main>
@@ -60,10 +64,5 @@
 		top: 40px;
 		bottom: 0;
 		overflow-y: auto;
-	}
-	#inner-main button {
-		position: absolute;
-		top: 5px;
-		left: 5px;
 	}
 </style>
