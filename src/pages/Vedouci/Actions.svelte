@@ -6,6 +6,38 @@
 	import { delete_action } from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
 
+	// by Jan Poledna xpoled09
+	//from here
+	import Contacts from "../../components/Chat/contacts.svelte";
+	import Chat from "../../components/Chat/chat.svelte";
+	import type { User } from "../../lib/DMs";
+	let currentChat: User;
+	let collapsedChat: boolean = false;
+	let enabled = false;
+	function openChat(event: Event) {
+		collapsedChat = false;
+		collapsedChat = true;
+		enabled = true;
+		//detail tam existuje lže to xd
+		currentChat = event.detail;
+	}
+	function openChatFromLeaderboard(event: Event) {
+		collapsedChat = false;
+		collapsedChat = true;
+		enabled = true;
+		//console.log(event);
+		currentChat = {
+			id: event.detail.id,
+			username: "",
+			displayname: event.detail.displayname,
+			legal_name: "",
+			legal_guardian: "",
+			legal_guardian_contact: "",
+			email: "",
+		};
+	}
+	//to here
+
 	let popupOpened = false;
 	let actionToDelete: number;
 
@@ -23,7 +55,7 @@
 
 	<main>
 		<button id="plusButton" on:click={() => page.set("VedouciEditAction")}
-			><img alt="+" /></button
+			>+</button
 		>
 		<input bind:value={searchQuery} id="search" placeholder="Vyhledávání" />
 
@@ -41,6 +73,10 @@
 				/>
 			{/each}
 		</div>
+		<Chat {currentChat} collapsed={collapsedChat} {enabled} />
+		<div class="contact-wrap">
+			<Contacts on:selected={openChat} />
+		</div>
 	</main>
 
 	<ActionDeletePopUp
@@ -56,6 +92,13 @@
 </main>
 
 <style>
+	.contact-wrap {
+		position: fixed;
+		right: 0px;
+		top: 49px;
+		height: 800px;
+		width: 200px;
+	}
 	#search {
 		margin: 8px;
 		width: calc(100% - 70px);
@@ -85,7 +128,7 @@
 	#main main {
 		position: absolute;
 		left: 0;
-		right: 0;
+		right: 200px;
 		top: 40px;
 		bottom: 0;
 	}
