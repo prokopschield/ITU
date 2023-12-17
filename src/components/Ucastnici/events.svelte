@@ -6,8 +6,8 @@
 	 * @type {{name: string,date: Date,description:string,points:number,pointsMax:number}[]}
 	 */
 	let events: {
+		id: string;
 		name: string;
-		date: Date;
 		description: string;
 		points: number;
 		pointsMax: number;
@@ -41,15 +41,15 @@
 				},
 			) => {
 				return {
+					id: element.id,
 					name: element.name,
-					date: new Date(element.timestamp),
 					description: element.description,
 					points: element.attended[0].score,
 					pointsMax: element.points,
 				};
 			},
 		);
-		events.sort((a, b) => a.date.getDate() - b.date.getDate());
+		events.sort((a, b) => Number(a.id) - Number(b.id));
 	}
 	loadActivities();
 	setInterval(loadActivities, 300000);
@@ -76,8 +76,8 @@
 					.toLowerCase()
 					.includes(searchQuery.toLowerCase()) || event.description
 					.toLowerCase()
-					.includes(searchQuery.toLowerCase())) as { name, date, description, points, pointsMax }}
-			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past || !isEmpty(searchQuery)}
+					.includes(searchQuery.toLowerCase())) as { name, description, points, pointsMax }}
+			{#if past || isNaN(points)}
 				<div class="event">
 					<b>{name}</b>
 					<span class="points">
@@ -87,8 +87,6 @@
 						</b>
 					</span>
 					<br />
-					{date.toLocaleDateString()}
-					{date.toLocaleTimeString()}<br />
 					Popis akce:<br />
 					{description}
 				</div>
