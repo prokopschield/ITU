@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { isEmpty } from "lodash";
     import { getInterlocutors } from "../../lib/DMs";
     import type { User } from "../../lib/DMs";
     import { createEventDispatcher } from 'svelte';
@@ -8,16 +9,23 @@
     let contacts:User[] = [];
     async function loadContacts(){
         contacts = getInterlocutors();
-        console.log("loadContacts: " + contacts);
+        console.log("loadContacts: ");
+        console.log(contacts);
+        if( contacts.length == 1 && isEmpty(contacts[0].displayname) )
+        {
+            contacts = [];
+        }
+        console.log(contacts);
     }
-    //loadContacts();
-    //setInterval(loadContacts,300000);
+    loadContacts();
+    setInterval(loadContacts,300000);
+    /*
     contacts = [
-		{id: 1,username: "",displayname: "Parez",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
+	    {id: 1,username: "",displayname: "Parez",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
 		{id: 2,username: "",displayname: "Prokop",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
 		{id: 3,username: "",displayname: "Azmond",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
 		{id: 4,username: "",displayname: "pepe",legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",},
-	];
+	];*/
 </script>
 
 
@@ -30,7 +38,7 @@
         <input type="search" placeholder="Hledat.." bind:value={searchQuery} >
     </div>
 
-    {#if contacts.length > 0}
+    {#if !isEmpty(contacts)}
         {#each contacts.filter(contact => contact.displayname.toLowerCase().includes(searchQuery.toLowerCase())) as contact}
             <button class="contact" on:click={() => dispatch('selected',contact)}>
                 {contact.displayname}

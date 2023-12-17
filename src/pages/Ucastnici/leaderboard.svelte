@@ -1,23 +1,22 @@
 <script lang="ts">
 	import { backend } from "../../lib/backend";
 	import { user } from "../../lib/state";
-	/**
-	 * @type {{name: string,points: number}[]}
-	 */
+	import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
 	/*let content: Promise<{ id: number | string; name: string; points: number }[]> = [];
 	async function loadLeaderBoard() {
 		content = backend.get_leaderboard(1);
 	}
 	setInterval(loadLeaderBoard,300000);
 	*/
-	let content:{ name: string; points: number }[] = [];
+	let content:{id: bigint | number | string; name: string; points: number }[] = [];
 	content = [
-		{ name: "Jan Poledna", points: 10 },
-		{ name: "Tomas Parizek", points: 5 },
-		{ name: "Prokop Schield", points: 6 },
-		{ name: "Asmoranomardicadaistinaculdacar", points: 25},
-		{ name: "Asmoranomardicadaistinacul", points: 25},
-		{ name: "pepe", points: 4},
+		{ id:0, name: "Jan Poledna", points: 10 },
+		{ id:1, name: "Tomas Parizek", points: 5 },
+		{ id:2, name: "Prokop Schield", points: 6 },
+		{ id:3, name: "Asmoranomardicadaistinaculdacar", points: 25},
+		{ id:4, name: "Asmoranomardicadaistinacul", points: 25},
+		{ id:5, name: "pepe", points: 4},
 	];
 	let me: { name: string; points: number } = { name: user.value.username, points: NaN};
 
@@ -34,13 +33,18 @@
 		<i class="fa-solid fa-arrows-rotate fa-spin"></i>   
 		{:then content} -->
 		{#if content.length != 0}
-			{#each content.sort((a, b) => b.points - a.points) as { name, points }, i}
+			{#each content.sort((a, b) => b.points - a.points) as { id, name, points }, i}
 				<div
 					class="content"
 					style={name === me.name ? "background-color: #474747;" : ""}
 				>
 					<table>
-						<td title="{name}" class="tableName">{i + 1}. {name}</td>
+						<td title="{name}" class="tableName">
+							<button class="tableName-chat" on:click={() => dispatch('selected',{id,name})}>
+								{i + 1}. {name}
+								<i class="fa-regular fa-comments fa-xs"></i>
+							</button>
+						</td>
 						<td class="tablePoints">{points}</td>
 					</table>
 				</div>
@@ -112,6 +116,16 @@
 		white-space: nowrap;
   		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+	.tableName-chat{
+		max-width: 100%;
+		height: 100%;
+		white-space: nowrap;
+  		overflow: hidden;
+		text-overflow: ellipsis;
+		background: local;
+		margin: 0;
+		padding: 0;
 	}
 	.tablePoints{
 		width:20px;

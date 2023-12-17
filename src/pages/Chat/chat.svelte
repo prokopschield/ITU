@@ -33,6 +33,7 @@
     }
     $: if(collapsed == true){
         //console.log(currentChat.id);
+        messages = [];
         promise = getDMs(currentChat.id,20);
         registerInterlocutorCallback(currentChat.id,recieveNewMes)
     }

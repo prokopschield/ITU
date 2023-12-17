@@ -16,11 +16,20 @@
 		//detail tam existuje lže to xd
 		currentChat = event.detail;
 	}
+	function openChatFromLeaderboard(event:Event){
+		collapsedChat = false;
+		collapsedChat = true;
+		enabled = true;
+		//console.log(event);
+		let tmp:User = {id: event.detail.id,username: "",displayname: event.detail.name,legal_name: "",legal_guardian: "",legal_guardian_contact: "",email: "",};
+		//console.log(tmp);
+		currentChat = tmp;
+	}
 </script>
 
 <main>
 	
-	<Leaderboard />
+	<Leaderboard on:selected = {openChatFromLeaderboard}/>
 	
 	<h1>Ucastnici</h1>
 
