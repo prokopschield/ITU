@@ -29,9 +29,12 @@
 	}
 	function updateMessage() {
 		let text = message;
-		//volani backendove funkce na upravu zprav
-		editMessage(message_id, { text });
 		edit = false;
+		if (isEmpty(message)) {
+			deleteMessage(message_id);
+			return;
+		}
+		editMessage(message_id, { text });
 	}
 </script>
 

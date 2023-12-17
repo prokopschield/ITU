@@ -8,8 +8,6 @@
 	import OrganizerMyCamps from "./pages/Organizer/MyCamps.svelte";
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
-	import UcastniciEvents from "./pages/Ucastnici/events.svelte";
-	import UcastniciLeaderboard from "./pages/Ucastnici/leaderboard.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
 	import VedouciActions from "./pages/Vedouci/Actions.svelte";
 	import VedouciEditAction from "./pages/Vedouci/EditAction.svelte";
@@ -42,10 +40,6 @@
 	<OrganizerNewCamp />
 {:else if $page === "UcastniciAcountview"}
 	<UcastniciAcountview />
-{:else if $page === "UcastniciEvents"}
-	<UcastniciEvents />
-{:else if $page === "UcastniciLeaderboard"}
-	<UcastniciLeaderboard />
 {:else if $page === "UcastniciOverview"}
 	<UcastniciOverview />
 {:else if $page === "VedouciActions"}
