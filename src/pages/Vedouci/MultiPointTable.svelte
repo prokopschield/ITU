@@ -10,7 +10,7 @@
 		setScore(activity: real, score: number): Promise<any>;
 	})[] = [];
 
-	let activitys: {
+	let activities: {
 		id: real;
 		name: string;
 		attended: {
@@ -38,7 +38,7 @@
 	onMount(async () => {
 		tableData = await get_leader_points_table(state.selected_camp.value);
 		attendees = tableData.attendees;
-		activitys = tableData.activities;
+		activities = tableData.activities;
 	});
 </script>
 
@@ -46,7 +46,7 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			{#each activitys as activity}
+			{#each activities as activity}
 				<th>{activity.name}</th>
 			{/each}
 		</tr>
@@ -55,7 +55,7 @@
 		{#each attendees as attendee}
 			<tr>
 				<td>{attendee.user.displayname}</td>
-				{#each activitys as activity}
+				{#each activities as activity}
 					<td>
 						<input
 							type="number"

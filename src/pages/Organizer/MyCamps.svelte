@@ -24,7 +24,7 @@
 <div>
 	{#each camps as camp}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-static-element-interactivitys -->
+		<!-- svelte-ignore a11y-no-static-element-interactivities -->
 		<div class="campinfo" on:click={() => openCamp(camp.id)}>
 			<h2>{camp.name}</h2>
 			<h3>Vedoucí:</h3>
