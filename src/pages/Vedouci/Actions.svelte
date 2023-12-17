@@ -1,7 +1,10 @@
 <script lang="ts">
 	import ActionBox from './ActionBox.svelte'; // Importuj komponentu ActionBox
+    import ActionDeletePopUp from './ActionDeletePopUp.svelte';
 	import Header from '../Header.svelte';
 	import { page } from '../../lib/state';
+
+    let popupOpened = true;
 
     let actions: { name: string; dateTime: string }[] = [
         { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
@@ -48,6 +51,8 @@
             {/each}
         </div>
     </main>
+
+    <ActionDeletePopUp isOpen={popupOpened} onConfirm={() => {popupOpened = false;}} onCancel={() => {}}/>
 </main>
 
 <style>
