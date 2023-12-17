@@ -7,6 +7,9 @@ export const en = {
 	LOG_IN_CONFIRM: "Login",
 	SIGN_UP_CONFIRM: "Sign Up",
 
+	FORGOT_PASSWORD: "Forgot password",
+	RESET_PASSWORD: "Reset password",
+
 	LOG_OUT: "Log out",
 
 	EMAIL: "E-mail",

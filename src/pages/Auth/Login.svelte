@@ -1,10 +1,18 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+
 	import { login } from "../../lib/backend";
 	import { locale } from "../../lib/locale";
 	import * as state from "../../lib/state";
 
-	const { SIGN_UP } = locale;
+	const {
+		IS_CAMP,
+		SIGN_UP,
+		USERNAME,
+		PASSWORD,
+		LOG_IN_CONFIRM,
+		FORGOT_PASSWORD,
+	} = locale;
 
 	let username = String(state.username.value || "");
 	let password = "";
@@ -47,12 +55,12 @@
 		<tr>
 			<td />
 			<td>
-				<h2>IS CAMP</h2>
+				<h2>{$IS_CAMP}</h2>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<label for="username">Username</label>
+				<label for="username">{$USERNAME}</label>
 			</td>
 			<td>
 				<input
@@ -65,7 +73,7 @@
 		</tr>
 		<tr>
 			<td>
-				<label for="password">Password</label>
+				<label for="password">{$PASSWORD}</label>
 			</td>
 			<td>
 				<input
@@ -80,7 +88,7 @@
 		<tr>
 			<td />
 			<td class="lgnbtn">
-				<button on:click={click}>Přihlásit se</button>
+				<button on:click={click}>{$LOG_IN_CONFIRM}</button>
 			</td>
 		</tr>
 
@@ -92,9 +100,10 @@
 					{#if failure}
 						<button
 							class="forgot_password_button"
-							on:click={() => state.page.set("ForgotPassword")}
+							on:click={() =>
+								state.page.set("AuthForgotPassword")}
 						>
-							Zapomněl jsem heslo.
+							{$FORGOT_PASSWORD}
 						</button>
 					{/if}
 				</div>
