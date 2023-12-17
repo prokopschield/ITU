@@ -1,25 +1,30 @@
 <script lang="ts">
-	export let children: string[] = ["Díte 1", "Díte 1", "Díte 3"];
+	import { state } from "@prokopschield/localstorage-state";
+	import { backend } from "../../lib/backend";
+
+	//backend.get_attendees(state.selected_camp.value);
+	//backend.get_actions(state.selected_camp.value);
+	export let attendees: { id: number; name: string }[] = ["Děcko"];
 	export let actions: string[] = ["Akce 1", "Akce 1", "Akce 1"];
-	let tableData: { name: string; points: number[] }[] = initializeTableData();
+	let tableData: { name: string; score: number[] }[] = initializeTableData();
 
 	function initializeTableData(): { name: string; points: number[] }[] {
-		return children.map((child) => ({
-			name: child,
-			points: actions.map(() => 0), // Počáteční body pro každou akci jsou 0
+		return attendees.map((attendee) => ({
+			name: attendee,
+			score: actions.map(() => 0), // Počáteční body pro každou akci jsou 0
 		}));
 	}
 
-	function updatePoints(
+	function updateScore(
 		childIndex: number,
 		actionIndex: number,
 		value: number,
 	) {
-		tableData[childIndex].points[actionIndex] = value;
+		tableData[childIndex].score[actionIndex] = value;
 	}
 
-	function calculateRowTotal(points: number[]): number {
-		return points.reduce((acc, val) => acc + val, 0);
+	function calculateRowTotal(score: number[]): number {
+		return score.reduce((acc, val) => acc + val, 0);
 	}
 </script>
 
@@ -34,21 +39,21 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each tableData as { name, points }, childIndex}
+		{#each tableData as { name, score }, childIndex}
 			<tr>
 				<td>{name}</td>
-				{#each points as point, actionIndex}
+				{#each score as point, actionIndex}
 					<td>
 						<input
 							type="number"
 							bind:value={point}
 							on:input={() =>
-								updatePoints(childIndex, actionIndex, +point)}
+								updateScore(childIndex, actionIndex, +point)}
 							class="input-large"
 						/>
 					</td>
 				{/each}
-				<td>{calculateRowTotal(points)}</td>
+				<td>{calculateRowTotal(score)}</td>
 			</tr>
 		{/each}
 	</tbody>
