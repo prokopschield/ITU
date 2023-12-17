@@ -113,7 +113,7 @@
 		</table>
 	</div>
 	<div id="lower-div">
-		<PointTable />
+		<PointTable activityId={activity.id} />
 	</div>
 </main>
 
