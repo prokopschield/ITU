@@ -5,7 +5,7 @@
 	import { onMount } from "svelte";
 
 	let attendees: ({ id: real; user: { displayname: string } } & {
-		score: Record<real, number>;
+		score: Record<string | number | symbol, number>;
 		getScore(activity: real): number;
 		setScore(activity: real, score: number): Promise<any>;
 	})[] = [];
@@ -21,7 +21,7 @@
 
 	let tableData: {
 		attendees: ({ id: real; user: { displayname: string } } & {
-			score: Record<real, number>;
+			score: Record<string | number | symbol, number>;
 			getScore(activity: real): number;
 			setScore(activity: real, score: number): Promise<any>;
 		})[];
