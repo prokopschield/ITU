@@ -1,11 +1,11 @@
 <script lang="ts">
-	import ActionBox from "../../components/Vedouci/ActionBox.svelte"; // Importuj komponentu ActionBox
-	import ActionDeletePopUp from "../../components/Vedouci/ActionDeletePopUp.svelte";
+	import ActivityBox from "../../components/Vedouci/ActivityBox.svelte"; // Importuj komponentu ActivityBox
+	import ActivityDeletePopUp from "../../components/Vedouci/ActivityDeletePopUp.svelte";
 	import Header from "../Header.svelte";
 	import { page, selected_camp } from "../../lib/state";
 	import {
-		delete_action,
-		get_actions,
+		delete_activity,
+		get_activitys,
 		get_leader_points_table,
 	} from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
@@ -45,9 +45,9 @@
 	//to here
 
 	let popupOpened = false;
-	let actionToDelete: number;
+	let activityToDelete: number;
 
-	export let actions: {
+	export let activitys: {
 		id: real;
 		name: string;
 		attended: {
@@ -64,7 +64,7 @@
 	let searchQuery = "";
 
 	onMount(async () => {
-		actions = (await get_leader_points_table(state.selected_camp.value))
+		activitys = (await get_leader_points_table(state.selected_camp.value))
 			.activities;
 	});
 </script>
@@ -75,20 +75,20 @@
 	</header>
 
 	<main>
-		<button id="plusButton" on:click={() => page.set("VedouciEditAction")}
+		<button id="plusButton" on:click={() => page.set("VedouciEditActivity")}
 			>+</button
 		>
 		<input bind:value={searchQuery} id="search" placeholder="Vyhledávání" />
 
-		<div id="action-list">
-			{#each actions.filter((action) => action.name
+		<div id="activity-list">
+			{#each activitys.filter((activity) => activity.name
 					.toLowerCase()
-					.includes(searchQuery.toLowerCase())) as filteredAction}
-				<ActionBox
-					actionName={filteredAction.name}
-					id={filteredAction.id}
+					.includes(searchQuery.toLowerCase())) as filteredActivity}
+				<ActivityBox
+					activityName={filteredActivity.name}
+					id={filteredActivity.id}
 					on:remove={(event) => {
-						actionToDelete = event.detail;
+						activityToDelete = event.detail;
 					}}
 				/>
 			{/each}
@@ -99,11 +99,11 @@
 		</div>
 	</main>
 
-	<ActionDeletePopUp
+	<ActivityDeletePopUp
 		isOpen={popupOpened}
 		onConfirm={() => {
 			popupOpened = false;
-			delete_action(state.selected_camp.value, actionToDelete);
+			delete_activity(state.selected_camp.value, activityToDelete);
 		}}
 		onCancel={() => {
 			popupOpened = false;
@@ -159,7 +159,7 @@
 		top: 4px;
 	}
 
-	#action-list {
+	#activity-list {
 		overflow-y: auto;
 		max-height: calc(100% - 40px);
 		margin: 0 auto;

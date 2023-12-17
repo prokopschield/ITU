@@ -10,7 +10,7 @@
 		setScore(activity: real, score: number): Promise<any>;
 	})[] = [];
 
-	let actions: {
+	let activitys: {
 		id: real;
 		name: string;
 		attended: {
@@ -38,7 +38,7 @@
 	onMount(async () => {
 		tableData = await get_leader_points_table(state.selected_camp.value);
 		attendees = tableData.attendees;
-		actions = tableData.activities;
+		activitys = tableData.activities;
 	});
 </script>
 
@@ -46,8 +46,8 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			{#each actions as action}
-				<th>{action.name}</th>
+			{#each activitys as activity}
+				<th>{activity.name}</th>
 			{/each}
 		</tr>
 	</thead>
@@ -55,11 +55,11 @@
 		{#each attendees as attendee}
 			<tr>
 				<td>{attendee.user.displayname}</td>
-				{#each actions as action}
+				{#each activitys as activity}
 					<td>
 						<input
 							type="number"
-							bind:value={attendee.score[Number(action.id)]}
+							bind:value={attendee.score[Number(activity.id)]}
 							class="input-large"
 						/>
 					</td>

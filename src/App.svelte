@@ -9,8 +9,8 @@
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
-	import VedouciActions from "./pages/Vedouci/Actions.svelte";
-	import VedouciEditAction from "./pages/Vedouci/EditAction.svelte";
+	import VedouciActivity from "./pages/Vedouci/Activity.svelte";
+	import VedouciEditActivity from "./pages/Vedouci/EditActivity.svelte";
 	import VedouciEditPerson from "./pages/Vedouci/EditPerson.svelte";
 	import VedouciMultiPointTable from "./pages/Vedouci/MultiPointTable.svelte";
 	import VedouciParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
@@ -42,10 +42,10 @@
 	<UcastniciAcountview />
 {:else if $page === "UcastniciOverview"}
 	<UcastniciOverview />
-{:else if $page === "VedouciActions"}
-	<VedouciActions />
-{:else if $page === "VedouciEditAction"}
-	<VedouciEditAction />
+{:else if $page === "VedouciActivity"}
+	<VedouciActivity />
+{:else if $page === "VedouciEditActivity"}
+	<VedouciEditActivity />
 {:else if $page === "VedouciEditPerson"}
 	<VedouciEditPerson />
 {:else if $page === "VedouciMultiPointTable"}
