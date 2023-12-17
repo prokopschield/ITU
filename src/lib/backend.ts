@@ -69,8 +69,8 @@ export const register: (info: {
 			error:
 				| "DISPLAYNAME_TOO_SHORT"
 				| "DISPLAYNAME_TOO_LONG"
-		| "INVALID_INFO"
-		| "USERNAME_TAKEN"
+				| "INVALID_INFO"
+				| "USERNAME_TAKEN"
 				| "<<string>>";
 	  }
 > = client.register;
@@ -275,7 +275,7 @@ export async function get_leader_points_table(camp_id: real) {
 			return attendee as typeof attendee & {
 				getScore(activity: real): number;
 				setScore(activity: real, score: number): Promise<any>;
-				score: number;
+				score: Record<string, number>;
 			};
 		}),
 		activities,
