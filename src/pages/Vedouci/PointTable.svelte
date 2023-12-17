@@ -2,6 +2,7 @@
 	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";
 	import {
+		get_attendees,
 		get_leader_points_table,
 		get_leaderboard,
 	} from "../../lib/backend";
@@ -13,12 +14,6 @@
 		const target = event.currentTarget as HTMLInputElement;
 		data[index].points = parseInt(target.value, 10);
 	}
-
-	let leaderboard: {
-		id: real;
-		displayname: string;
-		points: number;
-	}[] = [];
 
 	let tableData: {
 		attendees: ({ id: real; user: { displayname: string } } & {
@@ -36,12 +31,16 @@
 		}[];
 	};
 
+	let attendees: ({ id: real; user: { displayname: string } } & {
+		score: Record<string | number | symbol, number>;
+		getScore(activity: real): number;
+		setScore(activity: real, score: number): Promise<any>;
+	})[] = [];
+
 	onMount(async () => {
-		const { attendees } = await get_leaderboard(state.selected_camp.value);
-
-		leaderboard = attendees;
-
 		tableData = await get_leader_points_table(state.selected_camp.value);
+
+		console.log((attendees = tableData["attendees"]));
 	});
 </script>
 
@@ -53,21 +52,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each data as record, index}
+		{#each attendees as attendee}
 			<tr>
-				<td>{record.name}</td>
-				<td class="column1">
-					<input
-						type="number"
-						bind:value={record.points}
-						on:input={(e) => handleBodyChange(index, e)}
-					/>
-				</td>
-			</tr>
-		{/each}
-		{#each leaderboard as attendee}
-			<tr>
-				<td>{attendee.displayname}</td>
+				<td>{attendee.user.displayname}</td>
 				<td class="column1"> 0 </td>
 			</tr>
 		{/each}
