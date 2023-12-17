@@ -196,10 +196,9 @@ export async function get_leader_points_table(camp_id: real) {
 
 	return {
 		attendees: [...attendees].map((attendee) => {
-			const score = new Map<number, number>();
+			const score_map = new Map<number, number>();
 
-			Object.assign(attendee, {
-				score,
+			const score_mgr = {
 				getScore(activity_query: real) {
 					const activity = activities.find(
 						(activity) =>
@@ -211,7 +210,7 @@ export async function get_leader_points_table(camp_id: real) {
 						return 0;
 					}
 
-					const cached = score.get(Number(activity.id));
+					const cached = score_map.get(Number(activity.id));
 
 					if (cached) {
 						return cached;
@@ -238,7 +237,7 @@ export async function get_leader_points_table(camp_id: real) {
 						throw new Error("Activity not found");
 					}
 
-					score.set(Number(activity.id), Number(new_score));
+					score_map.set(Number(activity.id), Number(new_score));
 
 					await backend.leader_set_score(
 						activity.id,
@@ -248,11 +247,29 @@ export async function get_leader_points_table(camp_id: real) {
 
 					return this;
 				},
+			}
+
+			Object.assign(attendee, {
+				score_map,
+				...score_mgr,
+				score: new Proxy({}, {
+					get(_target, key) {
+						return score_mgr.getScore(String(key))
+					},
+					set(_target, key, value) {
+						score_mgr.setScore(String(key), Number(value))
+
+						return true
+					}
+				})
 			});
+
+			
 
 			return attendee as typeof attendee & {
 				getScore(activity: real): number;
 				setScore(activity: real, score: number): Promise<any>;
+				score: number
 			};
 		}),
 		activities,
