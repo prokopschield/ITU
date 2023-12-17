@@ -256,7 +256,7 @@ export async function get_leader_points_table(camp_id: real) {
 
 					const cached = score_map.get(Number(activity.id));
 
-					if (cached) {
+					if (cached || cached === 0) {
 						return cached;
 					}
 
