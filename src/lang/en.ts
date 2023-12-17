@@ -10,6 +10,9 @@ export const en = {
 	FORGOT_PASSWORD: "Forgot password",
 	RESET_PASSWORD: "Reset password",
 
+	RESET_PASSWORD_CONFIRM: "Reset password",
+	RESET_PASSWORD_SUCCESS: "Please check your e-mail.",
+
 	LOG_OUT: "Log out",
 
 	EMAIL: "E-mail",

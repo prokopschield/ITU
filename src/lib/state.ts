@@ -1,5 +1,6 @@
 import { store } from "@prokopschield/localstorage-state";
 import { startCase } from "lodash";
+import { writable } from "svelte/store";
 
 import { session } from "./backend.js";
 
@@ -101,3 +102,5 @@ export function logout() {
 		username: "",
 	});
 }
+
+export const password = writable<string>();

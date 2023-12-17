@@ -12,6 +12,9 @@ export const cs: Partial<typeof en> = {
 	FORGOT_PASSWORD: "Zapomněl jsem heslo",
 	RESET_PASSWORD: "Resetovat heslo",
 
+	RESET_PASSWORD_CONFIRM: "Resetovat heslo",
+	RESET_PASSWORD_SUCCESS: "Poslali jsme Ti e-mail.",
+
 	LOG_OUT: "Odhlásit se",
 
 	EMAIL: "E-mail",

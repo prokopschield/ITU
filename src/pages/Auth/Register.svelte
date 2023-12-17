@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import { get } from "svelte/store";
 
 	import { register } from "../../lib/backend";
 	import { locale } from "../../lib/locale";
-	import { get, writable } from "svelte/store";
+	import * as state from "../../lib/state";
 
 	const {
 		IS_CAMP,
@@ -24,8 +25,8 @@
 		USERNAME_TAKEN,
 	} = locale;
 
-	let email = "";
-	let password = "";
+	let email = String(state.state("email").value || "");
+	let password = String(get(state.password) || "");
 	let displayname = "";
 	let legal_name = "";
 	let legal_guardian = "";
