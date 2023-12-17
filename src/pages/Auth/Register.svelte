@@ -16,7 +16,7 @@
 		IS_MINOR,
 		SIGN_UP_FAIL,
 		SIGN_UP_SUCCESS,
-		SIGN_UP,
+		SIGN_UP_CONFIRM,
 		INVALID_EMAIL,
 		DISPLAYNAME_TOO_LONG,
 		DISPLAYNAME_TOO_SHORT,
@@ -181,7 +181,7 @@
 		<tr>
 			<td />
 			<td class="lgnbtn">
-				<button on:click={click}>{$SIGN_UP}</button>
+				<button on:click={click}>{$SIGN_UP_CONFIRM}</button>
 			</td>
 		</tr>
 

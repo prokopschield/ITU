@@ -3,8 +3,11 @@ import { en } from "./en";
 export const cs: Partial<typeof en> = {
 	IS_CAMP: "IS CAMP",
 
-	LOG_IN: "Přihlásit se",
-	SIGN_UP: "Potvrdit registraci",
+	LOG_IN: "Přihlášení",
+	SIGN_UP: "Registrace",
+
+	LOG_IN_CONFIRM: "Přihlásit se",
+	SIGN_UP_CONFIRM: "Potvrdit registraci",
 
 	EMAIL: "E-mail",
 	USERNAME: "Přihlašovací jméno",

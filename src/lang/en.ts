@@ -4,6 +4,9 @@ export const en = {
 	LOG_IN: "Login",
 	SIGN_UP: "Sign Up",
 
+	LOG_IN_CONFIRM: "Login",
+	SIGN_UP_CONFIRM: "Sign Up",
+
 	EMAIL: "E-mail",
 	USERNAME: "Username",
 	PASSWORD: "Password",
