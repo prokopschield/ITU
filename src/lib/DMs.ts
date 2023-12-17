@@ -31,9 +31,9 @@ export const interlocutors = writable<User[]>();
 
 async function reload_interlocutors() {
 	try {
-		const { interlocutors } = await backend.get_dm_interlocutors();
+		const data = await backend.get_dm_interlocutors();
 
-		for (const interlocutor of interlocutors) {
+		for (const interlocutor of data.interlocutors) {
 			for (const loop_item of interlocutor_set) {
 				if (interlocutor.id === loop_item.id) {
 					interlocutor_set.delete(loop_item);
