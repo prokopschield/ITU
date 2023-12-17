@@ -1,9 +1,9 @@
 <script lang="ts">
+	import type { real } from "@prokopschield/complex";
 	import { page } from "../../lib/state";
 
 	export let actionName = "Název akce";
-	export let dateTime: Date;
-	export let id: number;
+	export let id: real;
 
 	import { createEventDispatcher } from "svelte";
 	const dispatch = createEventDispatcher();
@@ -25,7 +25,6 @@
 		>
 	</div>
 	<div class="action-name">{actionName}</div>
-	<div class="date-time">{dateTime}</div>
 </button>
 
 <style>
@@ -42,10 +41,6 @@
 		font-size: 18px;
 		font-weight: bold;
 		margin-bottom: 10px;
-	}
-
-	.date-time {
-		font-size: 14px;
 	}
 
 	#icons {

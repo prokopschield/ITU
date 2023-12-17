@@ -3,7 +3,11 @@
 	import ActionDeletePopUp from "../../components/Vedouci/ActionDeletePopUp.svelte";
 	import Header from "../Header.svelte";
 	import { page, selected_camp } from "../../lib/state";
-	import { delete_action } from "../../lib/backend";
+	import {
+		delete_action,
+		get_actions,
+		get_leader_points_table,
+	} from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
 
 	// by Jan Poledna xpoled09
@@ -11,6 +15,8 @@
 	import Contacts from "../../components/Chat/contacts.svelte";
 	import Chat from "../../components/Chat/chat.svelte";
 	import type { User } from "../../lib/DMs";
+	import { onMount } from "svelte";
+	import type { real } from "@prokopschield/complex";
 	let currentChat: User;
 	let collapsedChat: boolean = false;
 	let enabled = false;
@@ -41,11 +47,26 @@
 	let popupOpened = false;
 	let actionToDelete: number;
 
-	export let actions: { id: number; name: string; dateTime: Date }[] = [
-		{ id: 1, name: "Akce", dateTime: new Date(2023, 12, 31) },
-	];
+	export let actions: {
+		id: real;
+		name: string;
+		attended: {
+			score: number;
+			attendee: {
+				id: real;
+				user: {
+					displayname: string;
+				};
+			};
+		}[];
+	}[] = [];
 
 	let searchQuery = "";
+
+	onMount(async () => {
+		actions = (await get_leader_points_table(state.selected_camp.value))
+			.activities;
+	});
 </script>
 
 <main id="main">
@@ -64,7 +85,6 @@
 					.toLowerCase()
 					.includes(searchQuery.toLowerCase())) as filteredAction}
 				<ActionBox
-					dateTime={filteredAction.dateTime}
 					actionName={filteredAction.name}
 					id={filteredAction.id}
 					on:remove={(event) => {
