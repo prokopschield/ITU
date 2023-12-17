@@ -1,3 +1,7 @@
+<!--
+	Tomáš Pařízek
+-->
+
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
 	import { state } from "@prokopschield/localstorage-state";

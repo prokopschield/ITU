@@ -1,19 +1,13 @@
+<!--
+	Tomáš Pařízek
+-->
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";
-	import {
-		get_attendees,
-		get_leader_points_table,
-		get_leaderboard,
-	} from "../../lib/backend";
+	import { get_leader_points_table } from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
 
-	export let data: { name: string; points: number; comment: string }[] = [];
-
-	function handleBodyChange(index: number, event: Event) {
-		const target = event.currentTarget as HTMLInputElement;
-		data[index].points = parseInt(target.value, 10);
-	}
+	export let activityId: real;
 
 	let tableData: {
 		attendees: ({ id: real; user: { displayname: string } } & {
@@ -55,7 +49,7 @@
 		{#each attendees as attendee}
 			<tr>
 				<td>{attendee.user.displayname}</td>
-				<td class="column1"> 0 </td>
+				<td class="column1"> {attendee.getScore(activityId)} </td>
 			</tr>
 		{/each}
 	</tbody>

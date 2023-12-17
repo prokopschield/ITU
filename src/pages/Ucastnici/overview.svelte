@@ -46,16 +46,11 @@
 </main>
 
 <style>
-	.logout {
-		position: absolute;
-		right: 20px;
-		top: 10px;
-	}
 	.contact-wrap {
 		position: absolute;
 		right: 0px;
 		top: 60px;
-		height: 800px;
+		height: 900px;
 		width: 200px;
 	}
 </style>
