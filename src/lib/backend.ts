@@ -154,3 +154,106 @@ export const update_action: (
 		EditPerson - Formulář, měl by generovat záznam
 		MultiPointTable - Pole s dětmi a akcemi. Z nich se vygenerujě tabulka na body, ty by se při změně mely propisovat do DB
 */
+
+export async function get_leader_points_table(camp_id: real) {
+	const result: {
+		camp: {
+			activity: Array<{
+				id: real;
+				name: string;
+				attended: {
+					score: number;
+					attendee: { id: real; user: { displayname: string } };
+				}[];
+			}>;
+		};
+	} = await backend.leader_camp_info(Number(camp_id));
+
+	const {
+		camp: { activity: activities },
+	} = result;
+
+	const attended = activities.flatMap((activity) => activity.attended);
+
+	const attendees = new Set<{ id: real; user: { displayname: string } }>();
+
+	for (const { attendee } of attended) {
+		let found = false;
+
+		for (const loop_user of attendees) {
+			if (attendee.id === loop_user.id) {
+				found = true;
+
+				break;
+			}
+		}
+
+		if (found === false) {
+			attendees.add(attendee);
+		}
+	}
+
+	return {
+		attendees: [...attendees].map((attendee) => {
+			const score = new Map<number, number>();
+
+			Object.assign(attendee, {
+				score,
+				getScore(activity_query: real) {
+					const activity = activities.find(
+						(activity) =>
+							activity.name == activity_query ||
+							activity.id == activity_query
+					);
+
+					if (!activity) {
+						return 0;
+					}
+
+					const cached = score.get(Number(activity.id));
+
+					if (cached) {
+						return cached;
+					}
+
+					const attended = activity.attended.find(
+						(attended) => attended.attendee.id == attendee.id
+					);
+
+					if (!attended) {
+						return 0;
+					}
+
+					return attended.score;
+				},
+				async setScore(activity_query: real, new_score: number) {
+					const activity = activities.find(
+						(activity) =>
+							activity.name == activity_query ||
+							activity.id == activity_query
+					);
+
+					if (!activity) {
+						throw new Error("Activity not found");
+					}
+
+					score.set(Number(activity.id), Number(new_score));
+
+					await backend.leader_set_score(
+						activity.id,
+						attendee.id,
+						new_score
+					);
+
+					return this;
+				},
+			});
+
+			return attendee as typeof attendee & {
+				getScore(activity: real): number;
+				setScore(activity: real, score: number): Promise<any>;
+			};
+		}),
+		activities,
+	};
+}
