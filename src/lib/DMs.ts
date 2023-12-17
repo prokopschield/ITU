@@ -1,7 +1,8 @@
 import { assert } from "ps-std";
 import { writable } from "svelte/store";
 
-import { backend, socket, User } from "./backend";
+import { backend, socket } from "./backend";
+import type { User } from "./backend";
 import { user } from "./state";
 
 export interface DM<T extends Record<string, any>> {
