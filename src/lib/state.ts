@@ -85,3 +85,9 @@ if (!page.value) {
 }
 
 export const selected_camp = store<bigint | number>("selected_camp");
+
+export function logout() {
+	username.set("");
+	displayname.set("");
+	token.set("");
+}
