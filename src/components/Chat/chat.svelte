@@ -21,6 +21,7 @@
 		collapsed = false;
 	}
 	async function recieveNewMes(dm: DM<any>) {
+		console.log("recieveNewMes");
 		loadMessages();
 	}
 	function send() {
