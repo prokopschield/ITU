@@ -5,7 +5,7 @@
 	import { page } from '../../lib/state';
 	import { delete_action } from '../../lib/backend';
 
-    let popupOpened = true;
+    let popupOpened = false;
     let actionToDelete : number;
 
     export let actions: { id: number, name: string; dateTime: Date }[] = [
@@ -26,7 +26,7 @@
 
     <main>
         <button id="plusButton" on:click={() => page.set("VedouciEditAction")}><img alt="+"/></button>
-        <input bind:value={searchQuery} type="text" id="search" placeholder="Vyhledávání" />
+        <input bind:value={searchQuery} id="search" placeholder="Vyhledávání" />
 
         <div id="action-list">
             {#each actions.filter(action => action.name.toLowerCase().includes(searchQuery.toLowerCase())) as filteredAction}
@@ -39,6 +39,17 @@
 </main>
 
 <style>
+    #search {
+        margin: 8px;
+        width: calc(100% - 70px);
+        position: relative;
+        left: 25px;
+        font-size: 25px;
+        border-radius: 10px;
+        border: none;
+        text-align: center;
+    }
+
 	#main {
 		position: fixed;
 		top: 0;
@@ -60,14 +71,6 @@
 		right: 0;
 		top: 40px;
 		bottom: 0;
-    }
-
-    #search {
-        margin: 8px;
-        width: calc(100% - 70px);
-        position: relative;
-        left: 25px;
-        font-size: 25px;
     }
 
     #plusButton {
