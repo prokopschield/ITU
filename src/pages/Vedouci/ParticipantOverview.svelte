@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { page } from "../../lib/state";
+	import { page, selected_camp } from "../../lib/state";
 	import Header from "../Header.svelte";
 	import OverviewTable from "./OverviewTable.svelte";
-	
+	import { state } from "@prokopschield/localstorage-state";
+
 	// by Jan Poledna xpoled09
 	//from here
 	import type { User } from "../../lib/DMs";
 	import Chat from "../Chat/chat.svelte";
 	import { delete_participant } from "../../lib/backend";
-	let currentChat:User;
-	let collapsedChat:boolean = false;
+	let currentChat: User;
+	let collapsedChat: boolean = false;
 	let enabled = false;
-	function openChat(event:Event){
+	function openChat(event: Event) {
 		collapsedChat = false;
 		collapsedChat = true;
 		enabled = true;
@@ -26,9 +27,9 @@
 		};
 	}
 	//to here
-	function setParticipantToDelete(event : Event) {
-		delete_participant(0, event.detail);
-	}
+	function setParticipantToDelete(event: Event) {}
+
+	function setParticipantToEdit(event: Event) {}
 </script>
 
 <main id="main">
@@ -36,8 +37,17 @@
 		<Header />
 	</header>
 	<main id="inner-main">
-		<OverviewTable on:chat= {openChat} on:delete = {setParticipantToDelete} on:edit = {() => page.set("VedouciEditPerson")}/>
-		<Chat currentChat = {currentChat} collapsed = {collapsedChat} enabled = {enabled}/>
+		<OverviewTable
+			on:chat={openChat}
+			on:delete={(event) => {
+				delete_participant(state.selected_camp.value, event.detail);
+			}}
+			on:edit={(event) => {
+				state.participantBeingEdited = event.detail;
+				page.set("VedouciEditPerson");
+			}}
+		/>
+		<Chat {currentChat} collapsed={collapsedChat} {enabled} />
 	</main>
 </main>
 
