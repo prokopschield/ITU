@@ -7,20 +7,16 @@
 	import Home from "./pages/Home.svelte";
 	import Main from "./pages/Main.svelte";
 	import OrganizerCamp from "./pages/Organizer/Camp.svelte";
-	import OrganizerMyCamps from "./pages/Organizer/MyCamps.svelte";
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
-	import UcastniciMyCamps from "./pages/Ucastnici/MyCamps.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
 	import VedouciActivities from "./pages/Vedouci/Activities.svelte";
 	import VedouciEditActivity from "./pages/Vedouci/EditActivity.svelte";
 	import VedouciEditPerson from "./pages/Vedouci/EditPerson.svelte";
 	import VedouciMultiPointTable from "./pages/Vedouci/MultiPointTable.svelte";
-	import VedouciMyCamps from "./pages/Vedouci/MyCamps.svelte";
 	import VedouciParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
 	import VedouciPointDistribution from "./pages/Vedouci/PointDistribution.svelte";
 	import VedouciPointTable from "./pages/Vedouci/PointTable.svelte";
-	import Tabory from "./pages/tabory.svelte";
 	import { page } from "./lib/state";
 </script>
 
