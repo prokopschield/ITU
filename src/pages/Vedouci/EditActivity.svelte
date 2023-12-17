@@ -20,6 +20,8 @@
 		points: 0,
 	};
 
+	let new_activity_points: string | number = "";
+
 	const add_activity = store<boolean>("add_activity");
 	const selected_activity = store<Activity>("selected_activity");
 
@@ -64,6 +66,7 @@
 							placeholder="Maximum bodů"
 							type="number"
 							min="0"
+							bind:value={new_activity_points}
 						/></td
 					>
 				{/if}
@@ -86,7 +89,7 @@
 										Number(state.selected_camp.value),
 										String(activity.name),
 										String(activity.description),
-										Number(activity.points),
+										Number(new_activity_points),
 									),
 								);
 							} else {
@@ -101,7 +104,6 @@
 								);
 							}
 
-							selected_activity.set(activity);
 							add_activity.set(false);
 						}}
 					/>
