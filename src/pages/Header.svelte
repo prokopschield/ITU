@@ -1,18 +1,25 @@
 <script lang="ts">
-    import MoveButton from "../lib/MoveButton.svelte";
+	import LogoutButton from "../components/LogoutButton.svelte";
+	import MoveButton from "../lib/MoveButton.svelte";
 </script>
 
 <main>
-    <div>
-        <MoveButton destination="VedouciActions" text={"Akce"} />
-        <MoveButton destination="VedouciParticipantOverview" text={"Účastníci"} />
-        <MoveButton destination = "VedouciPointDistribution" text={"Rozdělení bodů"} />
-    </div>
-    <span><MoveButton destination={"Auth"} text="Odhlásit se" /></span>
+	<div>
+		<MoveButton destination="VedouciActions" text={"Akce"} />
+		<MoveButton
+			destination="VedouciParticipantOverview"
+			text={"Účastníci"}
+		/>
+		<MoveButton
+			destination="VedouciPointDistribution"
+			text={"Rozdělení bodů"}
+		/>
+	</div>
+	<span><LogoutButton /></span>
 </main>
 
 <style>
-    main div {
+	main div {
 		position: absolute;
 		left: 5px;
 	}

@@ -6,6 +6,7 @@
 	import Chat from "../Chat/chat.svelte";
 	import Contacts from "../Chat/contacts.svelte";
 	import type { User } from "../../lib/DMs";
+	import LogoutButton from "../../components/LogoutButton.svelte";
 
 	let currentChat: User;
 	let collapsedChat: boolean = false;
@@ -46,7 +47,7 @@
 	</div>
 	<div class="logout">
 		<!--<MoveButton destination={"Acountview"} text="Detail Účtu" /><br />-->
-		<MoveButton destination={"Auth"} text="Odhlásit se" /><br />
+		<LogoutButton /><br />
 	</div>
 </main>
 
