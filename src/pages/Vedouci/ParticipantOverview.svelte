@@ -27,15 +27,9 @@
 		};
 	}
 	//to here
-	function setParticipantToDelete(event: Event) {}
-
-	function setParticipantToEdit(event: Event) {}
 </script>
 
 <main id="main">
-	<header id="header">
-		<Header />
-	</header>
 	<main id="inner-main">
 		<OverviewTable
 			on:chat={openChat}
@@ -49,6 +43,10 @@
 		/>
 		<Chat {currentChat} collapsed={collapsedChat} {enabled} />
 	</main>
+
+	<header id="header">
+		<Header />
+	</header>
 </main>
 
 <style>
@@ -71,7 +69,7 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 40px;
+		top: 0;
 		bottom: 0;
 		overflow-y: auto;
 	}

@@ -7,13 +7,13 @@
 	<header id="header">
 		<Header />
 	</header>
-    <main>
-        <MultiPointTable />
-    </main>
+	<main>
+		<MultiPointTable />
+	</main>
 </main>
 
 <style>
-    #main {
+	#main {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -28,13 +28,13 @@
 		right: 0;
 	}
 
-    #main main {
+	#main main {
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 40px;
+		top: 65px;
 		bottom: 0;
 		overflow: auto;
 		margin: 0;
-    }
+	}
 </style>

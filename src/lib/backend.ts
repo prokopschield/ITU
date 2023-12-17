@@ -135,6 +135,7 @@ export const get_attendees: (camp_id: number) => Promise<{
 	attendees: { id: number, name: string }[];
 }> = backend.get_attendees;
 
+// Insert or update action
 export const update_action: (
 	camp_id: number,
 	id: number,

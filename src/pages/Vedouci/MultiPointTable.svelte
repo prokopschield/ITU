@@ -4,10 +4,7 @@
 
 	//backend.get_attendees(state.selected_camp.value);
 	//backend.get_actions(state.selected_camp.value);
-	export let attendees: { id: number; name: string }[] = [
-		{ id: 1, name: "Děcko" },
-		{ id: 1, name: "Děcko" },
-	];
+	export let attendees: { id: number; name: string }[] = [];
 	export let actions: string[] = ["Akce 1", "Akce 1", "Akce 1"];
 	let tableData: { name: string; score: number[] }[] = initializeTableData();
 
