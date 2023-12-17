@@ -3,8 +3,8 @@
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import Leaderboard from "./leaderboard.svelte";
 	import Events from "./events.svelte";
-	import Chat from "../Chat/chat.svelte";
-	import Contacts from "../Chat/contacts.svelte";
+	import Chat from "../../components/Chat/chat.svelte";
+	import Contacts from "../../components/Chat/contacts.svelte";
 	import type { User } from "../../lib/DMs";
 	import LogoutButton from "../../components/LogoutButton.svelte";
 

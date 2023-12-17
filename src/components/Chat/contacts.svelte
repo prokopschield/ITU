@@ -10,6 +10,44 @@
 	let contacts: User[] = [];
 	interlocutors.subscribe((newContacts) => {
 		contacts = newContacts;
+		/*contacts = [
+			{
+				id: 1,
+				username: "",
+				displayname: "Parez",
+				legal_name: "",
+				legal_guardian: "",
+				legal_guardian_contact: "",
+				email: "",
+			},
+			{
+				id: 2,
+				username: "",
+				displayname: "Prokop",
+				legal_name: "",
+				legal_guardian: "",
+				legal_guardian_contact: "",
+				email: "",
+			},
+			{
+				id: 3,
+				username: "",
+				displayname: "Azmond",
+				legal_name: "",
+				legal_guardian: "",
+				legal_guardian_contact: "",
+				email: "",
+			},
+			{
+				id: 4,
+				username: "",
+				displayname: "pepe",
+				legal_name: "",
+				legal_guardian: "",
+				legal_guardian_contact: "",
+				email: "",
+			},
+		];*/
 	});
 </script>
 
@@ -18,8 +56,7 @@
 	<button
 		on:click={() => {
 			console.log(contacts);
-			console.log(contacts);
-			interlocutors;
+			console.log(interlocutors);
 		}}
 	></button>
 	<div class="fake-input">

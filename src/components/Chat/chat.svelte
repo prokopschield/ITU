@@ -1,6 +1,6 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import { isEmpty } from "lodash";
+	import { isEmpty, sortBy } from "lodash";
 	import { sendDM, getDMs } from "../../lib/DMs";
 	import { registerInterlocutorCallback } from "../../lib/DMs";
 	import type { DM, User } from "../../lib/DMs";
@@ -13,15 +13,15 @@
 	export let currentChat: User;
 	let text: string = "";
 	let promise: Promise<any[]>;
-	let messages: DM<String>[] = [];
+	let chatArray: DM<any>[] = [];
 	function toggle() {
 		collapsed = !collapsed;
 	}
 	function clickOut() {
 		collapsed = false;
 	}
-	function recieveNewMes(dm: DM<String>) {
-		messages.push(dm);
+	async function recieveNewMes(dm: DM<any>) {
+		loadMessages();
 	}
 	function send() {
 		if (isEmpty(text)) {
@@ -32,21 +32,15 @@
 		//console.log(text);
 		text = "";
 	}
-	function handleEdit(event: Event) {
-		console.log("edit: " + event.detail);
-	}
-	function handleReply(event: Event) {
-		console.log("reply to: " + event.detail);
-	}
-	function handleDelete(event: Event) {
-		console.log("delete: " + event.detail);
+	async function loadMessages() {
+		chatArray = [];
+		promise = getDMs(currentChat.id, 20);
+		registerInterlocutorCallback(currentChat.id, recieveNewMes);
 	}
 	$: if (collapsed == true) {
 		//console.log(currentChat.id);
 		//console.log("rec: " + currentChat.id + " send: " + user.value.id);
-		messages = [];
-		promise = getDMs(currentChat.id, 20);
-		registerInterlocutorCallback(currentChat.id, recieveNewMes);
+		loadMessages();
 	}
 </script>
 
@@ -62,12 +56,10 @@
 						<i class="fa-solid fa-arrows-rotate fa-spin"></i>
 					{:then messages}
 						<!--
-                {console.log(messages)}
-            -->
-						{#each messages as message}
+                        {console.log(messages)}
+                        -->
+						{#each messages.reverse() as message}
 							<Message
-								on:edit={handleEdit}
-								on:reply={handleReply}
 								incoming={message.sender_id == currentChat.id}
 								sender={currentChat.displayname}
 								message={message.data.text}
@@ -78,12 +70,15 @@
 					{:catch error}
 						<p style="color: red">{error.message}</p>
 					{/await}
-					<!--
-            {#each messages as message}
-                <Message on:edit={handleEdit} on:reply={handleReply} incoming = {message.sender_id == currentChat.id} 
-                sender={currentChat.displayname} message = {message.data} message_id = {message.id} />
-            {/each}
-            -->
+
+					{#each chatArray as message}
+						<Message
+							incoming={message.sender_id == currentChat.id}
+							sender={currentChat.displayname}
+							message={message.data}
+							message_id={message.id}
+						/>
+					{/each}
 				</div>
 				<div class="writebox">
 					<form on:submit|preventDefault={send}>

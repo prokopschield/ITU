@@ -139,3 +139,13 @@ export function registerInterlocutorCallback(
 ) {
 	interlocutor_callbacks.set(interlocutor, callback);
 }
+
+//smaze zpravu
+export function deleteMessage(id:number){
+
+}
+//prepise obsah zpravy
+export function editMessage<T extends Record<string, any>>(
+	id:number,message: T){
+
+}

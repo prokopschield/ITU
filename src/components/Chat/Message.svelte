@@ -1,8 +1,7 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
 	import { isEmpty } from "lodash";
-	import { createEventDispatcher } from "svelte";
-	const dispatch = createEventDispatcher();
+	import { deleteMessage, editMessage } from "../../lib/DMs";
 
 	export let message_id: number = 0;
 	export let sender: String = "Odesílatel";
@@ -10,12 +9,29 @@
 	export let datetime: Date = new Date(2023, 12, 5, 15, 15, 15, 15);
 	export let incoming: Boolean = false;
 
+	let edit = false;
 	let isHovered = false;
 	function hover() {
 		isHovered = true;
 	}
 	function notHover() {
 		isHovered = false;
+	}
+	function deleteMessageTrigger() {
+		//volani backendove funkce na mazani zprav
+		deleteMessage(message_id);
+	}
+	function startEditing() {
+		edit = true;
+	}
+	function init(el: any) {
+		el.focus();
+	}
+	function updateMessage() {
+		let text = message;
+		//volani backendove funkce na upravu zprav
+		editMessage(message_id, { text });
+		edit = false;
 	}
 </script>
 
@@ -37,12 +53,6 @@
 				>
 					{message}
 				</div>
-				<button
-					style="visibility: {isHovered ? 'visible' : 'hidden'};"
-					on:click={() => dispatch("reply", message_id)}
-				>
-					<i class="fa-solid fa-reply fa-xs"></i></button
-				>
 			</div>
 		</div>
 	{:else}
@@ -59,24 +69,28 @@
 					title="{datetime.toDateString()} {datetime.toLocaleTimeString()}"
 					class="message-reciever"
 				>
-					{message}
+					{#if !edit}
+						{message}
+					{:else}
+						<form on:submit|preventDefault={updateMessage}>
+							<input
+								type="text"
+								bind:value={message}
+								use:init
+								on:blur={() => (edit = false)}
+							/>
+						</form>
+					{/if}
 				</div>
 				<button
 					style="visibility: {isHovered ? 'visible' : 'hidden'};"
-					on:click={() => dispatch("edit", message_id)}
+					on:click={startEditing}
 				>
 					<i class="fa-regular fa-pen-to-square fa-xs"></i></button
 				>
 				<button
 					style="visibility: {isHovered ? 'visible' : 'hidden'};"
-					on:click={() => dispatch("reply", message_id)}
-				>
-					<i class="fa-solid fa-reply fa-flip-horizontal fa-xs"
-					></i></button
-				>
-				<button
-					style="visibility: {isHovered ? 'visible' : 'hidden'};"
-					on:click={() => dispatch("delete", message_id)}
+					on:click={deleteMessageTrigger}
 				>
 					<i class="fa-regular fa-trash-can fa-xs"></i>
 				</button>
@@ -97,6 +111,9 @@
 		display: flex;
 		flex-direction: row;
 		max-width: 100%;
+	}
+	input[type="text"] {
+		font-size: 17px;
 	}
 
 	.message-sender {

@@ -9,7 +9,10 @@
 		{ id: number | string; displayname: string; points: number }[]
 	>;
 	async function loadLeaderBoard() {
-		content = backend.get_leaderboard(selected_camp.value);
+		const { attendees } = await backend.get_leaderboard(
+			selected_camp.value,
+		);
+		content = attendees;
 	}
 	loadLeaderBoard();
 	setInterval(loadLeaderBoard, 300000);

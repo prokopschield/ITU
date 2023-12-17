@@ -2,14 +2,14 @@
 	import Auth from "./pages/Auth/Auth.svelte";
 	import AuthLogin from "./pages/Auth/Login.svelte";
 	import AuthRegister from "./pages/Auth/Register.svelte";
-	import ChatMessage from "./pages/Chat/Message.svelte";
+	import ChatMessage from "./components/Chat/Message.svelte";
 	import Header from "./pages/Header.svelte";
 	import Main from "./pages/Main.svelte";
 	import OrganizerCamp from "./pages/Organizer/Camp.svelte";
 	import OrganizerMyCamps from "./pages/Organizer/MyCamps.svelte";
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
-	import UcastniciChat from "./pages/Chat/chat.svelte";
+	import UcastniciChat from "./components/Chat/chat.svelte";
 	import UcastniciEvents from "./pages/Ucastnici/events.svelte";
 	import UcastniciLeaderboard from "./pages/Ucastnici/leaderboard.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
