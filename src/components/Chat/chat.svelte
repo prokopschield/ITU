@@ -1,6 +1,6 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import { isEmpty, sortBy } from "lodash";
+	import { isEmpty } from "lodash";
 	import { sendDM, getDMs } from "../../lib/DMs";
 	import { registerInterlocutorCallback } from "../../lib/DMs";
 	import type { DM, User } from "../../lib/DMs";

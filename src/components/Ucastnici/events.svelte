@@ -1,6 +1,5 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import { isEmpty } from "lodash";
 	import { backend } from "../../lib/backend";
 	/**
 	 * @type {{name: string,date: Date,description:string,points:number,pointsMax:number}[]}
