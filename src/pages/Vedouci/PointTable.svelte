@@ -5,38 +5,26 @@
 		const target = event.currentTarget as HTMLInputElement;
 		data[index].points = parseInt(target.value, 10);
 	}
-
-	function handleCommentChange(index: number, event: Event) {
-		const target = event.currentTarget as HTMLInputElement;
-		data[index].comment = target.value;
-	}
 </script>
 
 <table>
 	<thead>
 		<tr>
 			<th>Jméno</th>
-			<th>Body</th>
-			<th>Komentář</th>
+			<th class="column1">Body</th>
 		</tr>
 	</thead>
 	<tbody>
 		{#each data as record, index}
 			<tr>
 				<td>{record.name}</td>
-				<td
-					><input
+				<td class="column1">
+					<input
 						type="number"
 						bind:value={record.points}
 						on:input={(e) => handleBodyChange(index, e)}
-					/></td
-				>
-				<td
-					><input
-						bind:value={record.comment}
-						on:input={(e) => handleCommentChange(index, e)}
-					/></td
-				>
+					/>
+				</td>
 			</tr>
 		{/each}
 	</tbody>
@@ -77,5 +65,9 @@
 
 	input {
 		font-size: larger;
+	}
+
+	.column1 {
+		width: 100px;
 	}
 </style>
