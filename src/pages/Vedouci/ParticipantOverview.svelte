@@ -31,16 +31,7 @@
 
 <main id="main">
 	<main id="inner-main">
-		<OverviewTable
-			on:chat={openChat}
-			on:delete={(event) => {
-				delete_participant(state.selected_camp.value, event.detail);
-			}}
-			on:edit={(event) => {
-				state.participantBeingEdited = event.detail;
-				page.set("VedouciEditPerson");
-			}}
-		/>
+		<OverviewTable on:chat={openChat} />
 		<Chat {currentChat} collapsed={collapsedChat} {enabled} />
 	</main>
 

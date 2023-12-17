@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { onMount } from "svelte";
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import Header from "../Header.svelte";
+
+	onMount(() => {});
 </script>
 
 <main id="main">
@@ -11,24 +14,15 @@
 		<table id="table">
 			<tr>
 				<td>Jméno</td>
-				<td>Datum narození</td>
 			</tr>
 			<tr>
 				<td><input /></td>
-				<td><input type="date" /></td>
 			</tr>
-			<tr>
-			
-			<tr>
+			<tr> </tr><tr>
 				<td>Heslo</td>
-				<td>Pohlaví</td>
 			</tr>
 			<tr>
 				<td><input /></td>
-				<td>
-					<input type="radio" name="sex" id="sexM" value="M"> <label for="sexM">Muž</label>
-					<input type="radio" name="sex" id="sexF" value="F"> <label for="sexF">Žena</label>
-				</td>
 			</tr>
 
 			<tr><td>Email</td></tr>

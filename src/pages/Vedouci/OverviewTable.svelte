@@ -80,12 +80,6 @@
 					>
 						<i class="fa-regular fa-comment"></i>
 					</button>
-					<button on:click={() => dispatch("edit", id)}>
-						<i class="fa-solid fa-pen-to-square"></i>
-					</button>
-					<button on:click={() => dispatch("delete", id)}>
-						<i class="fa-solid fa-trash-can"></i>
-					</button>
 				</td>
 			</tr>
 		{/each}
@@ -106,7 +100,7 @@
 		width: 100px;
 	}
 	.column3 {
-		width: 200px;
+		width: 55px;
 	}
 
 	table {
