@@ -1,17 +1,17 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import { isEmpty } from "lodash";
-import { backend } from "../../lib/backend";
+	import { isEmpty, values } from "lodash";
+	import { backend } from "../../lib/backend";
 	import { user } from "../../lib/state";
 	import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
-	/*let content: Promise<{ id: number | string; name: string; points: number }[]> = [];
+	let content: Promise<{ id: number | string; displayname: string; points: number }[]>;
 	async function loadLeaderBoard() {
-		content = backend.get_leaderboard(1);
+		content = backend.get_leaderboard(0);
 	}
 	loadLeaderBoard();
 	setInterval(loadLeaderBoard,300000);
-	*/
+	/*
 	let content:{id: bigint | number | string; name: string; points: number }[] = [];
 	content = [
 		{ id:0, name: "Jan Poledna", points: 10 },
@@ -22,7 +22,7 @@ import { backend } from "../../lib/backend";
 		{ id:5, name: "pepe", points: 4},
 	];
 	let me: { name: string; points: number } = { name: user.value.username, points: NaN};
-
+*/
 
 </script>
 
@@ -32,19 +32,19 @@ import { backend } from "../../lib/backend";
 	</div>
 
 	<div class="content-wraper">
-		<!--{#await content}
+		{#await content}
 		<i class="fa-solid fa-arrows-rotate fa-spin"></i>   
-		{:then content} -->
+		{:then content}
 		{#if !isEmpty(content)}
-			{#each content.sort((a, b) => b.points - a.points) as { id, name, points }, i}
+			{#each content.sort((a, b) => b.points - a.points) as { id, displayname, points }, i}
 				<div
 					class="content"
-					style={name === me.name ? "background-color: #474747;" : ""}
+					style={id == user.value.id ? "background-color: #474747;" : ""}
 				>
 					<table>
-						<td title="{name}" class="tableName">
-							<button class="tableName-chat" on:click={() => dispatch('selected',{id,name})}>
-								{i + 1}. {name}
+						<td title="{displayname}" class="tableName">
+							<button class="tableName-chat" on:click={() => dispatch('selected',{id,displayname})}>
+								{i + 1}. {displayname}
 								<i class="fa-regular fa-comments fa-xs"></i>
 							</button>
 						</td>
@@ -55,9 +55,9 @@ import { backend } from "../../lib/backend";
 		{:else}
 			No Data
 		{/if}
-		<!--{:catch error}
-		<p style="color: red">{error.message}</p>
-		{/await}-->
+		{:catch error}
+			Nepodařilo se načíst žebříček.
+		{/await}
 	</div>
 </div>
 

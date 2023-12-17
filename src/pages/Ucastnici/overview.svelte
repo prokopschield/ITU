@@ -25,7 +25,7 @@
 		currentChat = {
 			id: event.detail.id,
 			username: "",
-			displayname: event.detail.name,
+			displayname: event.detail.displayname,
 			legal_name: "",
 			legal_guardian: "",
 			legal_guardian_contact: "",
