@@ -65,12 +65,12 @@ export const register: (info: {
 }) => Promise<
 	| { status: "EMAIL_SENT" }
 	| {
-		error:
-		| "DISPLAYNAME_TOO_SHORT"
-		| "DISPLAYNAME_TOO_LONG"
-		| "INVALID_INFO"
-		| "<<string>>";
-	}
+			error:
+				| "DISPLAYNAME_TOO_SHORT"
+				| "DISPLAYNAME_TOO_LONG"
+				| "INVALID_INFO"
+				| "<<string>>";
+	  }
 > = client.register;
 
 export const change_my_info: (info: {
@@ -132,7 +132,7 @@ export const delete_participant: (
 ) => {} = backend.delete_participant;
 
 export const get_attendees: (camp_id: number) => Promise<{
-	attendees: { id: number, name: string }[];
+	attendees: { id: number; name: string }[];
 }> = backend.get_attendees;
 
 export const update_action: (
