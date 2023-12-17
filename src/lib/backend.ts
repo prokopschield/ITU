@@ -97,12 +97,16 @@ export const get_participants_table: (camp_id: number) => Promise<{
 	tableItems: { name: string; points: number }[];
 }> = backend.get_participants_table;
 
+export const get_actions : (camp_id: number) => Promise<{
+	actions : { id: number, name: string; dateTime: string }[];
+}> = backend.get_actions;
+
+export const delete_action : (camp_id: number, actions_id: number) => {} = backend.delete_action;
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
 	Ve Vedoucích:
 		OverviewTable - Funkce, která nahraje jména a body. Je tam vždy celá fixní proměnná, a místo ní se prostě musí dát data z databáze
-		Actions - Je tam pole actions, místo něho databáze
 		EditAction - Formulář, který by měl generovat záznam do DB
 		PointTable - Tabulka, zase jsou potřeba data
 		EditPerson - Formulář, měl by generovat záznam

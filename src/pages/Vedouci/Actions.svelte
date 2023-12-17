@@ -6,34 +6,11 @@
 
     let popupOpened = true;
 
-    let actions: { name: string; dateTime: string }[] = [
-        { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
-        { name: 'Akce 2', dateTime: '16. prosince 2023, 14:30' },
-        { name: 'Akce 3', dateTime: '18. prosince 2023, 09:45' },
-        { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
-        { name: 'Akce 2', dateTime: '16. prosince 2023, 14:30' },
-        { name: 'Akce 3', dateTime: '18. prosince 2023, 09:45' },
-        { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
-        { name: 'Akce 2', dateTime: '16. prosince 2023, 14:30' },
-        { name: 'Akce 3', dateTime: '18. prosince 2023, 09:45' },
-        { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
-        { name: 'Akce 2', dateTime: '16. prosince 2023, 14:30' },
-        { name: 'Akce 3', dateTime: '18. prosince 2023, 09:45' },
-        { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
-        { name: 'Akce 2', dateTime: '16. prosince 2023, 14:30' },
-        { name: 'Akce 3', dateTime: '18. prosince 2023, 09:45' },
-        { name: 'Akce 1', dateTime: '15. prosince 2023, 10:00' },
-        { name: 'Akce 2', dateTime: '16. prosince 2023, 14:30' },
-        { name: 'Akce 3', dateTime: '18. prosince 2023, 09:45' },
-        // Přidej další akce dle potřeby
+    export let actions: { id: number, name: string; dateTime: Date }[] = [
+        {id: 1, name: "Akce", dateTime: new Date(2023, 12, 31)},
     ];
 
     let searchQuery = '';
-
-    // Funkce pro přidání nové akce
-    function addNewAction() {
-        // Implementuj přidání nové akce podle potřeby
-    }
 </script>
 
 <main id="main">
@@ -52,7 +29,7 @@
         </div>
     </main>
 
-    <ActionDeletePopUp isOpen={popupOpened} onConfirm={() => {popupOpened = false;}} onCancel={() => {}}/>
+    <ActionDeletePopUp isOpen={popupOpened} onConfirm={() => {popupOpened = false;}} onCancel={() => {popupOpened = false;}}/>
 </main>
 
 <style>

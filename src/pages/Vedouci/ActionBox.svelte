@@ -2,7 +2,10 @@
 	import { page } from "../../lib/state";
 
     export let actionName = 'Název akce';
-    export let dateTime = '12. prosince 2023, 14:30';
+    export let dateTime : Date;
+
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
 </script>
 
 <style>

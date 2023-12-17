@@ -15,7 +15,7 @@ function handleCancel() {
 {#if isOpen}
 <div class="overlay">
     <div class="popup">
-    <p>Opravdu si přejete smazat akci?</p>
+        <p>Opravdu si přejete smazat akci?</p>
     <div class="buttons">
         <button on:click={handleConfirm}>Ano</button>
         <button on:click={handleCancel}>Ne</button>
