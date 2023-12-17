@@ -32,6 +32,12 @@ export const cs: Partial<typeof en> = {
 	DISPLAYNAME_TOO_SHORT: "Přezdívka příliš je krátká.",
 	INVALID_INFO: "Zadané údaje jsou neplatné.",
 	USERNAME_TAKEN: "Někdo jiný již má příliš podobnou přezdívku.",
+
+	WELCOME_COMMA: "Vítej, ",
+
+	YOU_ARE_ATTENDEE_OF: "Účastníš se těchto kempů:",
+	YOU_ARE_LEADER_OF: "Jsi vedoucí na těchto kempech:",
+	YOU_ARE_ORGANIZER_OF: "Organizuješ tyto kempy:",
 };
 
 Object.setPrototypeOf(cs, en);

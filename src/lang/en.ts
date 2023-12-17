@@ -30,4 +30,10 @@ export const en = {
 	DISPLAYNAME_TOO_SHORT: "Nickname too short.",
 	INVALID_INFO: "The entered information is not in the right format.",
 	USERNAME_TAKEN: "Someone else has a nickname too similar to yours.",
+
+	WELCOME_COMMA: "Welcome, ",
+
+	YOU_ARE_ATTENDEE_OF: "You attended these camps:",
+	YOU_ARE_LEADER_OF: "You are a leader at these camps:",
+	YOU_ARE_ORGANIZER_OF: "You organize these camps:",
 };
