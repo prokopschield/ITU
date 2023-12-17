@@ -1,13 +1,11 @@
 <script lang="ts">
+	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";
 	import { createEventDispatcher } from "svelte";
-	const dispatch = createEventDispatcher();
+	import { state } from "@prokopschield/localstorage-state";
+	import { get_leaderboard } from "../../lib/backend";
 
-	export let tableItems: {
-		id: bigint | number | string;
-		displayname: string;
-		points: number;
-	}[] = [];
+	const dispatch = createEventDispatcher();
 
 	let sortColumn: String | undefined = undefined;
 	let sortDirection = false; // descending
@@ -33,7 +31,7 @@
 			document.getElementById("pointsIcon")!.className = icon;
 		}
 
-		tableItems = tableItems.sort((a, b) => {
+		leaderboard = leaderboard.sort((a, b) => {
 			const aValue = column === "name" ? a.displayname : a.points;
 			const bValue = column === "name" ? b.displayname : b.points;
 
@@ -45,8 +43,17 @@
 		});
 	}
 
-	onMount(() => {
+	let leaderboard: {
+		id: real;
+		displayname: string;
+		points: number;
+	}[] = [];
+
+	onMount(async () => {
 		sortBy("name");
+		const { attendees } = await get_leaderboard(state.selected_camp.value);
+
+		leaderboard = attendees;
 	});
 </script>
 
@@ -63,7 +70,7 @@
 		<th class="column3"></th>
 	</thead>
 	<tbody>
-		{#each tableItems as { id, displayname, points }}
+		{#each leaderboard as { id, displayname, points }}
 			<tr class="item">
 				<td class="column0">{displayname}</td>
 				<td class="column2">{points}</td>

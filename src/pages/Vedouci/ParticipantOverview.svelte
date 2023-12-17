@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page, selected_camp } from "../../lib/state";
+	import { page } from "../../lib/state";
 	import Header from "../Header.svelte";
 	import OverviewTable from "./OverviewTable.svelte";
 	import { state } from "@prokopschield/localstorage-state";
