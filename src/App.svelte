@@ -2,23 +2,19 @@
 	import Auth from "./pages/Auth/Auth.svelte";
 	import AuthLogin from "./pages/Auth/Login.svelte";
 	import AuthRegister from "./pages/Auth/Register.svelte";
-	import ChatMessage from "./components/Chat/Message.svelte";
 	import Header from "./pages/Header.svelte";
 	import Main from "./pages/Main.svelte";
 	import OrganizerCamp from "./pages/Organizer/Camp.svelte";
 	import OrganizerMyCamps from "./pages/Organizer/MyCamps.svelte";
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
-	import UcastniciChat from "./components/Chat/chat.svelte";
 	import UcastniciEvents from "./pages/Ucastnici/events.svelte";
 	import UcastniciLeaderboard from "./pages/Ucastnici/leaderboard.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
-	import VedouciActionBox from "./pages/Vedouci/ActionBox.svelte";
 	import VedouciActions from "./pages/Vedouci/Actions.svelte";
 	import VedouciEditAction from "./pages/Vedouci/EditAction.svelte";
 	import VedouciEditPerson from "./pages/Vedouci/EditPerson.svelte";
 	import VedouciMultiPointTable from "./pages/Vedouci/MultiPointTable.svelte";
-	import VedouciOverviewTable from "./pages/Vedouci/OverviewTable.svelte";
 	import VedouciParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
 	import VedouciPointDistribution from "./pages/Vedouci/PointDistribution.svelte";
 	import VedouciPointTable from "./pages/Vedouci/PointTable.svelte";
@@ -34,8 +30,6 @@
 	<AuthLogin />
 {:else if $page === "AuthRegister"}
 	<AuthRegister />
-{:else if $page === "ChatMessage"}
-	<ChatMessage />
 {:else if $page === "Header"}
 	<Header />
 {:else if $page === "Main"}
@@ -48,16 +42,12 @@
 	<OrganizerNewCamp />
 {:else if $page === "UcastniciAcountview"}
 	<UcastniciAcountview />
-{:else if $page === "UcastniciChat"}
-	<UcastniciChat />
 {:else if $page === "UcastniciEvents"}
 	<UcastniciEvents />
 {:else if $page === "UcastniciLeaderboard"}
 	<UcastniciLeaderboard />
 {:else if $page === "UcastniciOverview"}
 	<UcastniciOverview />
-{:else if $page === "VedouciActionBox"}
-	<VedouciActionBox />
 {:else if $page === "VedouciActions"}
 	<VedouciActions />
 {:else if $page === "VedouciEditAction"}
@@ -66,8 +56,6 @@
 	<VedouciEditPerson />
 {:else if $page === "VedouciMultiPointTable"}
 	<VedouciMultiPointTable />
-{:else if $page === "VedouciOverviewTable"}
-	<VedouciOverviewTable />
 {:else if $page === "VedouciParticipantOverview"}
 	<VedouciParticipantOverview />
 {:else if $page === "VedouciPointDistribution"}

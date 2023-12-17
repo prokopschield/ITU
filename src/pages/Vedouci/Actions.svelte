@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ActionBox from "./ActionBox.svelte"; // Importuj komponentu ActionBox
-	import ActionDeletePopUp from "./ActionDeletePopUp.svelte";
+	import ActionBox from "../../components/Vedouci/ActionBox.svelte"; // Importuj komponentu ActionBox
+	import ActionDeletePopUp from "../../components/Vedouci/ActionDeletePopUp.svelte";
 	import Header from "../Header.svelte";
 	import { page, selected_camp } from "../../lib/state";
 	import { delete_action } from "../../lib/backend";

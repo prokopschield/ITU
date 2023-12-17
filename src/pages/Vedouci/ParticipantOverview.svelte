@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from "../../lib/state";
 	import Header from "../Header.svelte";
-	import OverviewTable from "./OverviewTable.svelte";
+	import OverviewTable from "../../components/Vedouci/OverviewTable.svelte";
 	import { state } from "@prokopschield/localstorage-state";
 
 	// by Jan Poledna xpoled09
