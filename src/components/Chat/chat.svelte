@@ -60,7 +60,7 @@
                         -->
 						{#each messages.reverse() as message}
 							<Message
-								incoming={message.sender_id == currentChat.id}
+								incoming={message.sender_id != user.value.id}
 								sender={currentChat.displayname}
 								message={message.data.text}
 								message_id={message.id}
