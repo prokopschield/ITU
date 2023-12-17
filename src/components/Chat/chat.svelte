@@ -122,14 +122,13 @@
 		width: 100%;
 		position: relative;
 		top: 5px;
-		width: 100%;
 		bottom: 1px;
 		background-color: #3f3f3f;
 	}
 	.collapsed {
 		position: fixed;
 		right: 205px;
-		top: 810px;
+		top: 900px;
 		height: 50px;
 		width: 50px;
 		overflow: hidden;
@@ -142,7 +141,7 @@
 		position: fixed;
 		right: 205px;
 		top: 60px;
-		height: 800px;
+		height: 900px;
 		width: 850px;
 		overflow: hidden;
 		background-color: #3f3f3f;
@@ -164,7 +163,7 @@
 		top: 5px;
 		left: 0px;
 		width: 100%;
-		height: 740px;
+		height: 840px;
 		background-color: #555555;
 		overflow-x: hidden;
 		overflow-y: auto;
