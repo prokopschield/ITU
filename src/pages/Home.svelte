@@ -70,7 +70,9 @@
 					<b>Vedoucí:</b>
 
 					{#each camp.leader as leader}
-						<span>{leader.user.legal_name}</span>
+						<span class="leaderNames"
+							>{leader.user.legal_name},
+						</span>
 					{/each}
 				</div>
 			</button>
@@ -87,7 +89,9 @@
 					<b>Vedoucí:</b>
 
 					{#each camp.leader as leader}
-						<span>{leader.user.legal_name}</span>
+						<span class="leaderNames"
+							>{leader.user.legal_name},
+						</span>
 					{/each}
 				</div>
 			</button>
@@ -104,7 +108,9 @@
 					<b>Vedoucí:</b>
 
 					{#each camp.leader as leader}
-						<span>{leader.user.legal_name}</span>
+						<span class="leaderNames"
+							>{leader.user.legal_name},
+						</span>
 					{/each}
 				</div>
 			</button>
@@ -159,5 +165,8 @@
 		position: fixed;
 		right: 50px;
 		bottom: 50px;
+	}
+	.leaderNames {
+		font-style: oblique;
 	}
 </style>
