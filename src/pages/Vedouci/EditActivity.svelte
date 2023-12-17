@@ -1,6 +1,20 @@
 <script lang="ts">
+	import { onMount } from "svelte";
 	import Header from "../Header.svelte";
 	import PointTable from "./PointTable.svelte";
+	import { state } from "@prokopschield/localstorage-state";
+
+	let activity: { name: string; description: string; points: number } = {
+		name: "",
+		description: "",
+		points: 0,
+	};
+
+	onMount(() => {
+		if (!state.add_activity.value) {
+			activity = state.selected_activity.value;
+		}
+	});
 </script>
 
 <main id="main">
@@ -10,12 +24,34 @@
 	<div id="upper-div">
 		<table id="settings">
 			<tr>
-				<td><input placeholder="Jméno" /></td>
-				<td><input placeholder="Maximum bodů" /></td>
+				<td><input placeholder="Jméno" bind:value={activity.name} /></td
+				>
+				{#if !state.add_activity.value}
+					<td>
+						<input
+							placeholder="Maximum bodů"
+							type="number"
+							min="0"
+							bind:value={activity.points}
+						/></td
+					>
+				{/if}
+				{#if state.add_activity.value}
+					<td>
+						<input
+							placeholder="Maximum bodů"
+							type="number"
+							min="0"
+						/></td
+					>
+				{/if}
 			</tr>
 			<tr>
 				<td>
-					<input placeholder="Popis" />
+					<input
+						placeholder="Popis"
+						bind:value={activity.description}
+					/>
 				</td>
 				<td>
 					<input type="submit" />
@@ -67,7 +103,7 @@
 	}
 
 	#upper-div #settings input:not([type]),
-	#upper-div #settings input[type="date"] {
+	#upper-div #settings input[type="number"] {
 		width: calc(100% - 16px);
 		height: 100%;
 		font-size: 25px;

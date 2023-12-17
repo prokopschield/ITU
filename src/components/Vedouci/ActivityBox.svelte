@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
-	import { page } from "../../lib/state";
+	import { page, selected_camp } from "../../lib/state";
 
 	export let activityName = "Název akce";
 	export let id: real;
@@ -17,10 +17,12 @@
 		<button
 			on:click={(event) => {
 				event.stopPropagation();
+				state.add_activity.value = false;
 				state.selected_activity.value = {
 					id: id,
 					description: description,
 					name: activityName,
+					points: maxPoints,
 				};
 				page.set("VedouciEditActivity");
 			}}><i class="fa-solid fa-pen-to-square"></i></button
