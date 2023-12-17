@@ -4,8 +4,6 @@
 	import Header from "../Header.svelte";
 	import { page, selected_camp } from "../../lib/state";
 	import {
-		delete_activity,
-		get_activities,
 		get_leader_points_table,
 		leader_delete_activity,
 	} from "../../lib/backend";
@@ -55,6 +53,8 @@
 		activities = (await get_leader_points_table(state.selected_camp.value))
 			.activities;
 	});
+
+	let deleteFunction: Function;
 </script>
 
 <main id="main">
@@ -81,8 +81,12 @@
 					id={filteredActivity.id}
 					description={filteredActivity.description}
 					maxPoints={filteredActivity.points}
-					on:remove={(event) => {
-						leader_delete_activity(event.detail);
+					on:remove={async (event) => {
+						popupOpened = true;
+						deleteFunction = async () => {
+							await leader_delete_activity(event.detail);
+							location.reload();
+						};
 					}}
 				/>
 			{/each}
@@ -96,8 +100,8 @@
 	<ActivityDeletePopUp
 		isOpen={popupOpened}
 		onConfirm={() => {
+			deleteFunction();
 			popupOpened = false;
-			delete_activity(state.selected_camp.value, activityToDelete);
 		}}
 		onCancel={() => {
 			popupOpened = false;

@@ -125,9 +125,6 @@ export const get_activities: (camp_id: number) => Promise<{
 	activities: { id: number; name: string; dateTime: string }[];
 }> = backend.get_activities;
 
-export const delete_activity: (camp_id: number, activities_id: number) => {} =
-	backend.delete_activity;
-
 export const delete_participant: (
 	camp_id: number,
 	participant_id: number
