@@ -145,6 +145,9 @@ export const update_action: (
 	description: string
 ) => {} = backend.update_action;
 
+/** parní mlátička */
+export const { leader_camp_info } = backend;
+
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
