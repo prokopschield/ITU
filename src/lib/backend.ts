@@ -134,6 +134,14 @@ export const delete_participant: (
 export const get_attendees: (camp_id: number) => Promise<{
 	attendees: { id: number, name: string }[];
 }> = backend.get_attendees;
+
+export const update_action: (
+	camp_id: number,
+	id: number,
+	name: string,
+	dateTime: Date,
+	description: string
+) => {} = backend.update_action;
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
