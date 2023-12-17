@@ -7,6 +7,6 @@
 	Vítej, {$displayname}
 	<MoveButton destination="UcastniciOverview" text="Log Účastník" />
 	<MoveButton destination="VedouciParticipantOverview" text="Log Vedoucí" />
-	<MoveButton destination="VedouciEditAction" text="Editace události" />
+	<MoveButton destination="VedouciEditActivity" text="Editace události" />
 	<MoveButton destination="VedouciEditPerson" text="Editace osoby" />
 </main>

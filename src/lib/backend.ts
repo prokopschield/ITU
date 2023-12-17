@@ -66,13 +66,13 @@ export const register: (info: {
 }) => Promise<
 	| { status: "EMAIL_SENT" }
 	| {
-			error:
-				| "DISPLAYNAME_TOO_SHORT"
-				| "DISPLAYNAME_TOO_LONG"
-				| "INVALID_INFO"
-				| "USERNAME_TAKEN"
-				| "<<string>>";
-	  }
+		error:
+		| "DISPLAYNAME_TOO_SHORT"
+		| "DISPLAYNAME_TOO_LONG"
+		| "INVALID_INFO"
+		| "USERNAME_TAKEN"
+		| "<<string>>";
+	}
 > = client.register;
 
 export const change_my_info: (info: {
@@ -121,12 +121,12 @@ export const get_leaderboard: (camp_id: number) => Promise<{
 	}[];
 }> = backend.get_leaderboard;
 
-export const get_actions: (camp_id: number) => Promise<{
-	actions: { id: number; name: string; dateTime: string }[];
-}> = backend.get_actions;
+export const get_activitys: (camp_id: number) => Promise<{
+	activitys: { id: number; name: string; dateTime: string }[];
+}> = backend.get_activitys;
 
-export const delete_action: (camp_id: number, actions_id: number) => {} =
-	backend.delete_action;
+export const delete_activity: (camp_id: number, activitys_id: number) => {} =
+	backend.delete_activity;
 
 export const delete_participant: (
 	camp_id: number,
@@ -137,15 +137,15 @@ export const get_attendees: (camp_id: number) => Promise<{
 	attendees: { id: number; name: string }[];
 }> = backend.get_attendees;
 
-// Insert or update action
-export const update_action: (
+// Insert or update activity
+export const update_activity: (
 	camp_id: number,
 	id: number,
 	name: string,
 	dateTime: Date,
 	maxPoints: number,
 	description: string
-) => {} = backend.update_action;
+) => {} = backend.update_activity;
 
 /** parní mlátička */
 export const { leader_camp_info } = backend;
@@ -175,7 +175,7 @@ export const leader_delete_activity: (id: real) => Promise<
 
 	Ve Vedoucích:
 		OverviewTable - Funkce, která nahraje jména a body. Je tam vždy celá fixní proměnná, a místo ní se prostě musí dát data z databáze
-		EditAction - Formulář, který by měl generovat záznam do DB
+		EditActivity - Formulář, který by měl generovat záznam do DB
 		PointTable - Tabulka, zase jsou potřeba data
 		EditPerson - Formulář, měl by generovat záznam
 		MultiPointTable - Pole s dětmi a akcemi. Z nich se vygenerujě tabulka na body, ty by se při změně mely propisovat do DB

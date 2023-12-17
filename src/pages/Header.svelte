@@ -5,7 +5,7 @@
 
 <main>
 	<div>
-		<MoveButton destination="VedouciActions" text={"Akce"} />
+		<MoveButton destination="VedouciActivities" text={"Akce"} />
 		<MoveButton
 			destination="VedouciParticipantOverview"
 			text={"Účastníci"}

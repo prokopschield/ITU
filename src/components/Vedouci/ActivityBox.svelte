@@ -2,19 +2,21 @@
 	import type { real } from "@prokopschield/complex";
 	import { page } from "../../lib/state";
 
-	export let actionName = "Název akce";
+	export let activityName = "Název akce";
 	export let id: real;
 
 	import { createEventDispatcher } from "svelte";
+	import { state } from "@prokopschield/localstorage-state";
 	const dispatch = createEventDispatcher();
 </script>
 
-<button class="action-box" on:click={() => page.set("VedouciEditAction")}>
+<button class="activity-box" on:click={() => page.set("VedouciEditActivity")}>
 	<div id="icons">
 		<button
 			on:click={(event) => {
 				event.stopPropagation();
-				page.set("VedouciEditAction");
+				state.selectedActivity.value = id;
+				page.set("VedouciEditActivity");
 			}}><i class="fa-solid fa-pen-to-square"></i></button
 		>
 		<button
@@ -24,11 +26,11 @@
 			}}><i class="fa-solid fa-trash-can"></i></button
 		>
 	</div>
-	<div class="action-name">{actionName}</div>
+	<div class="activity-name">{activityName}</div>
 </button>
 
 <style>
-	.action-box {
+	.activity-box {
 		position: relative;
 		border: 1px solid #ccc;
 		padding: 10px;
@@ -37,7 +39,7 @@
 		box-sizing: border-box; /* zajistí, že padding nebude zvyšovat celkovou šířku */
 	}
 
-	.action-name {
+	.activity-name {
 		font-size: 18px;
 		font-weight: bold;
 		margin-bottom: 10px;
