@@ -1,6 +1,6 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import Leaderboard from "./leaderboard.svelte";
+	import Leaderboard from "../../components/Ucastnici/leaderboard.svelte";
 	import Events from "../../components/Ucastnici/events.svelte";
 	import Chat from "../../components/Chat/chat.svelte";
 	import Contacts from "../../components/Chat/contacts.svelte";
