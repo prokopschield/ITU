@@ -1,4 +1,5 @@
 <script lang="ts">
+	// by Jan Poledna xpoled09
 	import { backend } from "../../lib/backend";
 	import { user } from "../../lib/state";
 	import { createEventDispatcher } from 'svelte';

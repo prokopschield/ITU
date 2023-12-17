@@ -1,4 +1,5 @@
 <script lang="ts">
+	// by Jan Poledna xpoled09
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import * as state from "../../lib/state";
 	//let me = { name: "Jan", team: "rocnik 2", points: 10 };

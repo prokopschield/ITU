@@ -1,4 +1,5 @@
 <script lang="ts">
+    // by Jan Poledna xpoled09
 	import { isEmpty } from "lodash";
     import { sendDM,getDMs } from "../../lib/DMs";
     import { registerInterlocutorCallback } from "../../lib/DMs";
@@ -27,12 +28,14 @@
         {
             return;
         }
+        //console.log("rec: " + currentChat.id + " send: " + user.value.id);
         sendDM(currentChat.id,{text});
         //console.log(text);
         text = "";
     }
     $: if(collapsed == true){
         //console.log(currentChat.id);
+        //console.log("rec: " + currentChat.id + " send: " + user.value.id);
         messages = [];
         promise = getDMs(currentChat.id,20);
         registerInterlocutorCallback(currentChat.id,recieveNewMes)

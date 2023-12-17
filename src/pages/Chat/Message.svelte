@@ -1,4 +1,5 @@
 <script lang="ts">
+    // by Jan Poledna xpoled09
 	import { isEmpty } from "lodash";
 
     export let sender:String = "Odesílatel";

@@ -1,4 +1,6 @@
 <script lang="ts">
+	// by Jan Poledna xpoled09
+	import { isEmpty } from "lodash";
 	import { backend } from "../../lib/backend";
 	/**
 	 * @type {{name: string,date: Date,description:string,points:number,pointsMax:number}[]}
@@ -75,7 +77,7 @@
 	</div>
 	<div class="events">
 		{#each events.filter(event => event.name.toLowerCase().includes(searchQuery.toLowerCase()) || event.description.toLowerCase().includes(searchQuery.toLowerCase())) as { name, date, description, points, pointsMax }}
-			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past}
+			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past || !isEmpty(searchQuery)}
 				{#if separator(date)}
 					True
 				{/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	// by Jan Poledna xpoled09
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import Leaderboard from "./leaderboard.svelte";
 	import Events from "./events.svelte";

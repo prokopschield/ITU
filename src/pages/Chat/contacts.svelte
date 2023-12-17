@@ -1,4 +1,5 @@
 <script lang="ts">
+    // by Jan Poledna xpoled09
 	import { isEmpty } from "lodash";
     import { getInterlocutors } from "../../lib/DMs";
     import type { User } from "../../lib/DMs";
@@ -9,8 +10,8 @@
     let contacts:User[] = [];
     async function loadContacts(){
         contacts = getInterlocutors();
-        console.log("loadContacts: ");
-        console.log(contacts);
+        //console.log("loadContacts: ");
+        //console.log(contacts);
         if( contacts.length == 1 && isEmpty(contacts[0].displayname) )
         {
             contacts = [];
