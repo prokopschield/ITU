@@ -102,7 +102,7 @@
 		</tr>
 	</table>
 
-	<a href="?page=AuthRegister">{$SIGN_UP}</a>
+	<a target="_blank" href="?page=AuthRegister">{$SIGN_UP}</a>
 </div>
 
 <style>
