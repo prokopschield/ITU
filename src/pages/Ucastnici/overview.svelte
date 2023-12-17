@@ -6,6 +6,7 @@
 	import Contacts from "../../components/Chat/contacts.svelte";
 	import type { User } from "../../lib/DMs";
 	import LogoutButton from "../../components/LogoutButton.svelte";
+	import NavBar from "../../components/navBar.svelte";
 
 	let currentChat: User;
 	let collapsedChat: boolean = false;
@@ -44,10 +45,11 @@
 	<div class="contact-wrap">
 		<Contacts on:selected={openChat} />
 	</div>
-	<div class="logout">
-		<!--<MoveButton destination={"Acountview"} text="Detail Účtu" /><br />-->
+	<!--<div class="logout">
+		<MoveButton destination={"Acountview"} text="Detail Účtu" /><br />
 		<LogoutButton /><br />
-	</div>
+	</div>-->
+	<NavBar />
 </main>
 
 <style>
