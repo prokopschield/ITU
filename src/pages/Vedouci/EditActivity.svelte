@@ -104,6 +104,7 @@
 								);
 							}
 
+							selected_activity.set(activity);
 							add_activity.set(false);
 						}}
 					/>
