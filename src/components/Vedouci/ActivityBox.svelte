@@ -5,6 +5,7 @@
 	export let activityName = "Název akce";
 	export let id: real;
 	export let description: string;
+	export let maxPoints: number;
 
 	import { createEventDispatcher } from "svelte";
 	import { state } from "@prokopschield/localstorage-state";
@@ -16,7 +17,11 @@
 		<button
 			on:click={(event) => {
 				event.stopPropagation();
-				state.selectedActivity.value = id;
+				state.selected_activity.value = {
+					id: id,
+					description: description,
+					name: activityName,
+				};
 				page.set("VedouciEditActivity");
 			}}><i class="fa-solid fa-pen-to-square"></i></button
 		>

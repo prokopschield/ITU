@@ -51,6 +51,8 @@
 	export let activities: {
 		id: real;
 		name: string;
+		description: string;
+		points: number;
 		attended: {
 			score: number;
 			attendee: {
@@ -92,6 +94,8 @@
 				<ActivityBox
 					activityName={filteredActivity.name}
 					id={filteredActivity.id}
+					description={filteredActivity.description}
+					maxPoints={filteredActivity.points}
 					on:remove={(event) => {
 						leader_delete_activity(event.detail);
 					}}

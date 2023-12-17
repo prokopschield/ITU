@@ -66,13 +66,13 @@ export const register: (info: {
 }) => Promise<
 	| { status: "EMAIL_SENT" }
 	| {
-			error:
-				| "DISPLAYNAME_TOO_SHORT"
-				| "DISPLAYNAME_TOO_LONG"
-				| "INVALID_INFO"
-				| "USERNAME_TAKEN"
-				| "<<string>>";
-	  }
+		error:
+		| "DISPLAYNAME_TOO_SHORT"
+		| "DISPLAYNAME_TOO_LONG"
+		| "INVALID_INFO"
+		| "USERNAME_TAKEN"
+		| "<<string>>";
+	}
 > = client.register;
 
 export const change_my_info: (info: {
@@ -188,6 +188,7 @@ export async function get_leader_points_table(camp_id: real) {
 				id: real;
 				name: string;
 				description: string;
+				points: number;
 				attended: {
 					score: number;
 					attendee: { id: real; user: { displayname: string } };
