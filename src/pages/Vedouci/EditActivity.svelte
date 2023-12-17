@@ -12,9 +12,7 @@
 
 	onMount(() => {
 		if (!state.add_activity.value) {
-			console.log("Volá se to");
 			activity = state.selected_activity.value;
-			console.log(activity);
 		}
 	});
 </script>
