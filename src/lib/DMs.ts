@@ -26,7 +26,7 @@ export const DM_map = new Map<number, DM<any>>();
 export const interlocutor_set = new Set<User>();
 export const interlocutor_callbacks = new Map<number, Function>();
 
-user.subscribe(async () => {
+async function reload_interlocutors() {
 	try {
 		const { interlocutors } = await backend.get_dm_interlocutors();
 
@@ -42,7 +42,9 @@ user.subscribe(async () => {
 	} catch (error) {
 		console.error("DM interlocutor update failed:", error);
 	}
-});
+}
+
+user.subscribe(reload_interlocutors);
 
 export function getInterlocutors() {
 	return [...interlocutor_set];
@@ -55,6 +57,15 @@ function loadDM(_interlocutor: any, data: DM<any>) {
 		const recipient_id = Number(data.recipient_id);
 
 		assert(id && sender_id && recipient_id);
+
+		const interlocutor_id =
+			user.value.id === sender_id ? recipient_id : sender_id;
+
+		if (interlocutor_id !== user.value.id) {
+			if (!getInterlocutors().some((arg) => arg.id === interlocutor_id)) {
+				setTimeout(reload_interlocutors);
+			}
+		}
 
 		if (!DM_map.has(id)) {
 			const dm = { id, sender_id, recipient_id, data };
