@@ -1,5 +1,10 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
+	/*
+	"Implementace registrace, přihlášení a správy profilu uživatele
+	 není vyžadováno a nebude hodnoceno." - Zadaní
+		kvuli tomuhle jsme se rozhodli tuto stranku vynechat
+	*/
 	import MoveButton from "../../lib/MoveButton.svelte";
 	import * as state from "../../lib/state";
 	//let me = { name: "Jan", team: "rocnik 2", points: 10 };

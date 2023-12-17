@@ -1,6 +1,7 @@
 <script lang="ts">
 	// by Jan Poledna xpoled09
-	import { backend } from "../../lib/backend";
+	import { isEmpty } from "lodash";
+import { backend } from "../../lib/backend";
 	import { user } from "../../lib/state";
 	import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
@@ -8,6 +9,7 @@
 	async function loadLeaderBoard() {
 		content = backend.get_leaderboard(1);
 	}
+	loadLeaderBoard();
 	setInterval(loadLeaderBoard,300000);
 	*/
 	let content:{id: bigint | number | string; name: string; points: number }[] = [];
@@ -33,7 +35,7 @@
 		<!--{#await content}
 		<i class="fa-solid fa-arrows-rotate fa-spin"></i>   
 		{:then content} -->
-		{#if content.length != 0}
+		{#if !isEmpty(content)}
 			{#each content.sort((a, b) => b.points - a.points) as { id, name, points }, i}
 				<div
 					class="content"

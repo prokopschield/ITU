@@ -16,7 +16,7 @@
         {
             contacts = [];
         }
-        console.log(contacts);
+        //console.log(contacts);
     }
     loadContacts();
     setInterval(loadContacts,300000);
@@ -45,6 +45,8 @@
                 {contact.displayname}
             </button>
         {/each}
+    {:else}
+        Nepodařilo se načíst kontakty
     {/if}
 </div>
 <style>

@@ -33,6 +33,12 @@
         //console.log(text);
         text = "";
     }
+    function handleEdit(event:Event){
+        console.log("edit: " + event.detail);
+    }
+    function handleReply(event:Event){
+        console.log("reply to: " + event.detail);
+    }
     $: if(collapsed == true){
         //console.log(currentChat.id);
         //console.log("rec: " + currentChat.id + " send: " + user.value.id);
@@ -51,21 +57,25 @@
             X
         </button>
         <div class="messages-wrap">
-             {#await promise}
+            {#await promise}
                 <i class="fa-solid fa-arrows-rotate fa-spin"></i>   
-             {:then messages}
-             <!--
-                 {console.log(messages)}
-             -->
+            {:then messages}
+            <!--
+                {console.log(messages)}
+            -->
                 {#each messages as message}
-                    <Message incoming = {message.sender_id == currentChat.id} sender={currentChat.displayname} message = {message.data.text}/>
+                    <Message on:edit={handleEdit} on:reply={handleReply} incoming = {message.sender_id == currentChat.id} 
+                    sender={currentChat.displayname} message = {message.data.text} message_id = {message.id} datetime={new Date(message.data.timestamp)}/>
                 {/each}
-             {:catch error}
+            {:catch error}
                 <p style="color: red">{error.message}</p>
-             {/await}
-             {#each messages as message}
-             <Message incoming = {message.sender_id == currentChat.id} sender={currentChat.displayname} message = {message.data}/>
+            {/await}
+            <!--
+            {#each messages as message}
+                <Message on:edit={handleEdit} on:reply={handleReply} incoming = {message.sender_id == currentChat.id} 
+                sender={currentChat.displayname} message = {message.data} message_id = {message.id} />
             {/each}
+            -->
         </div>
         <div class="writebox">
             <form on:submit|preventDefault={send}>
