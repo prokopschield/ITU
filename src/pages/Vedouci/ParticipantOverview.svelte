@@ -10,7 +10,6 @@
 	</header>
 
 	<main id="inner-main">
-		<button on:click={() => page.set("VedouciPointDistribution")}>Rozdělení bodů</button>
 		<OverviewTable />
 	</main>
 </main>
