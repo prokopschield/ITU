@@ -53,6 +53,7 @@
 				legal_guardian,
 				legal_guardian_contact,
 				email,
+				password,
 				redirect: new URL("?page=/", location.href).href,
 			});
 

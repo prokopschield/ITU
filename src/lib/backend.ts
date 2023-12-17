@@ -61,6 +61,7 @@ export const register: (info: {
 	legal_guardian: string;
 	legal_guardian_contact: string;
 	email: string;
+	password: string;
 	redirect: string;
 }) => Promise<
 	| { status: "EMAIL_SENT" }
