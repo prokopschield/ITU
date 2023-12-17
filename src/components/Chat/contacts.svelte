@@ -53,12 +53,6 @@
 
 <div class="wrap">
 	Kontakty
-	<button
-		on:click={() => {
-			console.log(contacts);
-			console.log(interlocutors);
-		}}
-	></button>
 	<div class="fake-input">
 		<div class="img">
 			<i class="fa fa-search" />
