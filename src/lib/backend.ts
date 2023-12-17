@@ -92,10 +92,6 @@ export const get_leaderboard: (camp_id: number) => Promise<{
 	attendees: { id: bigint | number | string; name: string; points: number }[];
 }> = backend.get_leaderboard;
 
-// Podle mé představy by ta funkce měla aktualizovat data pro zobrazovací tabulku účastníků
-export const get_participants_table: (camp_id: number) => Promise<{
-	tableItems: { name: string; points: number }[];
-}> = backend.get_participants_table;
 
 export const get_actions : (camp_id: number) => Promise<{
 	actions : { id: number, name: string; dateTime: string }[];

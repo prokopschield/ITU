@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
 
-    export let tableItems: { name: string; points: number }[] = [];
+    export let tableItems: {id: bigint | number | string;name: string; points: number }[] = [];
 
     let sortColumn: String | undefined = undefined;
     let sortDirection = false; // descending
@@ -53,14 +55,20 @@
         <th class="column3"></th>
     </thead>
     <tbody>
-        {#each tableItems as { name, points }}
+        {#each tableItems as { id, name, points }}
             <tr class="item">
                 <td class="column0">{name}</td>
                 <td class="column2">{points}</td>
                 <td class="column3">
-                    <i class="fa-regular fa-comment"></i>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
+                    <button on:click={() => dispatch('chat',id)}>
+                        <i class="fa-regular fa-comment"></i>
+                    </button>
+                    <button on:click={() => dispatch('edit',id)}>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button on:click={() => dispatch('delete',id)}>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </td>
             </tr>
         {/each}
