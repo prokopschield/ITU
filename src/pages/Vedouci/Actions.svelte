@@ -95,7 +95,7 @@
 	.contact-wrap {
 		position: fixed;
 		right: 0px;
-		top: 60px;
+		top: 49px;
 		height: 800px;
 		width: 200px;
 	}
