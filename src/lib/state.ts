@@ -83,3 +83,5 @@ window.addEventListener("popstate", () =>
 if (!page.value) {
 	page.set(location.pathname);
 }
+
+export const selected_camp = store<bigint | number>("selected_camp");
