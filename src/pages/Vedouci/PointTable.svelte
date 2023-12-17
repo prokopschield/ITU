@@ -1,5 +1,8 @@
 <script lang="ts">
+	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";
+	import { get_leaderboard } from "../../lib/backend";
+	import { state } from "@prokopschield/localstorage-state";
 
 	export let data: { name: string; points: number; comment: string }[] = [];
 
@@ -8,7 +11,17 @@
 		data[index].points = parseInt(target.value, 10);
 	}
 
-	onMount(() => {});
+	let leaderboard: {
+		id: real;
+		displayname: string;
+		points: number;
+	}[] = [];
+
+	onMount(async () => {
+		const { attendees } = await get_leaderboard(state.selected_camp.value);
+
+		leaderboard = attendees;
+	});
 </script>
 
 <table>
@@ -29,6 +42,12 @@
 						on:input={(e) => handleBodyChange(index, e)}
 					/>
 				</td>
+			</tr>
+		{/each}
+		{#each leaderboard as attendee}
+			<tr>
+				<td>{attendee.displayname}</td>
+				<td class="column1"> 0 </td>
 			</tr>
 		{/each}
 	</tbody>

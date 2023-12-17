@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
 	import { state } from "@prokopschield/localstorage-state";
-	import { backend, get_leader_points_table } from "../../lib/backend";
+	import { get_leader_points_table } from "../../lib/backend";
 	import { onMount } from "svelte";
 
 	let attendees: ({ id: real; user: { displayname: string } } & {
@@ -34,18 +34,6 @@
 			}[];
 		}[];
 	};
-
-	function updateScore(
-		childIndex: number,
-		actionIndex: number,
-		value: number,
-	) {
-		//tableData[childIndex].score[actionIndex] = value;
-	}
-
-	function calculateRowTotal(score: number[]): number {
-		return score.reduce((acc, val) => acc + val, 0);
-	}
 
 	onMount(async () => {
 		tableData = await get_leader_points_table(state.selected_camp.value);

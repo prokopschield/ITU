@@ -1,14 +1,11 @@
 <script lang="ts">
-	import { page } from "../../lib/state";
 	import Header from "../Header.svelte";
 	import OverviewTable from "../../components/Vedouci/OverviewTable.svelte";
-	import { state } from "@prokopschield/localstorage-state";
 
 	// by Jan Poledna xpoled09
 	//from here
 	import type { User } from "../../lib/DMs";
 	import Chat from "../../components/Chat/chat.svelte";
-	import { delete_participant } from "../../lib/backend";
 	let currentChat: User;
 	let collapsedChat: boolean = false;
 	let enabled = false;
