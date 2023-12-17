@@ -53,7 +53,7 @@ function* appgen() {
 		yield `\timport ${component_name} from "${relative}";`;
 	}
 
-	yield `\timport NavBar from "./components/NavBar.svelte";`
+	yield `\timport NavBar from "./components/NavBar.svelte";`;
 
 	yield `\timport { page } from "./lib/state";`;
 
