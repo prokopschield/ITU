@@ -6,7 +6,7 @@
 
 	const { SIGN_UP } = locale;
 
-	let username = "";
+	let username = String(state.username.value || "");
 	let password = "";
 
 	let failure = false;
