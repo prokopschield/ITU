@@ -240,9 +240,9 @@ export async function get_leader_points_table(camp_id: real) {
 					score_map.set(Number(activity.id), Number(new_score));
 
 					await backend.leader_set_score(
-						activity.id,
-						attendee.id,
-						new_score
+						Number(activity.id),
+						Number(attendee.id),
+						Number(new_score)
 					);
 
 					return this;
