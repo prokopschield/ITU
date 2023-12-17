@@ -4,13 +4,16 @@
 
 	//backend.get_attendees(state.selected_camp.value);
 	//backend.get_actions(state.selected_camp.value);
-	export let attendees: { id: number; name: string }[] = ["Děcko"];
+	export let attendees: { id: number; name: string }[] = [
+		{ id: 1, name: "Děcko" },
+		{ id: 1, name: "Děcko" },
+	];
 	export let actions: string[] = ["Akce 1", "Akce 1", "Akce 1"];
 	let tableData: { name: string; score: number[] }[] = initializeTableData();
 
-	function initializeTableData(): { name: string; points: number[] }[] {
+	function initializeTableData(): { name: string; score: number[] }[] {
 		return attendees.map((attendee) => ({
-			name: attendee,
+			name: attendee.name,
 			score: actions.map(() => 0), // Počáteční body pro každou akci jsou 0
 		}));
 	}
