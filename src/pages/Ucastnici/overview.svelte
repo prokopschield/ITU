@@ -7,17 +7,17 @@
 	import Contacts from "../Chat/contacts.svelte";
 	import type { User } from "../../lib/DMs";
 
-	let currentChat:User;
-	let collapsedChat:boolean = false;
+	let currentChat: User;
+	let collapsedChat: boolean = false;
 	let enabled = false;
-	function openChat(event:Event){
+	function openChat(event: Event) {
 		collapsedChat = false;
 		collapsedChat = true;
 		enabled = true;
 		//detail tam existuje lže to xd
 		currentChat = event.detail;
 	}
-	function openChatFromLeaderboard(event:Event){
+	function openChatFromLeaderboard(event: Event) {
 		collapsedChat = false;
 		collapsedChat = true;
 		enabled = true;
@@ -35,15 +35,14 @@
 </script>
 
 <main>
-	
-	<Leaderboard on:selected = {openChatFromLeaderboard}/>
-	
+	<Leaderboard on:selected={openChatFromLeaderboard} />
+
 	<h1>Ucastnici</h1>
 
 	<Events />
-	<Chat currentChat = {currentChat} collapsed = {collapsedChat} enabled = {enabled}/>
+	<Chat {currentChat} collapsed={collapsedChat} {enabled} />
 	<div class="contact-wrap">
-		<Contacts on:selected = {openChat}/>
+		<Contacts on:selected={openChat} />
 	</div>
 	<div class="logout">
 		<!--<MoveButton destination={"Acountview"} text="Detail Účtu" /><br />-->
@@ -57,11 +56,11 @@
 		right: 20px;
 		top: 10px;
 	}
-	.contact-wrap{
-        position: absolute;
+	.contact-wrap {
+		position: absolute;
 		right: 0px;
 		top: 60px;
 		height: 800px;
 		width: 200px;
-    }
+	}
 </style>

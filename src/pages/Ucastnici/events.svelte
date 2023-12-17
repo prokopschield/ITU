@@ -26,7 +26,7 @@
 	function toggle() {
 		past = !past;
 	}
-	let searchQuery:string = "";
+	let searchQuery: string = "";
 	async function loadActivities() {
 		//console.log(await backend.attendee_my_activities());
 		let { activities } = await backend.attendee_my_activities();
@@ -48,7 +48,7 @@
 					description: string;
 					points: number;
 					timestamp: Date;
-				}
+				},
 			) => {
 				return {
 					name: element.name,
@@ -57,26 +57,36 @@
 					points: element.attended[0].score,
 					pointsMax: element.points,
 				};
-			}
+			},
 		);
 		events.sort((a, b) => a.date.getDate() - b.date.getDate());
 	}
 	loadActivities();
-	setInterval(loadActivities,300000);
+	setInterval(loadActivities, 300000);
 </script>
 
 <div class="border">
 	<div class="top">
-		<input type="search" placeholder="Hledat.." bind:value={searchQuery}/>
+		<input type="search" placeholder="Hledat.." bind:value={searchQuery} />
 		<span><i class="fa fa-search" /></span>
-		<button  class = "history" on:click={toggle} style="background-color: {!past ? '#1a1a1a' : '#5c5c5c'}">
-			Zobrazit proběhlé aktivity? 
-			<input type="checkbox" bind:checked={past}>
+		<button
+			class="history"
+			on:click={toggle}
+			style="background-color: {!past ? '#1a1a1a' : '#5c5c5c'}"
+		>
+			Zobrazit proběhlé aktivity?
+			<input type="checkbox" bind:checked={past} />
 		</button>
-		<button class = "refresh" on:click={loadActivities}><i class="fa fa-refresh" aria-hidden="true"></i></button>
+		<button class="refresh" on:click={loadActivities}
+			><i class="fa fa-refresh" aria-hidden="true"></i></button
+		>
 	</div>
 	<div class="events">
-		{#each events.filter(event => event.name.toLowerCase().includes(searchQuery.toLowerCase()) || event.description.toLowerCase().includes(searchQuery.toLowerCase())) as { name, date, description, points, pointsMax }}
+		{#each events.filter((event) => event.name
+					.toLowerCase()
+					.includes(searchQuery.toLowerCase()) || event.description
+					.toLowerCase()
+					.includes(searchQuery.toLowerCase())) as { name, date, description, points, pointsMax }}
 			{#if date >= new Date(new Date().setHours(0, 0, 0, 0)) || past || !isEmpty(searchQuery)}
 				{#if separator(date)}
 					True
