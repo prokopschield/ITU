@@ -27,6 +27,8 @@ export const DM_map = new Map<number, DM<any>>();
 export const interlocutor_set = new Set<User>();
 export const interlocutor_callbacks = new Map<number, Function>();
 
+export const interlocutors = writable<User[]>();
+
 async function reload_interlocutors() {
 	try {
 		const { interlocutors } = await backend.get_dm_interlocutors();
@@ -48,8 +50,6 @@ async function reload_interlocutors() {
 }
 
 user.subscribe(reload_interlocutors);
-
-export const interlocutors = writable<User[]>();
 
 export function getInterlocutors() {
 	return [...interlocutor_set];
