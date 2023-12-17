@@ -27,9 +27,7 @@
 		if (isEmpty(text)) {
 			return;
 		}
-		//console.log("rec: " + currentChat.id + " send: " + user.value.id);
 		sendDM(currentChat.id, { text });
-		//console.log(text);
 		text = "";
 	}
 	async function loadMessages() {
@@ -38,8 +36,6 @@
 		registerInterlocutorCallback(currentChat.id, recieveNewMes);
 	}
 	$: if (collapsed == true) {
-		//console.log(currentChat.id);
-		//console.log("rec: " + currentChat.id + " send: " + user.value.id);
 		loadMessages();
 	}
 </script>
