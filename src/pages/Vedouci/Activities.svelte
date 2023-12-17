@@ -28,21 +28,6 @@
 		//detail tam existuje lže to xd
 		currentChat = event.detail;
 	}
-	function openChatFromLeaderboard(event: Event) {
-		collapsedChat = false;
-		collapsedChat = true;
-		enabled = true;
-		//console.log(event);
-		currentChat = {
-			id: event.detail.id,
-			username: "",
-			displayname: event.detail.displayname,
-			legal_name: "",
-			legal_guardian: "",
-			legal_guardian_contact: "",
-			email: "",
-		};
-	}
 	//to here
 
 	let popupOpened = false;
@@ -81,7 +66,7 @@
 		<button
 			id="plusButton"
 			on:click={() => {
-				state.AddAction.value = true;
+				state.add_activity.value = true;
 				page.set("VedouciEditActivity");
 			}}>+</button
 		>
