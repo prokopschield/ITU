@@ -29,6 +29,8 @@ export const interlocutor_callbacks = new Map<number, Function>();
 
 export const interlocutors = writable<User[]>();
 
+let reload_interlocutors_timeout = setTimeout(() => {});
+
 async function reload_interlocutors() {
 	try {
 		const data = await backend.get_dm_interlocutors();
@@ -44,8 +46,9 @@ async function reload_interlocutors() {
 
 			interlocutors.set([...interlocutor_set]);
 		}
-	} catch (error) {
-		console.error("DM interlocutor update failed:", error);
+	} catch {
+		clearTimeout(reload_interlocutors_timeout);
+		reload_interlocutors_timeout = setTimeout(reload_interlocutors, 2000);
 	}
 }
 
@@ -141,11 +144,9 @@ export function registerInterlocutorCallback(
 }
 
 //smaze zpravu
-export function deleteMessage(id:number){
-
-}
+export function deleteMessage(id: number) {}
 //prepise obsah zpravy
 export function editMessage<T extends Record<string, any>>(
-	id:number,message: T){
-
-}
+	id: number,
+	message: T
+) {}
