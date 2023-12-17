@@ -2,7 +2,7 @@ import { store } from "@prokopschield/localstorage-state";
 import { startCase } from "lodash";
 import { writable } from "svelte/store";
 
-import { session } from "./backend.js";
+import { login, session } from "./backend.js";
 
 export const username = store<string>("username");
 export const displayname = store<string>("displayname");
@@ -104,3 +104,19 @@ export function logout() {
 }
 
 export const password = writable<string>();
+
+state<string>("emtoken").subscribe(async (emtoken) => {
+	if (!emtoken) {
+		return;
+	}
+
+	try {
+		const response = await login(username.value, emtoken);
+
+		username.set(response.username);
+		displayname.set(response.displayname);
+		token.set(response.token);
+	} catch {
+		// ignore problems
+	}
+});
