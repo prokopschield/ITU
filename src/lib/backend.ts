@@ -1,4 +1,4 @@
-import type { Real } from "@prokopschield/complex";
+import { real } from "@prokopschield/complex";
 import { createClient } from "@prokopschield/simple-socket-client";
 import { defineGlobal } from "ps-std";
 
@@ -92,20 +92,20 @@ export const change_my_info: (info: {
 export const load_roles: () => Promise<{
 	data: {
 		attendee: {
-			id: Real;
-			attendee_id: Real;
-			camp_id: Real;
+			id: real;
+			attendee_id: real;
+			camp_id: real;
 		}[];
 		camp: {
-			id: Real;
-			organizer_id: Real;
+			id: real;
+			organizer_id: real;
 			name: string;
 			web: string;
 		}[];
 		leader: {
-			id: Real;
-			camp_id: Real;
-			user_id: Real;
+			id: real;
+			camp_id: real;
+			user_id: real;
 		}[];
 	};
 }> = backend.load_roles;
@@ -113,7 +113,7 @@ export const load_roles: () => Promise<{
 //vraci jmena uzivatelu a soucet jejich bodu
 export const get_leaderboard: (camp_id: number) => Promise<{
 	attendees: {
-		id: Real;
+		id: real;
 		displayname: string;
 		points: number;
 	}[];
@@ -123,7 +123,7 @@ export const get_actions: (camp_id: number) => Promise<{
 	actions: { id: number; name: string; dateTime: string }[];
 }> = backend.get_actions;
 
-export const delete_action: (camp_id: number, action_id: number) => {} =
+export const delete_action: (camp_id: number, actions_id: number) => {} =
 	backend.delete_action;
 
 export const delete_participant: (
@@ -143,6 +143,7 @@ export const update_action: (
 	maxPoints: number,
 	description: string
 ) => {} = backend.update_action;
+
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
