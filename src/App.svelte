@@ -9,7 +9,7 @@
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
 	import UcastniciEvents from "./pages/Ucastnici/events.svelte";
-	import UcastniciLeaderboard from "./pages/Ucastnici/leaderboard.svelte";
+	import UcastniciLeaderboard from "./components/Ucastnici/leaderboard.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
 	import VedouciActions from "./pages/Vedouci/Actions.svelte";
 	import VedouciEditAction from "./pages/Vedouci/EditAction.svelte";
