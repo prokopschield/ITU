@@ -1,10 +1,14 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+
 	export let data: { name: string; points: number; comment: string }[] = [];
 
 	function handleBodyChange(index: number, event: Event) {
 		const target = event.currentTarget as HTMLInputElement;
 		data[index].points = parseInt(target.value, 10);
 	}
+
+	onMount(() => {});
 </script>
 
 <table>
