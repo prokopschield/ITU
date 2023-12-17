@@ -9,6 +9,8 @@ export const cs: Partial<typeof en> = {
 	LOG_IN_CONFIRM: "Přihlásit se",
 	SIGN_UP_CONFIRM: "Potvrdit registraci",
 
+	LOG_OUT: "Odhlásit se",
+
 	EMAIL: "E-mail",
 	USERNAME: "Přihlašovací jméno",
 	PASSWORD: "Heslo",
