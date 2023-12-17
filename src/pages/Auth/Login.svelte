@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { login } from "../../lib/backend";
+	import { locale } from "../../lib/locale";
 	import * as state from "../../lib/state";
+
+	const { SIGN_UP } = locale;
 
 	let username = "";
 	let password = "";
@@ -98,6 +101,8 @@
 			</td>
 		</tr>
 	</table>
+
+	<a href="?page=AuthRegister">{$SIGN_UP}</a>
 </div>
 
 <style>
