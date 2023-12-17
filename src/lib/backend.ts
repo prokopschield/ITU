@@ -89,15 +89,15 @@ export const change_my_info: (info: {
 
 //vraci jmena uzivatelu a soucet jejich bodu
 export const get_leaderboard: (camp_id: number) => Promise<{
-	attendees: { id: bigint | number | string; name: string; points: number }[];
+	attendees: { id: bigint | number | string; displayname: string; points: number }[];
 }> = backend.get_leaderboard;
 
-
-export const get_actions : (camp_id: number) => Promise<{
-	actions : { id: number, name: string; dateTime: string }[];
+export const get_actions: (camp_id: number) => Promise<{
+	actions: { id: number; name: string; dateTime: string }[];
 }> = backend.get_actions;
 
-export const delete_action : (camp_id: number, actions_id: number) => {} = backend.delete_action;
+export const delete_action: (camp_id: number, actions_id: number) => {} =
+	backend.delete_action;
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
