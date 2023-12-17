@@ -3,14 +3,20 @@
     import ActionDeletePopUp from './ActionDeletePopUp.svelte';
 	import Header from '../Header.svelte';
 	import { page } from '../../lib/state';
+	import { delete_action } from '../../lib/backend';
 
     let popupOpened = true;
+    let actionToDelete : number;
 
     export let actions: { id: number, name: string; dateTime: Date }[] = [
         {id: 1, name: "Akce", dateTime: new Date(2023, 12, 31)},
     ];
 
     let searchQuery = '';
+
+    function setActionToDelete (event : Event) {
+        actionToDelete = event.detail;
+    }
 </script>
 
 <main id="main">
@@ -24,12 +30,12 @@
 
         <div id="action-list">
             {#each actions.filter(action => action.name.toLowerCase().includes(searchQuery.toLowerCase())) as filteredAction}
-                <ActionBox dateTime={filteredAction.dateTime} actionName={filteredAction.name}/>
+                <ActionBox dateTime={filteredAction.dateTime} actionName={filteredAction.name} id={filteredAction.id} on:remove={setActionToDelete}/>
             {/each}
         </div>
     </main>
 
-    <ActionDeletePopUp isOpen={popupOpened} onConfirm={() => {popupOpened = false;}} onCancel={() => {popupOpened = false;}}/>
+    <ActionDeletePopUp isOpen={popupOpened} onConfirm={() => {popupOpened = false; delete_action(0, actionToDelete)}} onCancel={() => {popupOpened = false;}}/>
 </main>
 
 <style>

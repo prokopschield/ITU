@@ -3,6 +3,7 @@
 
     export let actionName = 'Název akce';
     export let dateTime : Date;
+    export let id : number;
 
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
@@ -38,7 +39,7 @@
 <button class="action-box" on:click={() => page.set("VedouciEditAction")}>
     <div id="icons">
         <button on:click={(event) => {event.stopPropagation(); page.set("VedouciEditAction")}}><i class="fa-solid fa-pen-to-square"></i></button>
-        <button on:click={(event) => {event.stopPropagation()}}><i class="fa-solid fa-trash-can"></i></button>
+        <button on:click={(event) => {event.stopPropagation(); dispatch("remove", id);}}><i class="fa-solid fa-trash-can"></i></button>
     </div>
     <div class="action-name">{actionName}</div>
     <div class="date-time">{dateTime}</div>
