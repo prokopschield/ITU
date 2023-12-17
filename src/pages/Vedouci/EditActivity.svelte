@@ -2,17 +2,39 @@
 	import { onMount } from "svelte";
 	import Header from "../Header.svelte";
 	import PointTable from "./PointTable.svelte";
-	import { state } from "@prokopschield/localstorage-state";
+	import { state, store } from "@prokopschield/localstorage-state";
+	import { backend } from "../../lib/backend";
+	import { selected_camp } from "../../lib/state";
 
-	let activity: { name: string; description: string; points: number } = {
+	type Activity = {
+		id: number;
+		name: string;
+		description: string;
+		points: number;
+	};
+
+	let activity: Activity = {
+		id: 0,
 		name: "",
 		description: "",
 		points: 0,
 	};
 
-	onMount(() => {
-		if (!state.add_activity.value) {
-			activity = state.selected_activity.value;
+	const add_activity = store<boolean>("add_activity");
+	const selected_activity = store<Activity>("selected_activity");
+
+	selected_activity.subscribe((new_activity) => (activity = new_activity));
+
+	add_activity.subscribe((new_value) => {
+		if (new_value) {
+			activity = {
+				id: 0,
+				name: "",
+				description: "",
+				points: 0,
+			};
+		} else {
+			activity = selected_activity.value;
 		}
 	});
 </script>
@@ -26,7 +48,7 @@
 			<tr>
 				<td><input placeholder="Jméno" bind:value={activity.name} /></td
 				>
-				{#if !state.add_activity.value}
+				{#if !$add_activity}
 					<td>
 						<input
 							placeholder="Maximum bodů"
@@ -36,7 +58,7 @@
 						/></td
 					>
 				{/if}
-				{#if state.add_activity.value}
+				{#if $add_activity}
 					<td>
 						<input
 							placeholder="Maximum bodů"
@@ -54,7 +76,34 @@
 					/>
 				</td>
 				<td>
-					<input type="submit" />
+					<input
+						type="submit"
+						on:click={async () => {
+							if (add_activity.value) {
+								Object.assign(
+									activity,
+									await backend.leader_create_activity(
+										Number(state.selected_camp.value),
+										String(activity.name),
+										String(activity.description),
+										Number(activity.points),
+									),
+								);
+							} else {
+								Object.assign(
+									activity,
+									await backend.leader_edit_activity(
+										Number(activity.id),
+										String(activity.name),
+										String(activity.description),
+										Number(activity.points),
+									),
+								);
+							}
+
+							add_activity.set(false);
+						}}
+					/>
 				</td>
 			</tr>
 		</table>

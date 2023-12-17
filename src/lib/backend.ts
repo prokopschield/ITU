@@ -137,16 +137,6 @@ export const get_attendees: (camp_id: number) => Promise<{
 	attendees: { id: number; name: string }[];
 }> = backend.get_attendees;
 
-// Insert or update activity
-export const update_activity: (
-	camp_id: number,
-	id: number,
-	name: string,
-	dateTime: Date,
-	maxPoints: number,
-	description: string
-) => {} = backend.update_activity;
-
 /** parní mlátička */
 export const { leader_camp_info } = backend;
 

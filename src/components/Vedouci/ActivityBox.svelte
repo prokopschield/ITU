@@ -12,21 +12,22 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<button class="activity-box" on:click={() => page.set("VedouciEditActivity")}>
+<button
+	class="activity-box"
+	on:click={(event) => {
+		event.stopPropagation();
+		state.add_activity.value = false;
+		state.selected_activity.value = {
+			id: id,
+			description: description,
+			name: activityName,
+			points: maxPoints,
+		};
+		page.set("VedouciEditActivity");
+	}}
+>
 	<div id="icons">
-		<button
-			on:click={(event) => {
-				event.stopPropagation();
-				state.add_activity.value = false;
-				state.selected_activity.value = {
-					id: id,
-					description: description,
-					name: activityName,
-					points: maxPoints,
-				};
-				page.set("VedouciEditActivity");
-			}}><i class="fa-solid fa-pen-to-square"></i></button
-		>
+		<button><i class="fa-solid fa-pen-to-square"></i></button>
 		<button
 			on:click={(event) => {
 				event.stopPropagation();
