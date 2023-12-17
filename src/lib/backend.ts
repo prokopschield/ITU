@@ -140,6 +140,7 @@ export const update_action: (
 	id: number,
 	name: string,
 	dateTime: Date,
+	maxPoints: number,
 	description: string
 ) => {} = backend.update_action;
 /*
