@@ -80,6 +80,7 @@
 				</td>
 				<td>
 					<input
+						value="Uložit"
 						type="submit"
 						on:click={async () => {
 							if (add_activity.value) {
