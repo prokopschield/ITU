@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type { real } from "@prokopschield/complex";
 	import { onMount } from "svelte";
-	import { get_leaderboard } from "../../lib/backend";
+	import {
+		get_leader_points_table,
+		get_leaderboard,
+	} from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
 
 	export let data: { name: string; points: number; comment: string }[] = [];
@@ -17,10 +20,28 @@
 		points: number;
 	}[] = [];
 
+	let tableData: {
+		attendees: ({ id: real; user: { displayname: string } } & {
+			score: Record<string | number | symbol, number>;
+			getScore(activity: real): number;
+			setScore(activity: real, score: number): Promise<any>;
+		})[];
+		activities: {
+			id: real;
+			name: string;
+			attended: {
+				score: number;
+				attendee: { id: real; user: { displayname: string } };
+			}[];
+		}[];
+	};
+
 	onMount(async () => {
 		const { attendees } = await get_leaderboard(state.selected_camp.value);
 
 		leaderboard = attendees;
+
+		tableData = await get_leader_points_table(state.selected_camp.value);
 	});
 </script>
 
