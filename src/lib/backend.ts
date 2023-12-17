@@ -28,6 +28,16 @@ defineGlobal("client", client);
 defineGlobal("socket", socket);
 defineGlobal("backend", backend);
 
+export interface User {
+	id: bigint | number | string;
+	username: string;
+	displayname: string;
+	legal_name: string;
+	legal_guardian: string;
+	legal_guardian_contact: string;
+	email: string;
+}
+
 export const login: (
 	username: string,
 	secret: string
@@ -66,13 +76,13 @@ export const register: (info: {
 }) => Promise<
 	| { status: "EMAIL_SENT" }
 	| {
-		error:
-		| "DISPLAYNAME_TOO_SHORT"
-		| "DISPLAYNAME_TOO_LONG"
-		| "INVALID_INFO"
-		| "USERNAME_TAKEN"
-		| "<<string>>";
-	}
+			error:
+				| "DISPLAYNAME_TOO_SHORT"
+				| "DISPLAYNAME_TOO_LONG"
+				| "INVALID_INFO"
+				| "USERNAME_TAKEN"
+				| "<<string>>";
+	  }
 > = client.register;
 
 export const change_my_info: (info: {
@@ -181,6 +191,10 @@ export async function get_leader_points_table(camp_id: real) {
 					attendee: { id: real; user: { displayname: string } };
 				}[];
 			}>;
+			attendee: Array<{
+				id: real;
+				user: User;
+			}>;
 		};
 	} = await backend.leader_camp_info(Number(camp_id));
 
@@ -193,6 +207,22 @@ export async function get_leader_points_table(camp_id: real) {
 	const attendees = new Set<{ id: real; user: { displayname: string } }>();
 
 	for (const { attendee } of attended) {
+		let found = false;
+
+		for (const loop_user of attendees) {
+			if (attendee.id === loop_user.id) {
+				found = true;
+
+				break;
+			}
+		}
+
+		if (found === false) {
+			attendees.add(attendee);
+		}
+	}
+
+	for (const attendee of result.camp.attendee) {
 		let found = false;
 
 		for (const loop_user of attendees) {

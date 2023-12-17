@@ -1,18 +1,8 @@
 import { assert } from "ps-std";
 import { writable } from "svelte/store";
 
-import { backend, socket } from "./backend";
+import { backend, socket, User } from "./backend";
 import { user } from "./state";
-
-export interface User {
-	id: bigint | number | string;
-	username: string;
-	displayname: string;
-	legal_name: string;
-	legal_guardian: string;
-	legal_guardian_contact: string;
-	email: string;
-}
 
 export interface DM<T extends Record<string, any>> {
 	id: number;
