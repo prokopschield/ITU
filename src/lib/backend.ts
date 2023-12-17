@@ -150,6 +150,26 @@ export const update_action: (
 /** parní mlátička */
 export const { leader_camp_info } = backend;
 
+/** permanently deletes an activity */
+export const leader_delete_activity: (id: real) => Promise<
+	{
+		leader: {
+			id: bigint;
+			camp_id: bigint;
+			user_id: bigint;
+			timestamp: Date;
+		};
+	} & {
+		id: bigint;
+		name: string;
+		camp_id: bigint;
+		leader_id: bigint;
+		description: string;
+		points: number;
+		timestamp: Date;
+	}
+> = backend.leader_delete_activity;
+
 /*
 	Jsou potřeba funkce (já se v tom typescriptu opravdu nevyznám, a nevím, jak se to ve Svelte dělá)
 
