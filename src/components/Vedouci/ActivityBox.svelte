@@ -4,6 +4,7 @@
 
 	export let activityName = "Název akce";
 	export let id: real;
+	export let description: string;
 
 	import { createEventDispatcher } from "svelte";
 	import { state } from "@prokopschield/localstorage-state";

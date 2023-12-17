@@ -121,11 +121,11 @@ export const get_leaderboard: (camp_id: number) => Promise<{
 	}[];
 }> = backend.get_leaderboard;
 
-export const get_activitys: (camp_id: number) => Promise<{
-	activitys: { id: number; name: string; dateTime: string }[];
-}> = backend.get_activitys;
+export const get_activities: (camp_id: number) => Promise<{
+	activities: { id: number; name: string; dateTime: string }[];
+}> = backend.get_activities;
 
-export const delete_activity: (camp_id: number, activitys_id: number) => {} =
+export const delete_activity: (camp_id: number, activities_id: number) => {} =
 	backend.delete_activity;
 
 export const delete_participant: (

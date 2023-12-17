@@ -5,8 +5,9 @@
 	import { page, selected_camp } from "../../lib/state";
 	import {
 		delete_activity,
-		get_activitys,
+		get_activities,
 		get_leader_points_table,
+		leader_delete_activity,
 	} from "../../lib/backend";
 	import { state } from "@prokopschield/localstorage-state";
 
@@ -47,7 +48,7 @@
 	let popupOpened = false;
 	let activityToDelete: number;
 
-	export let activitys: {
+	export let activities: {
 		id: real;
 		name: string;
 		attended: {
@@ -64,7 +65,7 @@
 	let searchQuery = "";
 
 	onMount(async () => {
-		activitys = (await get_leader_points_table(state.selected_camp.value))
+		activities = (await get_leader_points_table(state.selected_camp.value))
 			.activities;
 	});
 </script>
@@ -75,20 +76,24 @@
 	</header>
 
 	<main>
-		<button id="plusButton" on:click={() => page.set("VedouciEditActivity")}
-			>+</button
+		<button
+			id="plusButton"
+			on:click={() => {
+				state.AddAction.value = true;
+				page.set("VedouciEditActivity");
+			}}>+</button
 		>
 		<input bind:value={searchQuery} id="search" placeholder="Vyhledávání" />
 
 		<div id="activity-list">
-			{#each activitys.filter((activity) => activity.name
+			{#each activities.filter((activity) => activity.name
 					.toLowerCase()
 					.includes(searchQuery.toLowerCase())) as filteredActivity}
 				<ActivityBox
 					activityName={filteredActivity.name}
 					id={filteredActivity.id}
 					on:remove={(event) => {
-						activityToDelete = event.detail;
+						leader_delete_activity(event.detail);
 					}}
 				/>
 			{/each}

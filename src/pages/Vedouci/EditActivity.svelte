@@ -10,12 +10,11 @@
 	<div id="upper-div">
 		<table id="settings">
 			<tr>
-				<td colspan="2"><input placeholder="Jméno" /></td>
-				<td><input placeholder="Datum / Čas" type="date" /></td>
+				<td><input placeholder="Jméno" /></td>
 				<td><input placeholder="Maximum bodů" /></td>
 			</tr>
 			<tr>
-				<td colspan="3">
+				<td>
 					<input placeholder="Popis" />
 				</td>
 				<td>
