@@ -9,7 +9,7 @@
 	import OrganizerNewCamp from "./pages/Organizer/NewCamp.svelte";
 	import UcastniciAcountview from "./pages/Ucastnici/acountview.svelte";
 	import UcastniciOverview from "./pages/Ucastnici/overview.svelte";
-	import VedouciActivity from "./pages/Vedouci/Activity.svelte";
+	import VedouciActivities from "./pages/Vedouci/Activities.svelte";
 	import VedouciEditActivity from "./pages/Vedouci/EditActivity.svelte";
 	import VedouciEditPerson from "./pages/Vedouci/EditPerson.svelte";
 	import VedouciMultiPointTable from "./pages/Vedouci/MultiPointTable.svelte";
@@ -42,8 +42,8 @@
 	<UcastniciAcountview />
 {:else if $page === "UcastniciOverview"}
 	<UcastniciOverview />
-{:else if $page === "VedouciActivity"}
-	<VedouciActivity />
+{:else if $page === "VedouciActivities"}
+	<VedouciActivities />
 {:else if $page === "VedouciEditActivity"}
 	<VedouciEditActivity />
 {:else if $page === "VedouciEditPerson"}
