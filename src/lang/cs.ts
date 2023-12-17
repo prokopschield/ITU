@@ -25,6 +25,7 @@ export const cs: Partial<typeof en> = {
 	DISPLAYNAME_TOO_LONG: "Přezdívka příliš je dlouhá.",
 	DISPLAYNAME_TOO_SHORT: "Přezdívka příliš je krátká.",
 	INVALID_INFO: "Zadané údaje jsou neplatné.",
+	USERNAME_TAKEN: "Někdo jiný již má příliš podobnou přezdívku.",
 };
 
 Object.setPrototypeOf(cs, en);

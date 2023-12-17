@@ -20,7 +20,8 @@ export const en = {
 	SIGN_UP_FAIL: "Registration error, please check you entries.",
 	SIGN_UP_SUCCESS: "Check your e-mail :-)",
 	INVALID_EMAIL: "Invalid e-mail.",
-	DISPLAYNAME_TOO_LONG: "Displayname too long.",
-	DISPLAYNAME_TOO_SHORT: "Displayname too short.",
+	DISPLAYNAME_TOO_LONG: "Nickname too long.",
+	DISPLAYNAME_TOO_SHORT: "Nickname too short.",
 	INVALID_INFO: "The entered information is not in the right format.",
+	USERNAME_TAKEN: "Someone else has a nickname too similar to yours.",
 };

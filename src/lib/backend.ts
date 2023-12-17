@@ -69,7 +69,8 @@ export const register: (info: {
 			error:
 				| "DISPLAYNAME_TOO_SHORT"
 				| "DISPLAYNAME_TOO_LONG"
-				| "INVALID_INFO"
+		| "INVALID_INFO"
+		| "USERNAME_TAKEN"
 				| "<<string>>";
 	  }
 > = client.register;

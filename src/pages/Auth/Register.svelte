@@ -21,6 +21,7 @@
 		DISPLAYNAME_TOO_LONG,
 		DISPLAYNAME_TOO_SHORT,
 		INVALID_INFO,
+		USERNAME_TAKEN,
 	} = locale;
 
 	let email = "";
@@ -64,6 +65,8 @@
 					error = get(DISPLAYNAME_TOO_SHORT);
 				} else if (response.error === "INVALID_INFO") {
 					error = get(INVALID_INFO);
+				} else if (response.error === "USERNAME_TAKEN") {
+					error = get(USERNAME_TAKEN);
 				} else {
 					error = String(response.error);
 				}
