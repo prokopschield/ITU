@@ -17,6 +17,7 @@
 	import VedouciParticipantOverview from "./pages/Vedouci/ParticipantOverview.svelte";
 	import VedouciPointDistribution from "./pages/Vedouci/PointDistribution.svelte";
 	import VedouciPointTable from "./pages/Vedouci/PointTable.svelte";
+	import NavBar from "./components/NavBar.svelte";
 	import { page } from "./lib/state";
 </script>
 
@@ -38,12 +39,8 @@
 	<Main />
 {:else if $page === "OrganizerCamp"}
 	<OrganizerCamp />
-{:else if $page === "OrganizerMyCamps"}
-	<OrganizerMyCamps />
 {:else if $page === "OrganizerNewCamp"}
 	<OrganizerNewCamp />
-{:else if $page === "UcastniciMyCamps"}
-	<UcastniciMyCamps />
 {:else if $page === "UcastniciAcountview"}
 	<UcastniciAcountview />
 {:else if $page === "UcastniciOverview"}
@@ -56,17 +53,15 @@
 	<VedouciEditPerson />
 {:else if $page === "VedouciMultiPointTable"}
 	<VedouciMultiPointTable />
-{:else if $page === "VedouciMyCamps"}
-	<VedouciMyCamps />
 {:else if $page === "VedouciParticipantOverview"}
 	<VedouciParticipantOverview />
 {:else if $page === "VedouciPointDistribution"}
 	<VedouciPointDistribution />
 {:else if $page === "VedouciPointTable"}
 	<VedouciPointTable />
-{:else if $page === "Tabory"}
-	<Tabory />
 {:else}
 	<h1>Page not found: {$page}</h1>
 	<button on:click={() => page.set("Home")}>Na hlavní stránku</button>
 {/if}
+
+<NavBar />

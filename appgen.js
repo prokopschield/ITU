@@ -53,6 +53,8 @@ function* appgen() {
 		yield `\timport ${component_name} from "${relative}";`;
 	}
 
+	yield `\timport NavBar from "./components/NavBar.svelte";`
+
 	yield `\timport { page } from "./lib/state";`;
 
 	yield "</script>";
@@ -71,6 +73,9 @@ function* appgen() {
 	yield `\t<h1>Page not found: {$page}</h1>`;
 	yield `\t<button on:click={() => page.set("Home")}>Na hlavní stránku</button>`;
 	yield `{/if}`;
+
+	yield ``;
+	yield `<NavBar />`;
 
 	yield ""; // EOF
 }
