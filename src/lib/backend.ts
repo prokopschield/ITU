@@ -250,29 +250,30 @@ export async function get_leader_points_table(camp_id: real) {
 
 					return this;
 				},
-			}
+			};
 
 			Object.assign(attendee, {
 				score_map,
 				...score_mgr,
-				score: new Proxy({}, {
-					get(_target, key) {
-						return score_mgr.getScore(String(key))
-					},
-					set(_target, key, value) {
-						score_mgr.setScore(String(key), Number(value))
+				score: new Proxy(
+					{},
+					{
+						get(_target, key) {
+							return score_mgr.getScore(String(key));
+						},
+						set(_target, key, value) {
+							score_mgr.setScore(String(key), Number(value));
 
-						return true
+							return true;
+						},
 					}
-				})
+				),
 			});
-
-			
 
 			return attendee as typeof attendee & {
 				getScore(activity: real): number;
 				setScore(activity: real, score: number): Promise<any>;
-				score: number
+				score: number;
 			};
 		}),
 		activities,
