@@ -3,7 +3,9 @@
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
 
-    export let tableItems: {id: bigint | number | string;name: string; points: number }[] = [];
+    export let tableItems: {id: bigint | number | string;name: string; points: number }[] = [
+        {id: 0, name: "Jméno", points: 15},
+    ];
 
     let sortColumn: String | undefined = undefined;
     let sortDirection = false; // descending
