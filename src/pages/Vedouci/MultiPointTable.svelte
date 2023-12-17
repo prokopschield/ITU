@@ -1,31 +1,57 @@
 <script lang="ts">
+	import type { real } from "@prokopschield/complex";
 	import { state } from "@prokopschield/localstorage-state";
-	import { backend } from "../../lib/backend";
+	import { backend, get_leader_points_table } from "../../lib/backend";
+	import { onMount } from "svelte";
 
-	//backend.get_attendees(state.selected_camp.value);
-	//backend.get_actions(state.selected_camp.value);
-	export let attendees: { id: number; name: string }[] = [];
-	export let actions: string[] = ["Akce 1", "Akce 1", "Akce 1"];
-	let tableData: { name: string; score: number[] }[] = initializeTableData();
+	let attendees: ({ id: real; user: { displayname: string } } & {
+		score: Record<real, number>;
+		getScore(activity: real): number;
+		setScore(activity: real, score: number): Promise<any>;
+	})[] = [];
 
-	function initializeTableData(): { name: string; score: number[] }[] {
-		return attendees.map((attendee) => ({
-			name: attendee.name,
-			score: actions.map(() => 0), // Počáteční body pro každou akci jsou 0
-		}));
-	}
+	let actions: {
+		id: real;
+		name: string;
+		attended: {
+			score: number;
+			attendee: { id: real; user: { displayname: string } };
+		}[];
+	}[] = [];
+
+	let tableData: {
+		attendees: ({ id: real; user: { displayname: string } } & {
+			score: Record<real, number>;
+			getScore(activity: real): number;
+			setScore(activity: real, score: number): Promise<any>;
+		})[];
+		activities: {
+			id: real;
+			name: string;
+			attended: {
+				score: number;
+				attendee: { id: real; user: { displayname: string } };
+			}[];
+		}[];
+	};
 
 	function updateScore(
 		childIndex: number,
 		actionIndex: number,
 		value: number,
 	) {
-		tableData[childIndex].score[actionIndex] = value;
+		//tableData[childIndex].score[actionIndex] = value;
 	}
 
 	function calculateRowTotal(score: number[]): number {
 		return score.reduce((acc, val) => acc + val, 0);
 	}
+
+	onMount(async () => {
+		tableData = await get_leader_points_table(state.selected_camp.value);
+		attendees = tableData.attendees;
+		actions = tableData.activities;
+	});
 </script>
 
 <table>
@@ -33,27 +59,23 @@
 		<tr>
 			<th>Name</th>
 			{#each actions as action}
-				<th>{action}</th>
+				<th>{action.name}</th>
 			{/each}
-			<th>Total</th>
 		</tr>
 	</thead>
 	<tbody>
-		{#each tableData as { name, score }, childIndex}
+		{#each attendees as attendee}
 			<tr>
-				<td>{name}</td>
-				{#each score as point, actionIndex}
+				<td>{attendee.user.displayname}</td>
+				{#each actions as action}
 					<td>
 						<input
 							type="number"
-							bind:value={point}
-							on:input={() =>
-								updateScore(childIndex, actionIndex, +point)}
+							bind:value={attendee.score[Number(action.id)]}
 							class="input-large"
 						/>
 					</td>
 				{/each}
-				<td>{calculateRowTotal(score)}</td>
 			</tr>
 		{/each}
 	</tbody>
